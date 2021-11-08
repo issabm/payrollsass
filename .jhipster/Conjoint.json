@@ -1,0 +1,77 @@
+{
+  "name": "Conjoint",
+  "fields": [
+    {
+      "fieldName": "matricule",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenomAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenomEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateNaiss",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "doesWork",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sexe",
+      "otherEntityRelationshipName": "conjoint",
+      "relationshipName": "sexe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pays",
+      "otherEntityRelationshipName": "conjoint",
+      "relationshipName": "nationalite"
+    }
+  ],
+  "entityTableName": "rh_conjoint",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132328"
+}

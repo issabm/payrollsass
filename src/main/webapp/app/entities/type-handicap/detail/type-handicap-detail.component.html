@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="typeHandicap">
+      <h2 data-cy="typeHandicapDetailsHeading"><span jhiTranslate="payrollApp.typeHandicap.detail.title">Type Handicap</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ typeHandicap.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeHandicap.code">Code</span></dt>
+        <dd>
+          <span>{{ typeHandicap.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeHandicap.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ typeHandicap.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeHandicap.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ typeHandicap.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeHandicap.util">Util</span></dt>
+        <dd>
+          <span>{{ typeHandicap.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeHandicap.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ typeHandicap.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeHandicap.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ typeHandicap.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeHandicap.op">Op</span></dt>
+        <dd>
+          <span>{{ typeHandicap.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeHandicap.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ typeHandicap.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeHandicap.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ typeHandicap.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeHandicap.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ typeHandicap.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/type-handicap', typeHandicap.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

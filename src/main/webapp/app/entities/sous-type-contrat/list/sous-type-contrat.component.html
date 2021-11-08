@@ -1,0 +1,140 @@
+<div>
+  <h2 id="page-heading" data-cy="SousTypeContratHeading">
+    <span jhiTranslate="payrollApp.sousTypeContrat.home.title">Sous Type Contrats</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.sousTypeContrat.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-sous-type-contrat"
+        [routerLink]="['/sous-type-contrat/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.sousTypeContrat.home.createLabel"> Create a new Sous Type Contrat </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="sousTypeContrats?.length === 0">
+    <span jhiTranslate="payrollApp.sousTypeContrat.home.notFound">No sousTypeContrats found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="sousTypeContrats && sousTypeContrats.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code">
+            <span jhiTranslate="payrollApp.sousTypeContrat.code">Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libAr">
+            <span jhiTranslate="payrollApp.sousTypeContrat.libAr">Lib Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libEn">
+            <span jhiTranslate="payrollApp.sousTypeContrat.libEn">Lib En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="util">
+            <span jhiTranslate="payrollApp.sousTypeContrat.util">Util</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.sousTypeContrat.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.sousTypeContrat.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.sousTypeContrat.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.sousTypeContrat.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.sousTypeContrat.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.sousTypeContrat.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="typeContrat.id">
+            <span jhiTranslate="payrollApp.sousTypeContrat.typeContrat">Type Contrat</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sousTypeContrat of sousTypeContrats; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/sous-type-contrat', sousTypeContrat.id, 'view']">{{ sousTypeContrat.id }}</a>
+          </td>
+          <td>{{ sousTypeContrat.code }}</td>
+          <td>{{ sousTypeContrat.libAr }}</td>
+          <td>{{ sousTypeContrat.libEn }}</td>
+          <td>{{ sousTypeContrat.util }}</td>
+          <td>{{ sousTypeContrat.dateop | formatMediumDatetime }}</td>
+          <td>{{ sousTypeContrat.modifiedBy }}</td>
+          <td>{{ sousTypeContrat.op }}</td>
+          <td>{{ sousTypeContrat.isDeleted }}</td>
+          <td>{{ sousTypeContrat.createdDate | formatMediumDatetime }}</td>
+          <td>{{ sousTypeContrat.modifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="sousTypeContrat.typeContrat">
+              <a [routerLink]="['/type-contrat', sousTypeContrat.typeContrat?.id, 'view']">{{ sousTypeContrat.typeContrat?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/sous-type-contrat', sousTypeContrat.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/sous-type-contrat', sousTypeContrat.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(sousTypeContrat)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="sousTypeContrats && sousTypeContrats.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

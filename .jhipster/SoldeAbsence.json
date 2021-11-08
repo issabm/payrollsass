@@ -1,0 +1,81 @@
+{
+  "name": "SoldeAbsence",
+  "fields": [
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbDaysRight",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbDaysConsumed",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbDaysUnavailble",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbDaysAvailble",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbDaysLeft",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employe",
+      "otherEntityRelationshipName": "soldeAbsence",
+      "relationshipName": "employe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "natureAbsence",
+      "otherEntityRelationshipName": "soldeAbsence",
+      "relationshipName": "natureAbsence"
+    }
+  ],
+  "entityTableName": "rh_solde_abs",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132347"
+}

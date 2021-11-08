@@ -1,0 +1,38 @@
+{
+  "payrollApp": {
+    "affectation": {
+      "home": {
+        "title": "Affectations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Affectation",
+        "createOrEditLabel": "Create or edit a Affectation",
+        "notFound": "No Affectations found"
+      },
+      "created": "A new Affectation is created with identifier {{ param }}",
+      "updated": "A Affectation is updated with identifier {{ param }}",
+      "deleted": "A Affectation is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Affectation {{ id }}?"
+      },
+      "detail": {
+        "title": "Affectation"
+      },
+      "id": "ID",
+      "matricule": "Matricule",
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "dateop": "Dateop",
+      "util": "Util",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "contrat": "Contrat",
+      "groupe": "Groupe",
+      "entreprise": "Entreprise",
+      "affiliation": "Affiliation",
+      "situation": "Situation"
+    }
+  }
+}

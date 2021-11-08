@@ -1,0 +1,67 @@
+{
+  "name": "Famille",
+  "fields": [
+    {
+      "fieldName": "dateSituation",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employe",
+      "otherEntityRelationshipName": "famille",
+      "relationshipName": "employe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "situationFamiliale",
+      "otherEntityRelationshipName": "famille",
+      "relationshipName": "situationFamiliale"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "conjoint",
+      "otherEntityRelationshipName": "famille",
+      "relationshipName": "conjoint"
+    }
+  ],
+  "entityTableName": "rh_famille",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132403"
+}

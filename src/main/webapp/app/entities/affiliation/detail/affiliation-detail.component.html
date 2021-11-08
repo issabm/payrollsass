@@ -1,0 +1,96 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="affiliation">
+      <h2 data-cy="affiliationDetailsHeading"><span jhiTranslate="payrollApp.affiliation.detail.title">Affiliation</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ affiliation.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.code">Code</span></dt>
+        <dd>
+          <span>{{ affiliation.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ affiliation.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ affiliation.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.tel">Tel</span></dt>
+        <dd>
+          <span>{{ affiliation.tel }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.email">Email</span></dt>
+        <dd>
+          <span>{{ affiliation.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.fax">Fax</span></dt>
+        <dd>
+          <span>{{ affiliation.fax }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.util">Util</span></dt>
+        <dd>
+          <span>{{ affiliation.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ affiliation.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ affiliation.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.op">Op</span></dt>
+        <dd>
+          <span>{{ affiliation.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ affiliation.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.entreprise">Entreprise</span></dt>
+        <dd>
+          <div *ngIf="affiliation.entreprise">
+            <a [routerLink]="['/entreprise', affiliation.entreprise?.id, 'view']">{{ affiliation.entreprise?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.direction">Direction</span></dt>
+        <dd>
+          <div *ngIf="affiliation.direction">
+            <a [routerLink]="['/affiliation', affiliation.direction?.id, 'view']">{{ affiliation.direction?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.pays">Pays</span></dt>
+        <dd>
+          <div *ngIf="affiliation.pays">
+            <a [routerLink]="['/pays', affiliation.pays?.id, 'view']">{{ affiliation.pays?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affiliation.devise">Devise</span></dt>
+        <dd>
+          <div *ngIf="affiliation.devise">
+            <a [routerLink]="['/devise', affiliation.devise?.id, 'view']">{{ affiliation.devise?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/affiliation', affiliation.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

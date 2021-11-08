@@ -1,0 +1,116 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="entreprise">
+      <h2 data-cy="entrepriseDetailsHeading"><span jhiTranslate="payrollApp.entreprise.detail.title">Entreprise</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ entreprise.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.code">Code</span></dt>
+        <dd>
+          <span>{{ entreprise.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.matFiscal">Mat Fiscal</span></dt>
+        <dd>
+          <span>{{ entreprise.matFiscal }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.registreCommerce">Registre Commerce</span></dt>
+        <dd>
+          <span>{{ entreprise.registreCommerce }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.nomCommerceAr">Nom Commerce Ar</span></dt>
+        <dd>
+          <span>{{ entreprise.nomCommerceAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.nomCommerceEn">Nom Commerce En</span></dt>
+        <dd>
+          <span>{{ entreprise.nomCommerceEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.raisonSocialAr">Raison Social Ar</span></dt>
+        <dd>
+          <span>{{ entreprise.raisonSocialAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.raisonSocialEn">Raison Social En</span></dt>
+        <dd>
+          <span>{{ entreprise.raisonSocialEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.addresseAr">Addresse Ar</span></dt>
+        <dd>
+          <span>{{ entreprise.addresseAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.addresseEn">Addresse En</span></dt>
+        <dd>
+          <span>{{ entreprise.addresseEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.codePostal">Code Postal</span></dt>
+        <dd>
+          <span>{{ entreprise.codePostal }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.tel">Tel</span></dt>
+        <dd>
+          <span>{{ entreprise.tel }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.email">Email</span></dt>
+        <dd>
+          <span>{{ entreprise.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.fax">Fax</span></dt>
+        <dd>
+          <span>{{ entreprise.fax }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.util">Util</span></dt>
+        <dd>
+          <span>{{ entreprise.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ entreprise.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ entreprise.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.groupe">Groupe</span></dt>
+        <dd>
+          <div *ngIf="entreprise.groupe">
+            <a [routerLink]="['/groupe', entreprise.groupe?.id, 'view']">{{ entreprise.groupe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.pays">Pays</span></dt>
+        <dd>
+          <div *ngIf="entreprise.pays">
+            <a [routerLink]="['/pays', entreprise.pays?.id, 'view']">{{ entreprise.pays?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.mere">Mere</span></dt>
+        <dd>
+          <div *ngIf="entreprise.mere">
+            <a [routerLink]="['/entreprise', entreprise.mere?.id, 'view']">{{ entreprise.mere?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entreprise.devise">Devise</span></dt>
+        <dd>
+          <div *ngIf="entreprise.devise">
+            <a [routerLink]="['/devise', entreprise.devise?.id, 'view']">{{ entreprise.devise?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/entreprise', entreprise.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

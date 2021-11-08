@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="category">
+      <h2 data-cy="categoryDetailsHeading"><span jhiTranslate="payrollApp.category.detail.title">Category</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ category.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.code">Code</span></dt>
+        <dd>
+          <span>{{ category.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ category.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ category.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.util">Util</span></dt>
+        <dd>
+          <span>{{ category.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ category.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ category.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.op">Op</span></dt>
+        <dd>
+          <span>{{ category.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ category.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ category.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ category.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.pays">Pays</span></dt>
+        <dd>
+          <div *ngIf="category.pays">
+            <a [routerLink]="['/pays', category.pays?.id, 'view']">{{ category.pays?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.natureConfig">Nature Config</span></dt>
+        <dd>
+          <div *ngIf="category.natureConfig">
+            <a [routerLink]="['/nature-config', category.natureConfig?.id, 'view']">{{ category.natureConfig?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.affilication">Affilication</span></dt>
+        <dd>
+          <div *ngIf="category.affilication">
+            <a [routerLink]="['/affiliation', category.affilication?.id, 'view']">{{ category.affilication?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.entreprise">Entreprise</span></dt>
+        <dd>
+          <div *ngIf="category.entreprise">
+            <a [routerLink]="['/entreprise', category.entreprise?.id, 'view']">{{ category.entreprise?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.category.groupe">Groupe</span></dt>
+        <dd>
+          <div *ngIf="category.groupe">
+            <a [routerLink]="['/groupe', category.groupe?.id, 'view']">{{ category.groupe?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/category', category.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

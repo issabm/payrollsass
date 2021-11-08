@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity Eligibilite.
+    -->
+    <changeSet id="20211108132414-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="pays_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__pays_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_pays"/>
+
+        <addForeignKeyConstraint baseColumnNames="nature_config_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__nature_config_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cfg_nature"/>
+
+        <addForeignKeyConstraint baseColumnNames="echlon_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__echlon_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_echlon"/>
+
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_category"/>
+
+        <addForeignKeyConstraint baseColumnNames="emploi_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__emploi_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_emploi"/>
+
+        <addForeignKeyConstraint baseColumnNames="type_handicap_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__type_handicap_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_type_handicap"/>
+
+        <addForeignKeyConstraint baseColumnNames="nationalite_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__nationalite_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_pays"/>
+
+        <addForeignKeyConstraint baseColumnNames="sexe_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__sexe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_sexe"/>
+
+        <addForeignKeyConstraint baseColumnNames="affilication_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__affilication_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_affiliation"/>
+
+        <addForeignKeyConstraint baseColumnNames="entreprise_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__entreprise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_entreprise"/>
+
+        <addForeignKeyConstraint baseColumnNames="groupe_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__groupe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_groupe"/>
+
+        <addForeignKeyConstraint baseColumnNames="type_contrat_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__type_contrat_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_type_contrat"/>
+
+        <addForeignKeyConstraint baseColumnNames="sous_type_contrat_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__sous_type_contrat_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_s_type_contrat"/>
+
+        <addForeignKeyConstraint baseColumnNames="niveau_etude_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__niveau_etude_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_niv_etude"/>
+
+        <addForeignKeyConstraint baseColumnNames="nature_eligible_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__nature_eligible_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_nat_eligible"/>
+
+        <addForeignKeyConstraint baseColumnNames="rebrique_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__rebrique_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pr_rebrique"/>
+
+        <addForeignKeyConstraint baseColumnNames="nature_absence_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__nature_absence_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_nature_absence"/>
+
+        <addForeignKeyConstraint baseColumnNames="plate_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__plate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="grp_rebrique"/>
+
+        <addForeignKeyConstraint baseColumnNames="target_ent_id"
+                                 baseTableName="pr_eligible"
+                                 constraintName="fk_pr_eligible__target_ent_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_target_eligible"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,112 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="plate">
+      <h2 data-cy="plateDetailsHeading"><span jhiTranslate="payrollApp.plate.detail.title">Plate</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ plate.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.priorite">Priorite</span></dt>
+        <dd>
+          <span>{{ plate.priorite }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.valueCalcul">Value Calcul</span></dt>
+        <dd>
+          <span>{{ plate.valueCalcul }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.code">Code</span></dt>
+        <dd>
+          <span>{{ plate.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ plate.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ plate.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ plate.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.util">Util</span></dt>
+        <dd>
+          <span>{{ plate.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ plate.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.op">Op</span></dt>
+        <dd>
+          <span>{{ plate.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ plate.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ plate.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ plate.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.pays">Pays</span></dt>
+        <dd>
+          <div *ngIf="plate.pays">
+            <a [routerLink]="['/pays', plate.pays?.id, 'view']">{{ plate.pays?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.natureConfig">Nature Config</span></dt>
+        <dd>
+          <div *ngIf="plate.natureConfig">
+            <a [routerLink]="['/nature-config', plate.natureConfig?.id, 'view']">{{ plate.natureConfig?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.affilication">Affilication</span></dt>
+        <dd>
+          <div *ngIf="plate.affilication">
+            <a [routerLink]="['/affiliation', plate.affilication?.id, 'view']">{{ plate.affilication?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.entreprise">Entreprise</span></dt>
+        <dd>
+          <div *ngIf="plate.entreprise">
+            <a [routerLink]="['/entreprise', plate.entreprise?.id, 'view']">{{ plate.entreprise?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.groupe">Groupe</span></dt>
+        <dd>
+          <div *ngIf="plate.groupe">
+            <a [routerLink]="['/groupe', plate.groupe?.id, 'view']">{{ plate.groupe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plate.modeCalcul">Mode Calcul</span></dt>
+        <dd>
+          <div *ngIf="plate.modeCalcul">
+            <a [routerLink]="['/mode-calcul', plate.modeCalcul?.id, 'view']">{{ plate.modeCalcul?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/plate', plate.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

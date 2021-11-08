@@ -1,0 +1,114 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="demandeCalculPaie">
+      <h2 data-cy="demandeCalculPaieDetailsHeading">
+        <span jhiTranslate="payrollApp.demandeCalculPaie.detail.title">Demande Calcul Paie</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.code">Code</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.lib">Lib</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.lib }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.annee">Annee</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.annee }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.mois">Mois</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.mois }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.dateCalcul">Date Calcul</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.dateCalcul | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.dateValid">Date Valid</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.dateValid | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.datePayroll">Date Payroll</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.datePayroll | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.totalNet">Total Net</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.totalNet }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.totalNetDevise">Total Net Devise</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.totalNetDevise }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.tauxChange">Taux Change</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.tauxChange }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.calculBy">Calcul By</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.calculBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.effectBy">Effect By</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.effectBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.dateSituation">Date Situation</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.dateSituation | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.op">Op</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.util">Util</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.demandeCalculPaie.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ demandeCalculPaie.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/demande-calcul-paie', demandeCalculPaie.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

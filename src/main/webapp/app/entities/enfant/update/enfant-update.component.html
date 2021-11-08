@@ -1,0 +1,175 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-enfant-heading" data-cy="EnfantCreateUpdateHeading" jhiTranslate="payrollApp.enfant.home.createOrEditLabel">
+        Create or edit a Enfant
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.nomAr" for="field_nomAr">Nom Ar</label>
+          <input type="text" class="form-control" name="nomAr" id="field_nomAr" data-cy="nomAr" formControlName="nomAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.prenomAr" for="field_prenomAr">Prenom Ar</label>
+          <input type="text" class="form-control" name="prenomAr" id="field_prenomAr" data-cy="prenomAr" formControlName="prenomAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.nomEn" for="field_nomEn">Nom En</label>
+          <input type="text" class="form-control" name="nomEn" id="field_nomEn" data-cy="nomEn" formControlName="nomEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.prenomEn" for="field_prenomEn">Prenom En</label>
+          <input type="text" class="form-control" name="prenomEn" id="field_prenomEn" data-cy="prenomEn" formControlName="prenomEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.dateNaiss" for="field_dateNaiss">Date Naiss</label>
+          <div class="input-group">
+            <input
+              id="field_dateNaiss"
+              data-cy="dateNaiss"
+              type="text"
+              class="form-control"
+              name="dateNaiss"
+              ngbDatepicker
+              #dateNaissDp="ngbDatepicker"
+              formControlName="dateNaiss"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateNaissDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.typeHandicap" for="field_typeHandicap">Type Handicap</label>
+          <select class="form-control" id="field_typeHandicap" data-cy="typeHandicap" name="typeHandicap" formControlName="typeHandicap">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                typeHandicapOption.id === editForm.get('typeHandicap')!.value?.id ? editForm.get('typeHandicap')!.value : typeHandicapOption
+              "
+              *ngFor="let typeHandicapOption of typeHandicapsSharedCollection; trackBy: trackTypeHandicapById"
+            >
+              {{ typeHandicapOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.sexe" for="field_sexe">Sexe</label>
+          <select class="form-control" id="field_sexe" data-cy="sexe" name="sexe" formControlName="sexe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="sexeOption.id === editForm.get('sexe')!.value?.id ? editForm.get('sexe')!.value : sexeOption"
+              *ngFor="let sexeOption of sexesSharedCollection; trackBy: trackSexeById"
+            >
+              {{ sexeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.nivScolaire" for="field_nivScolaire">Niv Scolaire</label>
+          <select class="form-control" id="field_nivScolaire" data-cy="nivScolaire" name="nivScolaire" formControlName="nivScolaire">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                niveauScolaireOption.id === editForm.get('nivScolaire')!.value?.id
+                  ? editForm.get('nivScolaire')!.value
+                  : niveauScolaireOption
+              "
+              *ngFor="let niveauScolaireOption of niveauScolairesSharedCollection; trackBy: trackNiveauScolaireById"
+            >
+              {{ niveauScolaireOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.enfant.famille" for="field_famille">Famille</label>
+          <select class="form-control" id="field_famille" data-cy="famille" name="famille" formControlName="famille">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="familleOption.id === editForm.get('famille')!.value?.id ? editForm.get('famille')!.value : familleOption"
+              *ngFor="let familleOption of famillesSharedCollection; trackBy: trackFamilleById"
+            >
+              {{ familleOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

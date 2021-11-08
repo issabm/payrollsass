@@ -1,0 +1,166 @@
+<div>
+  <h2 id="page-heading" data-cy="CategoryHeading">
+    <span jhiTranslate="payrollApp.category.home.title">Categories</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.category.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-category"
+        [routerLink]="['/category/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.category.home.createLabel"> Create a new Category </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="categories?.length === 0">
+    <span jhiTranslate="payrollApp.category.home.notFound">No categories found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="categories && categories.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code"><span jhiTranslate="payrollApp.category.code">Code</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="libAr">
+            <span jhiTranslate="payrollApp.category.libAr">Lib Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libEn">
+            <span jhiTranslate="payrollApp.category.libEn">Lib En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="util"><span jhiTranslate="payrollApp.category.util">Util</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.category.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.category.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.category.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.category.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.category.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.category.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pays.id"><span jhiTranslate="payrollApp.category.pays">Pays</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="natureConfig.id">
+            <span jhiTranslate="payrollApp.category.natureConfig">Nature Config</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affilication.id">
+            <span jhiTranslate="payrollApp.category.affilication">Affilication</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="entreprise.id">
+            <span jhiTranslate="payrollApp.category.entreprise">Entreprise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="groupe.id">
+            <span jhiTranslate="payrollApp.category.groupe">Groupe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/category', category.id, 'view']">{{ category.id }}</a>
+          </td>
+          <td>{{ category.code }}</td>
+          <td>{{ category.libAr }}</td>
+          <td>{{ category.libEn }}</td>
+          <td>{{ category.util }}</td>
+          <td>{{ category.dateop | formatMediumDatetime }}</td>
+          <td>{{ category.modifiedBy }}</td>
+          <td>{{ category.op }}</td>
+          <td>{{ category.isDeleted }}</td>
+          <td>{{ category.createdDate | formatMediumDatetime }}</td>
+          <td>{{ category.modifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="category.pays">
+              <a [routerLink]="['/pays', category.pays?.id, 'view']">{{ category.pays?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="category.natureConfig">
+              <a [routerLink]="['/nature-config', category.natureConfig?.id, 'view']">{{ category.natureConfig?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="category.affilication">
+              <a [routerLink]="['/affiliation', category.affilication?.id, 'view']">{{ category.affilication?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="category.entreprise">
+              <a [routerLink]="['/entreprise', category.entreprise?.id, 'view']">{{ category.entreprise?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="category.groupe">
+              <a [routerLink]="['/groupe', category.groupe?.id, 'view']">{{ category.groupe?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/category', category.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/category', category.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(category)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="categories && categories.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

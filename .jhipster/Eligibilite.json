@@ -1,0 +1,215 @@
+{
+  "name": "Eligibilite",
+  "fields": [
+    {
+      "fieldName": "priorite",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "mois",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbEnt",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "ageEnt",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "matricule",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libFr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valPayroll",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "nbDaysLeave",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pourValPayroll",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pays",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "pays"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "natureConfig",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "natureConfig"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "echlon",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "echlon"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "category"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "emploi",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "emploi"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeHandicap",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "typeHandicap"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pays",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "nationalite"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sexe",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "sexe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliation",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "affilication"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "entreprise",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "entreprise"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "groupe",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "groupe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeContrat",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "typeContrat"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sousTypeContrat",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "sousTypeContrat"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "niveauEtude",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "niveauEtude"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "natureEligibilite",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "natureEligible"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "rebrique",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "rebrique"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "natureAbsence",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "natureAbsence"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "plate",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "plate"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "targetEligible",
+      "otherEntityRelationshipName": "eligibilite",
+      "relationshipName": "targetEnt"
+    }
+  ],
+  "entityTableName": "pr_eligible",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132414"
+}

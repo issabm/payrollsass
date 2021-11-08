@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sousTypeContrat">
+      <h2 data-cy="sousTypeContratDetailsHeading"><span jhiTranslate="payrollApp.sousTypeContrat.detail.title">Sous Type Contrat</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ sousTypeContrat.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sousTypeContrat.code">Code</span></dt>
+        <dd>
+          <span>{{ sousTypeContrat.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sousTypeContrat.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ sousTypeContrat.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sousTypeContrat.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ sousTypeContrat.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sousTypeContrat.util">Util</span></dt>
+        <dd>
+          <span>{{ sousTypeContrat.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sousTypeContrat.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ sousTypeContrat.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sousTypeContrat.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ sousTypeContrat.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sousTypeContrat.op">Op</span></dt>
+        <dd>
+          <span>{{ sousTypeContrat.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sousTypeContrat.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ sousTypeContrat.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sousTypeContrat.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ sousTypeContrat.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sousTypeContrat.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ sousTypeContrat.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sousTypeContrat.typeContrat">Type Contrat</span></dt>
+        <dd>
+          <div *ngIf="sousTypeContrat.typeContrat">
+            <a [routerLink]="['/type-contrat', sousTypeContrat.typeContrat?.id, 'view']">{{ sousTypeContrat.typeContrat?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sous-type-contrat', sousTypeContrat.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

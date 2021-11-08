@@ -1,0 +1,136 @@
+{
+  "name": "Employe",
+  "fields": [
+    {
+      "fieldName": "matricule",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomJfAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenomAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomJfEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenomEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomPereAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomPereEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomMereAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomMereEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomGpAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomGpEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateNaiss",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "rib",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "banque",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateRib",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateBanque",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "img",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateModif",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "situation",
+      "otherEntityRelationshipName": "employe",
+      "relationshipName": "situation"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pays",
+      "otherEntityRelationshipName": "employe",
+      "relationshipName": "nationalite"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeHandicap",
+      "otherEntityRelationshipName": "employe",
+      "relationshipName": "typeHandicap"
+    }
+  ],
+  "entityTableName": "rh_employe",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132325"
+}

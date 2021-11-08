@@ -1,0 +1,249 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-entreprise-heading" data-cy="EntrepriseCreateUpdateHeading" jhiTranslate="payrollApp.entreprise.home.createOrEditLabel">
+        Create or edit a Entreprise
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.matFiscal" for="field_matFiscal">Mat Fiscal</label>
+          <input type="text" class="form-control" name="matFiscal" id="field_matFiscal" data-cy="matFiscal" formControlName="matFiscal" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.registreCommerce" for="field_registreCommerce"
+            >Registre Commerce</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="registreCommerce"
+            id="field_registreCommerce"
+            data-cy="registreCommerce"
+            formControlName="registreCommerce"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.nomCommerceAr" for="field_nomCommerceAr"
+            >Nom Commerce Ar</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nomCommerceAr"
+            id="field_nomCommerceAr"
+            data-cy="nomCommerceAr"
+            formControlName="nomCommerceAr"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.nomCommerceEn" for="field_nomCommerceEn"
+            >Nom Commerce En</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nomCommerceEn"
+            id="field_nomCommerceEn"
+            data-cy="nomCommerceEn"
+            formControlName="nomCommerceEn"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.raisonSocialAr" for="field_raisonSocialAr"
+            >Raison Social Ar</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="raisonSocialAr"
+            id="field_raisonSocialAr"
+            data-cy="raisonSocialAr"
+            formControlName="raisonSocialAr"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.raisonSocialEn" for="field_raisonSocialEn"
+            >Raison Social En</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="raisonSocialEn"
+            id="field_raisonSocialEn"
+            data-cy="raisonSocialEn"
+            formControlName="raisonSocialEn"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.addresseAr" for="field_addresseAr">Addresse Ar</label>
+          <input
+            type="text"
+            class="form-control"
+            name="addresseAr"
+            id="field_addresseAr"
+            data-cy="addresseAr"
+            formControlName="addresseAr"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.addresseEn" for="field_addresseEn">Addresse En</label>
+          <input
+            type="text"
+            class="form-control"
+            name="addresseEn"
+            id="field_addresseEn"
+            data-cy="addresseEn"
+            formControlName="addresseEn"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.codePostal" for="field_codePostal">Code Postal</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codePostal"
+            id="field_codePostal"
+            data-cy="codePostal"
+            formControlName="codePostal"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.tel" for="field_tel">Tel</label>
+          <input type="text" class="form-control" name="tel" id="field_tel" data-cy="tel" formControlName="tel" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.fax" for="field_fax">Fax</label>
+          <input type="text" class="form-control" name="fax" id="field_fax" data-cy="fax" formControlName="fax" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.groupe" for="field_groupe">Groupe</label>
+          <select class="form-control" id="field_groupe" data-cy="groupe" name="groupe" formControlName="groupe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="groupeOption.id === editForm.get('groupe')!.value?.id ? editForm.get('groupe')!.value : groupeOption"
+              *ngFor="let groupeOption of groupesSharedCollection; trackBy: trackGroupeById"
+            >
+              {{ groupeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.pays" for="field_pays">Pays</label>
+          <select class="form-control" id="field_pays" data-cy="pays" name="pays" formControlName="pays">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="paysOption.id === editForm.get('pays')!.value?.id ? editForm.get('pays')!.value : paysOption"
+              *ngFor="let paysOption of paysSharedCollection; trackBy: trackPaysById"
+            >
+              {{ paysOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.mere" for="field_mere">Mere</label>
+          <select class="form-control" id="field_mere" data-cy="mere" name="mere" formControlName="mere">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="entrepriseOption.id === editForm.get('mere')!.value?.id ? editForm.get('mere')!.value : entrepriseOption"
+              *ngFor="let entrepriseOption of entreprisesSharedCollection; trackBy: trackEntrepriseById"
+            >
+              {{ entrepriseOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.entreprise.devise" for="field_devise">Devise</label>
+          <select class="form-control" id="field_devise" data-cy="devise" name="devise" formControlName="devise">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="deviseOption.id === editForm.get('devise')!.value?.id ? editForm.get('devise')!.value : deviseOption"
+              *ngFor="let deviseOption of devisesSharedCollection; trackBy: trackDeviseById"
+            >
+              {{ deviseOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+{
+  "payrollApp": {
+    "concerne": {
+      "home": {
+        "title": "Concernes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Concerne",
+        "createOrEditLabel": "Create or edit a Concerne",
+        "notFound": "No Concernes found"
+      },
+      "created": "A new Concerne is created with identifier {{ param }}",
+      "updated": "A Concerne is updated with identifier {{ param }}",
+      "deleted": "A Concerne is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Concerne {{ id }}?"
+      },
+      "detail": {
+        "title": "Concerne"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date"
+    }
+  }
+}

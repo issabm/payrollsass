@@ -1,0 +1,40 @@
+{
+  "payrollApp": {
+    "palierPlate": {
+      "home": {
+        "title": "Palier Plates",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Palier Plate",
+        "createOrEditLabel": "Create or edit a Palier Plate",
+        "notFound": "No Palier Plates found"
+      },
+      "created": "A new Palier Plate is created with identifier {{ param }}",
+      "updated": "A Palier Plate is updated with identifier {{ param }}",
+      "deleted": "A Palier Plate is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Palier Plate {{ id }}?"
+      },
+      "detail": {
+        "title": "Palier Plate"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libEn": "Lib En",
+      "libAr": "Lib Ar",
+      "annee": "Annee",
+      "effectiValue": "Effecti Value",
+      "util": "Util",
+      "dateop": "Dateop",
+      "dateModif": "Date Modif",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "pays": "Pays",
+      "affilication": "Affilication",
+      "entreprise": "Entreprise",
+      "groupe": "Groupe",
+      "plateTarget": "Plate Target",
+      "platBaseCalcul": "Plat Base Calcul"
+    }
+  }
+}

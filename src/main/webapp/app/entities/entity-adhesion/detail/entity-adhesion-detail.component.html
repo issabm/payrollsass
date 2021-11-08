@@ -1,0 +1,84 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="entityAdhesion">
+      <h2 data-cy="entityAdhesionDetailsHeading"><span jhiTranslate="payrollApp.entityAdhesion.detail.title">Entity Adhesion</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ entityAdhesion.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entityAdhesion.code">Code</span></dt>
+        <dd>
+          <span>{{ entityAdhesion.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entityAdhesion.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ entityAdhesion.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entityAdhesion.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ entityAdhesion.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entityAdhesion.libFr">Lib Fr</span></dt>
+        <dd>
+          <span>{{ entityAdhesion.libFr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entityAdhesion.util">Util</span></dt>
+        <dd>
+          <span>{{ entityAdhesion.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entityAdhesion.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ entityAdhesion.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entityAdhesion.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ entityAdhesion.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entityAdhesion.op">Op</span></dt>
+        <dd>
+          <span>{{ entityAdhesion.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entityAdhesion.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ entityAdhesion.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entityAdhesion.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ entityAdhesion.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entityAdhesion.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ entityAdhesion.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entityAdhesion.natureAdhesion">Nature Adhesion</span></dt>
+        <dd>
+          <div *ngIf="entityAdhesion.natureAdhesion">
+            <a [routerLink]="['/nature-adhesion', entityAdhesion.natureAdhesion?.id, 'view']">{{ entityAdhesion.natureAdhesion?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.entityAdhesion.pays">Pays</span></dt>
+        <dd>
+          <div *ngIf="entityAdhesion.pays">
+            <a [routerLink]="['/pays', entityAdhesion.pays?.id, 'view']">{{ entityAdhesion.pays?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/entity-adhesion', entityAdhesion.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

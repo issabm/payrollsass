@@ -1,0 +1,506 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-eligibilite-heading"
+        data-cy="EligibiliteCreateUpdateHeading"
+        jhiTranslate="payrollApp.eligibilite.home.createOrEditLabel"
+      >
+        Create or edit a Eligibilite
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.priorite" for="field_priorite">Priorite</label>
+          <input type="number" class="form-control" name="priorite" id="field_priorite" data-cy="priorite" formControlName="priorite" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.annee" for="field_annee">Annee</label>
+          <input type="number" class="form-control" name="annee" id="field_annee" data-cy="annee" formControlName="annee" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.mois" for="field_mois">Mois</label>
+          <input type="number" class="form-control" name="mois" id="field_mois" data-cy="mois" formControlName="mois" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.nbEnt" for="field_nbEnt">Nb Ent</label>
+          <input type="number" class="form-control" name="nbEnt" id="field_nbEnt" data-cy="nbEnt" formControlName="nbEnt" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.ageEnt" for="field_ageEnt">Age Ent</label>
+          <input type="number" class="form-control" name="ageEnt" id="field_ageEnt" data-cy="ageEnt" formControlName="ageEnt" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.matricule" for="field_matricule">Matricule</label>
+          <input type="text" class="form-control" name="matricule" id="field_matricule" data-cy="matricule" formControlName="matricule" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.libEn" for="field_libEn">Lib En</label>
+          <input type="text" class="form-control" name="libEn" id="field_libEn" data-cy="libEn" formControlName="libEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.libAr" for="field_libAr">Lib Ar</label>
+          <input type="text" class="form-control" name="libAr" id="field_libAr" data-cy="libAr" formControlName="libAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.libFr" for="field_libFr">Lib Fr</label>
+          <input type="text" class="form-control" name="libFr" id="field_libFr" data-cy="libFr" formControlName="libFr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.valPayroll" for="field_valPayroll">Val Payroll</label>
+          <input
+            type="number"
+            class="form-control"
+            name="valPayroll"
+            id="field_valPayroll"
+            data-cy="valPayroll"
+            formControlName="valPayroll"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.nbDaysLeave" for="field_nbDaysLeave">Nb Days Leave</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nbDaysLeave"
+            id="field_nbDaysLeave"
+            data-cy="nbDaysLeave"
+            formControlName="nbDaysLeave"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.pourValPayroll" for="field_pourValPayroll"
+            >Pour Val Payroll</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="pourValPayroll"
+            id="field_pourValPayroll"
+            data-cy="pourValPayroll"
+            formControlName="pourValPayroll"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.createdBy" for="field_createdBy">Created By</label>
+          <input type="text" class="form-control" name="createdBy" id="field_createdBy" data-cy="createdBy" formControlName="createdBy" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.modifiedDate" for="field_modifiedDate"
+            >Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_modifiedDate"
+              data-cy="modifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="modifiedDate"
+              formControlName="modifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.pays" for="field_pays">Pays</label>
+          <select class="form-control" id="field_pays" data-cy="pays" name="pays" formControlName="pays">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="paysOption.id === editForm.get('pays')!.value?.id ? editForm.get('pays')!.value : paysOption"
+              *ngFor="let paysOption of paysSharedCollection; trackBy: trackPaysById"
+            >
+              {{ paysOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.natureConfig" for="field_natureConfig"
+            >Nature Config</label
+          >
+          <select class="form-control" id="field_natureConfig" data-cy="natureConfig" name="natureConfig" formControlName="natureConfig">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                natureConfigOption.id === editForm.get('natureConfig')!.value?.id ? editForm.get('natureConfig')!.value : natureConfigOption
+              "
+              *ngFor="let natureConfigOption of natureConfigsSharedCollection; trackBy: trackNatureConfigById"
+            >
+              {{ natureConfigOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.echlon" for="field_echlon">Echlon</label>
+          <select class="form-control" id="field_echlon" data-cy="echlon" name="echlon" formControlName="echlon">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="echlonOption.id === editForm.get('echlon')!.value?.id ? editForm.get('echlon')!.value : echlonOption"
+              *ngFor="let echlonOption of echlonsSharedCollection; trackBy: trackEchlonById"
+            >
+              {{ echlonOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.category" for="field_category">Category</label>
+          <select class="form-control" id="field_category" data-cy="category" name="category" formControlName="category">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="categoryOption.id === editForm.get('category')!.value?.id ? editForm.get('category')!.value : categoryOption"
+              *ngFor="let categoryOption of categoriesSharedCollection; trackBy: trackCategoryById"
+            >
+              {{ categoryOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.emploi" for="field_emploi">Emploi</label>
+          <select class="form-control" id="field_emploi" data-cy="emploi" name="emploi" formControlName="emploi">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="emploiOption.id === editForm.get('emploi')!.value?.id ? editForm.get('emploi')!.value : emploiOption"
+              *ngFor="let emploiOption of emploisSharedCollection; trackBy: trackEmploiById"
+            >
+              {{ emploiOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.typeHandicap" for="field_typeHandicap"
+            >Type Handicap</label
+          >
+          <select class="form-control" id="field_typeHandicap" data-cy="typeHandicap" name="typeHandicap" formControlName="typeHandicap">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                typeHandicapOption.id === editForm.get('typeHandicap')!.value?.id ? editForm.get('typeHandicap')!.value : typeHandicapOption
+              "
+              *ngFor="let typeHandicapOption of typeHandicapsSharedCollection; trackBy: trackTypeHandicapById"
+            >
+              {{ typeHandicapOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.nationalite" for="field_nationalite">Nationalite</label>
+          <select class="form-control" id="field_nationalite" data-cy="nationalite" name="nationalite" formControlName="nationalite">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="paysOption.id === editForm.get('nationalite')!.value?.id ? editForm.get('nationalite')!.value : paysOption"
+              *ngFor="let paysOption of paysSharedCollection; trackBy: trackPaysById"
+            >
+              {{ paysOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.sexe" for="field_sexe">Sexe</label>
+          <select class="form-control" id="field_sexe" data-cy="sexe" name="sexe" formControlName="sexe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="sexeOption.id === editForm.get('sexe')!.value?.id ? editForm.get('sexe')!.value : sexeOption"
+              *ngFor="let sexeOption of sexesSharedCollection; trackBy: trackSexeById"
+            >
+              {{ sexeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.affilication" for="field_affilication">Affilication</label>
+          <select class="form-control" id="field_affilication" data-cy="affilication" name="affilication" formControlName="affilication">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                affiliationOption.id === editForm.get('affilication')!.value?.id ? editForm.get('affilication')!.value : affiliationOption
+              "
+              *ngFor="let affiliationOption of affiliationsSharedCollection; trackBy: trackAffiliationById"
+            >
+              {{ affiliationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.entreprise" for="field_entreprise">Entreprise</label>
+          <select class="form-control" id="field_entreprise" data-cy="entreprise" name="entreprise" formControlName="entreprise">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                entrepriseOption.id === editForm.get('entreprise')!.value?.id ? editForm.get('entreprise')!.value : entrepriseOption
+              "
+              *ngFor="let entrepriseOption of entreprisesSharedCollection; trackBy: trackEntrepriseById"
+            >
+              {{ entrepriseOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.groupe" for="field_groupe">Groupe</label>
+          <select class="form-control" id="field_groupe" data-cy="groupe" name="groupe" formControlName="groupe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="groupeOption.id === editForm.get('groupe')!.value?.id ? editForm.get('groupe')!.value : groupeOption"
+              *ngFor="let groupeOption of groupesSharedCollection; trackBy: trackGroupeById"
+            >
+              {{ groupeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.typeContrat" for="field_typeContrat">Type Contrat</label>
+          <select class="form-control" id="field_typeContrat" data-cy="typeContrat" name="typeContrat" formControlName="typeContrat">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                typeContratOption.id === editForm.get('typeContrat')!.value?.id ? editForm.get('typeContrat')!.value : typeContratOption
+              "
+              *ngFor="let typeContratOption of typeContratsSharedCollection; trackBy: trackTypeContratById"
+            >
+              {{ typeContratOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.sousTypeContrat" for="field_sousTypeContrat"
+            >Sous Type Contrat</label
+          >
+          <select
+            class="form-control"
+            id="field_sousTypeContrat"
+            data-cy="sousTypeContrat"
+            name="sousTypeContrat"
+            formControlName="sousTypeContrat"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                sousTypeContratOption.id === editForm.get('sousTypeContrat')!.value?.id
+                  ? editForm.get('sousTypeContrat')!.value
+                  : sousTypeContratOption
+              "
+              *ngFor="let sousTypeContratOption of sousTypeContratsSharedCollection; trackBy: trackSousTypeContratById"
+            >
+              {{ sousTypeContratOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.niveauEtude" for="field_niveauEtude">Niveau Etude</label>
+          <select class="form-control" id="field_niveauEtude" data-cy="niveauEtude" name="niveauEtude" formControlName="niveauEtude">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                niveauEtudeOption.id === editForm.get('niveauEtude')!.value?.id ? editForm.get('niveauEtude')!.value : niveauEtudeOption
+              "
+              *ngFor="let niveauEtudeOption of niveauEtudesSharedCollection; trackBy: trackNiveauEtudeById"
+            >
+              {{ niveauEtudeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.natureEligible" for="field_natureEligible"
+            >Nature Eligible</label
+          >
+          <select
+            class="form-control"
+            id="field_natureEligible"
+            data-cy="natureEligible"
+            name="natureEligible"
+            formControlName="natureEligible"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                natureEligibiliteOption.id === editForm.get('natureEligible')!.value?.id
+                  ? editForm.get('natureEligible')!.value
+                  : natureEligibiliteOption
+              "
+              *ngFor="let natureEligibiliteOption of natureEligibilitesSharedCollection; trackBy: trackNatureEligibiliteById"
+            >
+              {{ natureEligibiliteOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.rebrique" for="field_rebrique">Rebrique</label>
+          <select class="form-control" id="field_rebrique" data-cy="rebrique" name="rebrique" formControlName="rebrique">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="rebriqueOption.id === editForm.get('rebrique')!.value?.id ? editForm.get('rebrique')!.value : rebriqueOption"
+              *ngFor="let rebriqueOption of rebriquesSharedCollection; trackBy: trackRebriqueById"
+            >
+              {{ rebriqueOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.natureAbsence" for="field_natureAbsence"
+            >Nature Absence</label
+          >
+          <select
+            class="form-control"
+            id="field_natureAbsence"
+            data-cy="natureAbsence"
+            name="natureAbsence"
+            formControlName="natureAbsence"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                natureAbsenceOption.id === editForm.get('natureAbsence')!.value?.id
+                  ? editForm.get('natureAbsence')!.value
+                  : natureAbsenceOption
+              "
+              *ngFor="let natureAbsenceOption of natureAbsencesSharedCollection; trackBy: trackNatureAbsenceById"
+            >
+              {{ natureAbsenceOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.plate" for="field_plate">Plate</label>
+          <select class="form-control" id="field_plate" data-cy="plate" name="plate" formControlName="plate">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="plateOption.id === editForm.get('plate')!.value?.id ? editForm.get('plate')!.value : plateOption"
+              *ngFor="let plateOption of platesSharedCollection; trackBy: trackPlateById"
+            >
+              {{ plateOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.eligibilite.targetEnt" for="field_targetEnt">Target Ent</label>
+          <select class="form-control" id="field_targetEnt" data-cy="targetEnt" name="targetEnt" formControlName="targetEnt">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                targetEligibleOption.id === editForm.get('targetEnt')!.value?.id ? editForm.get('targetEnt')!.value : targetEligibleOption
+              "
+              *ngFor="let targetEligibleOption of targetEligiblesSharedCollection; trackBy: trackTargetEligibleById"
+            >
+              {{ targetEligibleOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

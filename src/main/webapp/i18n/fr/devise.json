@@ -1,0 +1,33 @@
+{
+  "payrollApp": {
+    "devise": {
+      "home": {
+        "title": "Devises",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Devise",
+        "createOrEditLabel": "Créer ou éditer un Devise",
+        "notFound": "Aucun Devise trouvé"
+      },
+      "created": "Un nouveau Devise a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Devise avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Devise avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Devise {{ id }} ?"
+      },
+      "detail": {
+        "title": "Devise"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "dateop": "Dateop",
+      "util": "Util",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "name": "NatureAbsence",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "nbDays",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "valuePaied",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "natureConfig",
+      "otherEntityRelationshipName": "natureAbsence",
+      "relationshipName": "natureConfig"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliation",
+      "otherEntityRelationshipName": "natureAbsence",
+      "relationshipName": "affilication"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "entreprise",
+      "otherEntityRelationshipName": "natureAbsence",
+      "relationshipName": "entreprise"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "groupe",
+      "otherEntityRelationshipName": "natureAbsence",
+      "relationshipName": "groupe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sexe",
+      "otherEntityRelationshipName": "natureAbsence",
+      "relationshipName": "sexe"
+    }
+  ],
+  "entityTableName": "ref_nature_absence",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132346"
+}

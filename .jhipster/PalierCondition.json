@@ -1,0 +1,71 @@
+{
+  "name": "PalierCondition",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "minVal",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "maxVal",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateModif",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "palierPlate",
+      "otherEntityRelationshipName": "palierCondition",
+      "relationshipName": "palierPlate"
+    }
+  ],
+  "entityTableName": "cfg_global",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132327"
+}

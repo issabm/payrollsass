@@ -1,0 +1,97 @@
+{
+  "name": "PalierPlate",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "effectiValue",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateModif",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pays",
+      "otherEntityRelationshipName": "palierPlate",
+      "relationshipName": "pays"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliation",
+      "otherEntityRelationshipName": "palierPlate",
+      "relationshipName": "affilication"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "entreprise",
+      "otherEntityRelationshipName": "palierPlate",
+      "relationshipName": "entreprise"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "groupe",
+      "otherEntityRelationshipName": "palierPlate",
+      "relationshipName": "groupe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "plate",
+      "otherEntityRelationshipName": "palierPlate",
+      "relationshipName": "plateTarget"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "plate",
+      "otherEntityRelationshipName": "palierPlate",
+      "relationshipName": "platBaseCalcul"
+    }
+  ],
+  "entityTableName": "cfg_global",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132326"
+}

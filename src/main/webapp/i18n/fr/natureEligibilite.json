@@ -1,0 +1,35 @@
+{
+  "payrollApp": {
+    "natureEligibilite": {
+      "home": {
+        "title": "NatureEligibilites",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Nature Eligibilite",
+        "createOrEditLabel": "Créer ou éditer un Nature Eligibilite",
+        "notFound": "Aucun Nature Eligibilite trouvé"
+      },
+      "created": "Un nouveau Nature Eligibilite a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Nature Eligibilite avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Nature Eligibilite avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Nature Eligibilite {{ id }} ?"
+      },
+      "detail": {
+        "title": "Nature Eligibilite"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libEn": "Lib En",
+      "libAr": "Lib Ar",
+      "libFr": "Lib Fr",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "createdBy": "Created By",
+      "op": "Op",
+      "util": "Util",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date"
+    }
+  }
+}

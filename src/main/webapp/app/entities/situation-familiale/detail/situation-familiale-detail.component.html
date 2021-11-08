@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="situationFamiliale">
+      <h2 data-cy="situationFamilialeDetailsHeading">
+        <span jhiTranslate="payrollApp.situationFamiliale.detail.title">Situation Familiale</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ situationFamiliale.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.situationFamiliale.code">Code</span></dt>
+        <dd>
+          <span>{{ situationFamiliale.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.situationFamiliale.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ situationFamiliale.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.situationFamiliale.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ situationFamiliale.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.situationFamiliale.util">Util</span></dt>
+        <dd>
+          <span>{{ situationFamiliale.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.situationFamiliale.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ situationFamiliale.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.situationFamiliale.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ situationFamiliale.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.situationFamiliale.op">Op</span></dt>
+        <dd>
+          <span>{{ situationFamiliale.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.situationFamiliale.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ situationFamiliale.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.situationFamiliale.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ situationFamiliale.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.situationFamiliale.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ situationFamiliale.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/situation-familiale', situationFamiliale.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

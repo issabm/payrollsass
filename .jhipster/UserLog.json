@@ -1,0 +1,28 @@
+{
+  "name": "UserLog",
+  "fields": [
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateOp",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "sys_user_log",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132419"
+}

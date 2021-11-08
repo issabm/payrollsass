@@ -1,0 +1,81 @@
+{
+  "name": "Enfant",
+  "fields": [
+    {
+      "fieldName": "nomAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenomAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenomEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateNaiss",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeHandicap",
+      "otherEntityRelationshipName": "enfant",
+      "relationshipName": "typeHandicap"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sexe",
+      "otherEntityRelationshipName": "enfant",
+      "relationshipName": "sexe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "niveauScolaire",
+      "otherEntityRelationshipName": "enfant",
+      "relationshipName": "nivScolaire"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "famille",
+      "otherEntityRelationshipName": "enfant",
+      "relationshipName": "famille"
+    }
+  ],
+  "entityTableName": "rh_enfant",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132329"
+}

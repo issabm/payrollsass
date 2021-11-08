@@ -1,0 +1,38 @@
+{
+  "payrollApp": {
+    "managementResourceFun": {
+      "home": {
+        "title": "Management Resource Funs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Management Resource Fun",
+        "createOrEditLabel": "Create or edit a Management Resource Fun",
+        "notFound": "No Management Resource Funs found"
+      },
+      "created": "A new Management Resource Fun is created with identifier {{ param }}",
+      "updated": "A Management Resource Fun is updated with identifier {{ param }}",
+      "deleted": "A Management Resource Fun is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Management Resource Fun {{ id }}?"
+      },
+      "detail": {
+        "title": "Management Resource Fun"
+      },
+      "id": "ID",
+      "libEn": "Lib En",
+      "profile": "Profile",
+      "enableAdd": "Enable Add",
+      "enableCnst": "Enable Cnst",
+      "enableDel": "Enable Del",
+      "enableEd": "Enable Ed",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "createdBy": "Created By",
+      "op": "Op",
+      "util": "Util",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "ressourceManage": "Ressource Manage"
+    }
+  }
+}

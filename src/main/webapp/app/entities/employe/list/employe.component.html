@@ -1,0 +1,211 @@
+<div>
+  <h2 id="page-heading" data-cy="EmployeHeading">
+    <span jhiTranslate="payrollApp.employe.home.title">Employes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.employe.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-employe"
+        [routerLink]="['/employe/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.employe.home.createLabel"> Create a new Employe </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="employes?.length === 0">
+    <span jhiTranslate="payrollApp.employe.home.notFound">No employes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="employes && employes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="matricule">
+            <span jhiTranslate="payrollApp.employe.matricule">Matricule</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomAr"><span jhiTranslate="payrollApp.employe.nomAr">Nom Ar</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nomJfAr">
+            <span jhiTranslate="payrollApp.employe.nomJfAr">Nom Jf Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="prenomAr">
+            <span jhiTranslate="payrollApp.employe.prenomAr">Prenom Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomEn"><span jhiTranslate="payrollApp.employe.nomEn">Nom En</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nomJfEn">
+            <span jhiTranslate="payrollApp.employe.nomJfEn">Nom Jf En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="prenomEn">
+            <span jhiTranslate="payrollApp.employe.prenomEn">Prenom En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomPereAr">
+            <span jhiTranslate="payrollApp.employe.nomPereAr">Nom Pere Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomPereEn">
+            <span jhiTranslate="payrollApp.employe.nomPereEn">Nom Pere En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomMereAr">
+            <span jhiTranslate="payrollApp.employe.nomMereAr">Nom Mere Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomMereEn">
+            <span jhiTranslate="payrollApp.employe.nomMereEn">Nom Mere En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomGpAr">
+            <span jhiTranslate="payrollApp.employe.nomGpAr">Nom Gp Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomGpEn">
+            <span jhiTranslate="payrollApp.employe.nomGpEn">Nom Gp En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateNaiss">
+            <span jhiTranslate="payrollApp.employe.dateNaiss">Date Naiss</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="rib"><span jhiTranslate="payrollApp.employe.rib">Rib</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="banque">
+            <span jhiTranslate="payrollApp.employe.banque">Banque</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateRib">
+            <span jhiTranslate="payrollApp.employe.dateRib">Date Rib</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateBanque">
+            <span jhiTranslate="payrollApp.employe.dateBanque">Date Banque</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="img"><span jhiTranslate="payrollApp.employe.img">Img</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="util"><span jhiTranslate="payrollApp.employe.util">Util</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.employe.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateModif">
+            <span jhiTranslate="payrollApp.employe.dateModif">Date Modif</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.employe.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.employe.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.employe.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="situation.id">
+            <span jhiTranslate="payrollApp.employe.situation">Situation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nationalite.id">
+            <span jhiTranslate="payrollApp.employe.nationalite">Nationalite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="typeHandicap.id">
+            <span jhiTranslate="payrollApp.employe.typeHandicap">Type Handicap</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employe of employes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/employe', employe.id, 'view']">{{ employe.id }}</a>
+          </td>
+          <td>{{ employe.matricule }}</td>
+          <td>{{ employe.nomAr }}</td>
+          <td>{{ employe.nomJfAr }}</td>
+          <td>{{ employe.prenomAr }}</td>
+          <td>{{ employe.nomEn }}</td>
+          <td>{{ employe.nomJfEn }}</td>
+          <td>{{ employe.prenomEn }}</td>
+          <td>{{ employe.nomPereAr }}</td>
+          <td>{{ employe.nomPereEn }}</td>
+          <td>{{ employe.nomMereAr }}</td>
+          <td>{{ employe.nomMereEn }}</td>
+          <td>{{ employe.nomGpAr }}</td>
+          <td>{{ employe.nomGpEn }}</td>
+          <td>{{ employe.dateNaiss | formatMediumDate }}</td>
+          <td>{{ employe.rib }}</td>
+          <td>{{ employe.banque }}</td>
+          <td>{{ employe.dateRib }}</td>
+          <td>{{ employe.dateBanque }}</td>
+          <td>
+            <a *ngIf="employe.img" (click)="openFile(employe.img, employe.imgContentType)">
+              <img [src]="'data:' + employe.imgContentType + ';base64,' + employe.img" style="max-height: 30px" alt="employe image" />
+            </a>
+            <span *ngIf="employe.img">{{ employe.imgContentType }}, {{ byteSize(employe.img) }}</span>
+          </td>
+          <td>{{ employe.util }}</td>
+          <td>{{ employe.dateop | formatMediumDatetime }}</td>
+          <td>{{ employe.dateModif | formatMediumDatetime }}</td>
+          <td>{{ employe.modifiedBy }}</td>
+          <td>{{ employe.op }}</td>
+          <td>{{ employe.isDeleted }}</td>
+          <td>
+            <div *ngIf="employe.situation">
+              <a [routerLink]="['/situation', employe.situation?.id, 'view']">{{ employe.situation?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="employe.nationalite">
+              <a [routerLink]="['/pays', employe.nationalite?.id, 'view']">{{ employe.nationalite?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="employe.typeHandicap">
+              <a [routerLink]="['/type-handicap', employe.typeHandicap?.id, 'view']">{{ employe.typeHandicap?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/employe', employe.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/employe', employe.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(employe)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="employes && employes.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

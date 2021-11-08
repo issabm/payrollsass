@@ -1,0 +1,152 @@
+<div>
+  <h2 id="page-heading" data-cy="EmploiHeading">
+    <span jhiTranslate="payrollApp.emploi.home.title">Emplois</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.emploi.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-emploi"
+        [routerLink]="['/emploi/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.emploi.home.createLabel"> Create a new Emploi </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="emplois?.length === 0">
+    <span jhiTranslate="payrollApp.emploi.home.notFound">No emplois found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="emplois && emplois.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code"><span jhiTranslate="payrollApp.emploi.code">Code</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="libAr"><span jhiTranslate="payrollApp.emploi.libAr">Lib Ar</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="libEn"><span jhiTranslate="payrollApp.emploi.libEn">Lib En</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="util"><span jhiTranslate="payrollApp.emploi.util">Util</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.emploi.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.emploi.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.emploi.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.emploi.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.emploi.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.emploi.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pays.id"><span jhiTranslate="payrollApp.emploi.pays">Pays</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="natureConfig.id">
+            <span jhiTranslate="payrollApp.emploi.natureConfig">Nature Config</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affilication.id">
+            <span jhiTranslate="payrollApp.emploi.affilication">Affilication</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="entreprise.id">
+            <span jhiTranslate="payrollApp.emploi.entreprise">Entreprise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="groupe.id">
+            <span jhiTranslate="payrollApp.emploi.groupe">Groupe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emploi of emplois; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/emploi', emploi.id, 'view']">{{ emploi.id }}</a>
+          </td>
+          <td>{{ emploi.code }}</td>
+          <td>{{ emploi.libAr }}</td>
+          <td>{{ emploi.libEn }}</td>
+          <td>{{ emploi.util }}</td>
+          <td>{{ emploi.dateop | formatMediumDatetime }}</td>
+          <td>{{ emploi.modifiedBy }}</td>
+          <td>{{ emploi.op }}</td>
+          <td>{{ emploi.isDeleted }}</td>
+          <td>{{ emploi.createdDate | formatMediumDatetime }}</td>
+          <td>{{ emploi.modifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="emploi.pays">
+              <a [routerLink]="['/pays', emploi.pays?.id, 'view']">{{ emploi.pays?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="emploi.natureConfig">
+              <a [routerLink]="['/nature-config', emploi.natureConfig?.id, 'view']">{{ emploi.natureConfig?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="emploi.affilication">
+              <a [routerLink]="['/affiliation', emploi.affilication?.id, 'view']">{{ emploi.affilication?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="emploi.entreprise">
+              <a [routerLink]="['/entreprise', emploi.entreprise?.id, 'view']">{{ emploi.entreprise?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="emploi.groupe">
+              <a [routerLink]="['/groupe', emploi.groupe?.id, 'view']">{{ emploi.groupe?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/emploi', emploi.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/emploi', emploi.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(emploi)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="emplois && emplois.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

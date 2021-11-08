@@ -1,0 +1,150 @@
+<div>
+  <h2 id="page-heading" data-cy="PlateInfoHeading">
+    <span jhiTranslate="payrollApp.plateInfo.home.title">Plate Infos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.plateInfo.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-plate-info"
+        [routerLink]="['/plate-info/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.plateInfo.home.createLabel"> Create a new Plate Info </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="plateInfos?.length === 0">
+    <span jhiTranslate="payrollApp.plateInfo.home.notFound">No plateInfos found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="plateInfos && plateInfos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code"><span jhiTranslate="payrollApp.plateInfo.code">Code</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="lib"><span jhiTranslate="payrollApp.plateInfo.lib">Lib</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="valTaken">
+            <span jhiTranslate="payrollApp.plateInfo.valTaken">Val Taken</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateSituation">
+            <span jhiTranslate="payrollApp.plateInfo.dateSituation">Date Situation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.plateInfo.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.plateInfo.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <span jhiTranslate="payrollApp.plateInfo.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.plateInfo.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="util"><span jhiTranslate="payrollApp.plateInfo.util">Util</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.plateInfo.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.plateInfo.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.plateInfo.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="plate.id">
+            <span jhiTranslate="payrollApp.plateInfo.plate">Plate</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="rebrique.id">
+            <span jhiTranslate="payrollApp.plateInfo.rebrique">Rebrique</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let plateInfo of plateInfos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/plate-info', plateInfo.id, 'view']">{{ plateInfo.id }}</a>
+          </td>
+          <td>{{ plateInfo.code }}</td>
+          <td>{{ plateInfo.lib }}</td>
+          <td>{{ plateInfo.valTaken }}</td>
+          <td>{{ plateInfo.dateSituation | formatMediumDate }}</td>
+          <td>{{ plateInfo.dateop | formatMediumDatetime }}</td>
+          <td>{{ plateInfo.modifiedBy }}</td>
+          <td>{{ plateInfo.createdBy }}</td>
+          <td>{{ plateInfo.op }}</td>
+          <td>{{ plateInfo.util }}</td>
+          <td>{{ plateInfo.isDeleted }}</td>
+          <td>{{ plateInfo.createdDate | formatMediumDatetime }}</td>
+          <td>{{ plateInfo.modifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="plateInfo.plate">
+              <a [routerLink]="['/plate', plateInfo.plate?.id, 'view']">{{ plateInfo.plate?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="plateInfo.rebrique">
+              <a [routerLink]="['/rebrique', plateInfo.rebrique?.id, 'view']">{{ plateInfo.rebrique?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/plate-info', plateInfo.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/plate-info', plateInfo.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(plateInfo)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="plateInfos && plateInfos.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

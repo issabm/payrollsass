@@ -1,0 +1,39 @@
+{
+  "payrollApp": {
+    "carriere": {
+      "home": {
+        "title": "Carrieres",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Carriere",
+        "createOrEditLabel": "Créer ou éditer un Carriere",
+        "notFound": "Aucun Carriere trouvé"
+      },
+      "created": "Un nouveau Carriere a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Carriere avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Carriere avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Carriere {{ id }} ?"
+      },
+      "detail": {
+        "title": "Carriere"
+      },
+      "id": "ID",
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "dateEmploi": "Date Emploi",
+      "dateEchlon": "Date Echlon",
+      "dateCategorie": "Date Categorie",
+      "dateop": "Dateop",
+      "util": "Util",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "echlon": "Echlon",
+      "category": "Category",
+      "emploi": "Emploi",
+      "affectation": "Affectation"
+    }
+  }
+}

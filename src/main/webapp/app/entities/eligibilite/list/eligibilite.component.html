@@ -1,0 +1,322 @@
+<div>
+  <h2 id="page-heading" data-cy="EligibiliteHeading">
+    <span jhiTranslate="payrollApp.eligibilite.home.title">Eligibilites</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.eligibilite.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-eligibilite"
+        [routerLink]="['/eligibilite/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.eligibilite.home.createLabel"> Create a new Eligibilite </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="eligibilites?.length === 0">
+    <span jhiTranslate="payrollApp.eligibilite.home.notFound">No eligibilites found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="eligibilites && eligibilites.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="priorite">
+            <span jhiTranslate="payrollApp.eligibilite.priorite">Priorite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="annee">
+            <span jhiTranslate="payrollApp.eligibilite.annee">Annee</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="mois"><span jhiTranslate="payrollApp.eligibilite.mois">Mois</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nbEnt">
+            <span jhiTranslate="payrollApp.eligibilite.nbEnt">Nb Ent</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="ageEnt">
+            <span jhiTranslate="payrollApp.eligibilite.ageEnt">Age Ent</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="matricule">
+            <span jhiTranslate="payrollApp.eligibilite.matricule">Matricule</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="code"><span jhiTranslate="payrollApp.eligibilite.code">Code</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="libEn">
+            <span jhiTranslate="payrollApp.eligibilite.libEn">Lib En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libAr">
+            <span jhiTranslate="payrollApp.eligibilite.libAr">Lib Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libFr">
+            <span jhiTranslate="payrollApp.eligibilite.libFr">Lib Fr</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="valPayroll">
+            <span jhiTranslate="payrollApp.eligibilite.valPayroll">Val Payroll</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nbDaysLeave">
+            <span jhiTranslate="payrollApp.eligibilite.nbDaysLeave">Nb Days Leave</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pourValPayroll">
+            <span jhiTranslate="payrollApp.eligibilite.pourValPayroll">Pour Val Payroll</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.eligibilite.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.eligibilite.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <span jhiTranslate="payrollApp.eligibilite.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.eligibilite.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="util"><span jhiTranslate="payrollApp.eligibilite.util">Util</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.eligibilite.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.eligibilite.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.eligibilite.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pays.id">
+            <span jhiTranslate="payrollApp.eligibilite.pays">Pays</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="natureConfig.id">
+            <span jhiTranslate="payrollApp.eligibilite.natureConfig">Nature Config</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="echlon.id">
+            <span jhiTranslate="payrollApp.eligibilite.echlon">Echlon</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="category.id">
+            <span jhiTranslate="payrollApp.eligibilite.category">Category</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="emploi.id">
+            <span jhiTranslate="payrollApp.eligibilite.emploi">Emploi</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="typeHandicap.id">
+            <span jhiTranslate="payrollApp.eligibilite.typeHandicap">Type Handicap</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nationalite.id">
+            <span jhiTranslate="payrollApp.eligibilite.nationalite">Nationalite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sexe.id">
+            <span jhiTranslate="payrollApp.eligibilite.sexe">Sexe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affilication.id">
+            <span jhiTranslate="payrollApp.eligibilite.affilication">Affilication</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="entreprise.id">
+            <span jhiTranslate="payrollApp.eligibilite.entreprise">Entreprise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="groupe.id">
+            <span jhiTranslate="payrollApp.eligibilite.groupe">Groupe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="typeContrat.id">
+            <span jhiTranslate="payrollApp.eligibilite.typeContrat">Type Contrat</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sousTypeContrat.id">
+            <span jhiTranslate="payrollApp.eligibilite.sousTypeContrat">Sous Type Contrat</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="niveauEtude.id">
+            <span jhiTranslate="payrollApp.eligibilite.niveauEtude">Niveau Etude</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="natureEligible.id">
+            <span jhiTranslate="payrollApp.eligibilite.natureEligible">Nature Eligible</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="rebrique.id">
+            <span jhiTranslate="payrollApp.eligibilite.rebrique">Rebrique</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="natureAbsence.id">
+            <span jhiTranslate="payrollApp.eligibilite.natureAbsence">Nature Absence</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="plate.id">
+            <span jhiTranslate="payrollApp.eligibilite.plate">Plate</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="targetEnt.id">
+            <span jhiTranslate="payrollApp.eligibilite.targetEnt">Target Ent</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let eligibilite of eligibilites; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/eligibilite', eligibilite.id, 'view']">{{ eligibilite.id }}</a>
+          </td>
+          <td>{{ eligibilite.priorite }}</td>
+          <td>{{ eligibilite.annee }}</td>
+          <td>{{ eligibilite.mois }}</td>
+          <td>{{ eligibilite.nbEnt }}</td>
+          <td>{{ eligibilite.ageEnt }}</td>
+          <td>{{ eligibilite.matricule }}</td>
+          <td>{{ eligibilite.code }}</td>
+          <td>{{ eligibilite.libEn }}</td>
+          <td>{{ eligibilite.libAr }}</td>
+          <td>{{ eligibilite.libFr }}</td>
+          <td>{{ eligibilite.valPayroll }}</td>
+          <td>{{ eligibilite.nbDaysLeave }}</td>
+          <td>{{ eligibilite.pourValPayroll }}</td>
+          <td>{{ eligibilite.dateop | formatMediumDatetime }}</td>
+          <td>{{ eligibilite.modifiedBy }}</td>
+          <td>{{ eligibilite.createdBy }}</td>
+          <td>{{ eligibilite.op }}</td>
+          <td>{{ eligibilite.util }}</td>
+          <td>{{ eligibilite.isDeleted }}</td>
+          <td>{{ eligibilite.createdDate | formatMediumDatetime }}</td>
+          <td>{{ eligibilite.modifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="eligibilite.pays">
+              <a [routerLink]="['/pays', eligibilite.pays?.id, 'view']">{{ eligibilite.pays?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.natureConfig">
+              <a [routerLink]="['/nature-config', eligibilite.natureConfig?.id, 'view']">{{ eligibilite.natureConfig?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.echlon">
+              <a [routerLink]="['/echlon', eligibilite.echlon?.id, 'view']">{{ eligibilite.echlon?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.category">
+              <a [routerLink]="['/category', eligibilite.category?.id, 'view']">{{ eligibilite.category?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.emploi">
+              <a [routerLink]="['/emploi', eligibilite.emploi?.id, 'view']">{{ eligibilite.emploi?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.typeHandicap">
+              <a [routerLink]="['/type-handicap', eligibilite.typeHandicap?.id, 'view']">{{ eligibilite.typeHandicap?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.nationalite">
+              <a [routerLink]="['/pays', eligibilite.nationalite?.id, 'view']">{{ eligibilite.nationalite?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.sexe">
+              <a [routerLink]="['/sexe', eligibilite.sexe?.id, 'view']">{{ eligibilite.sexe?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.affilication">
+              <a [routerLink]="['/affiliation', eligibilite.affilication?.id, 'view']">{{ eligibilite.affilication?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.entreprise">
+              <a [routerLink]="['/entreprise', eligibilite.entreprise?.id, 'view']">{{ eligibilite.entreprise?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.groupe">
+              <a [routerLink]="['/groupe', eligibilite.groupe?.id, 'view']">{{ eligibilite.groupe?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.typeContrat">
+              <a [routerLink]="['/type-contrat', eligibilite.typeContrat?.id, 'view']">{{ eligibilite.typeContrat?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.sousTypeContrat">
+              <a [routerLink]="['/sous-type-contrat', eligibilite.sousTypeContrat?.id, 'view']">{{ eligibilite.sousTypeContrat?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.niveauEtude">
+              <a [routerLink]="['/niveau-etude', eligibilite.niveauEtude?.id, 'view']">{{ eligibilite.niveauEtude?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.natureEligible">
+              <a [routerLink]="['/nature-eligibilite', eligibilite.natureEligible?.id, 'view']">{{ eligibilite.natureEligible?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.rebrique">
+              <a [routerLink]="['/rebrique', eligibilite.rebrique?.id, 'view']">{{ eligibilite.rebrique?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.natureAbsence">
+              <a [routerLink]="['/nature-absence', eligibilite.natureAbsence?.id, 'view']">{{ eligibilite.natureAbsence?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.plate">
+              <a [routerLink]="['/plate', eligibilite.plate?.id, 'view']">{{ eligibilite.plate?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eligibilite.targetEnt">
+              <a [routerLink]="['/target-eligible', eligibilite.targetEnt?.id, 'view']">{{ eligibilite.targetEnt?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/eligibilite', eligibilite.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/eligibilite', eligibilite.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(eligibilite)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="eligibilites && eligibilites.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

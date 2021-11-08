@@ -1,0 +1,40 @@
+{
+  "payrollApp": {
+    "natureAbsence": {
+      "home": {
+        "title": "Nature Absences",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Nature Absence",
+        "createOrEditLabel": "Create or edit a Nature Absence",
+        "notFound": "No Nature Absences found"
+      },
+      "created": "A new Nature Absence is created with identifier {{ param }}",
+      "updated": "A Nature Absence is updated with identifier {{ param }}",
+      "deleted": "A Nature Absence is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Nature Absence {{ id }}?"
+      },
+      "detail": {
+        "title": "Nature Absence"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "nbDays": "Nb Days",
+      "valuePaied": "Value Paied",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "natureConfig": "Nature Config",
+      "affilication": "Affilication",
+      "entreprise": "Entreprise",
+      "groupe": "Groupe",
+      "sexe": "Sexe"
+    }
+  }
+}

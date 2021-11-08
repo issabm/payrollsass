@@ -1,0 +1,130 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="payroll">
+      <h2 data-cy="payrollDetailsHeading"><span jhiTranslate="payrollApp.payroll.detail.title">Payroll</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ payroll.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.code">Code</span></dt>
+        <dd>
+          <span>{{ payroll.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.lib">Lib</span></dt>
+        <dd>
+          <span>{{ payroll.lib }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.annee">Annee</span></dt>
+        <dd>
+          <span>{{ payroll.annee }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.mois">Mois</span></dt>
+        <dd>
+          <span>{{ payroll.mois }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.dateCalcul">Date Calcul</span></dt>
+        <dd>
+          <span>{{ payroll.dateCalcul | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.dateValid">Date Valid</span></dt>
+        <dd>
+          <span>{{ payroll.dateValid | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.datePayroll">Date Payroll</span></dt>
+        <dd>
+          <span>{{ payroll.datePayroll | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.totalNet">Total Net</span></dt>
+        <dd>
+          <span>{{ payroll.totalNet }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.totalNetDevise">Total Net Devise</span></dt>
+        <dd>
+          <span>{{ payroll.totalNetDevise }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.tauxChange">Taux Change</span></dt>
+        <dd>
+          <span>{{ payroll.tauxChange }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.calculBy">Calcul By</span></dt>
+        <dd>
+          <span>{{ payroll.calculBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.effectBy">Effect By</span></dt>
+        <dd>
+          <span>{{ payroll.effectBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.dateSituation">Date Situation</span></dt>
+        <dd>
+          <span>{{ payroll.dateSituation | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ payroll.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ payroll.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ payroll.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.op">Op</span></dt>
+        <dd>
+          <span>{{ payroll.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.util">Util</span></dt>
+        <dd>
+          <span>{{ payroll.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ payroll.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ payroll.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ payroll.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.devise">Devise</span></dt>
+        <dd>
+          <div *ngIf="payroll.devise">
+            <a [routerLink]="['/devise', payroll.devise?.id, 'view']">{{ payroll.devise?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.mvt">Mvt</span></dt>
+        <dd>
+          <div *ngIf="payroll.mvt">
+            <a [routerLink]="['/mouvement-paie', payroll.mvt?.id, 'view']">{{ payroll.mvt?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.payroll.situation">Situation</span></dt>
+        <dd>
+          <div *ngIf="payroll.situation">
+            <a [routerLink]="['/situation', payroll.situation?.id, 'view']">{{ payroll.situation?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/payroll', payroll.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

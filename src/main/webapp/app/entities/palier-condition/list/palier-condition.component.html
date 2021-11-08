@@ -1,0 +1,148 @@
+<div>
+  <h2 id="page-heading" data-cy="PalierConditionHeading">
+    <span jhiTranslate="payrollApp.palierCondition.home.title">Palier Conditions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.palierCondition.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-palier-condition"
+        [routerLink]="['/palier-condition/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.palierCondition.home.createLabel"> Create a new Palier Condition </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="palierConditions?.length === 0">
+    <span jhiTranslate="payrollApp.palierCondition.home.notFound">No palierConditions found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="palierConditions && palierConditions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code">
+            <span jhiTranslate="payrollApp.palierCondition.code">Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libEn">
+            <span jhiTranslate="payrollApp.palierCondition.libEn">Lib En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libAr">
+            <span jhiTranslate="payrollApp.palierCondition.libAr">Lib Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="annee">
+            <span jhiTranslate="payrollApp.palierCondition.annee">Annee</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="minVal">
+            <span jhiTranslate="payrollApp.palierCondition.minVal">Min Val</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="maxVal">
+            <span jhiTranslate="payrollApp.palierCondition.maxVal">Max Val</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="util">
+            <span jhiTranslate="payrollApp.palierCondition.util">Util</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.palierCondition.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateModif">
+            <span jhiTranslate="payrollApp.palierCondition.dateModif">Date Modif</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.palierCondition.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.palierCondition.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.palierCondition.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="palierPlate.id">
+            <span jhiTranslate="payrollApp.palierCondition.palierPlate">Palier Plate</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let palierCondition of palierConditions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/palier-condition', palierCondition.id, 'view']">{{ palierCondition.id }}</a>
+          </td>
+          <td>{{ palierCondition.code }}</td>
+          <td>{{ palierCondition.libEn }}</td>
+          <td>{{ palierCondition.libAr }}</td>
+          <td>{{ palierCondition.annee }}</td>
+          <td>{{ palierCondition.minVal }}</td>
+          <td>{{ palierCondition.maxVal }}</td>
+          <td>{{ palierCondition.util }}</td>
+          <td>{{ palierCondition.dateop | formatMediumDatetime }}</td>
+          <td>{{ palierCondition.dateModif | formatMediumDatetime }}</td>
+          <td>{{ palierCondition.modifiedBy }}</td>
+          <td>{{ palierCondition.op }}</td>
+          <td>{{ palierCondition.isDeleted }}</td>
+          <td>
+            <div *ngIf="palierCondition.palierPlate">
+              <a [routerLink]="['/palier-plate', palierCondition.palierPlate?.id, 'view']">{{ palierCondition.palierPlate?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/palier-condition', palierCondition.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/palier-condition', palierCondition.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(palierCondition)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="palierConditions && palierConditions.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

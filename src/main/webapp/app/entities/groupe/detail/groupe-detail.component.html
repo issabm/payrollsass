@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="groupe">
+      <h2 data-cy="groupeDetailsHeading"><span jhiTranslate="payrollApp.groupe.detail.title">Groupe</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ groupe.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.code">Code</span></dt>
+        <dd>
+          <span>{{ groupe.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ groupe.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ groupe.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.addresseAr">Addresse Ar</span></dt>
+        <dd>
+          <span>{{ groupe.addresseAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.addresseEn">Addresse En</span></dt>
+        <dd>
+          <span>{{ groupe.addresseEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.tel">Tel</span></dt>
+        <dd>
+          <span>{{ groupe.tel }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.email">Email</span></dt>
+        <dd>
+          <span>{{ groupe.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.fax">Fax</span></dt>
+        <dd>
+          <span>{{ groupe.fax }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.util">Util</span></dt>
+        <dd>
+          <span>{{ groupe.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ groupe.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ groupe.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.op">Op</span></dt>
+        <dd>
+          <span>{{ groupe.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ groupe.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.pays">Pays</span></dt>
+        <dd>
+          <div *ngIf="groupe.pays">
+            <a [routerLink]="['/pays', groupe.pays?.id, 'view']">{{ groupe.pays?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.groupe.devise">Devise</span></dt>
+        <dd>
+          <div *ngIf="groupe.devise">
+            <a [routerLink]="['/devise', groupe.devise?.id, 'view']">{{ groupe.devise?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/groupe', groupe.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

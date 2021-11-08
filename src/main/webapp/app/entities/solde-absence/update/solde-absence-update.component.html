@@ -1,0 +1,221 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-solde-absence-heading"
+        data-cy="SoldeAbsenceCreateUpdateHeading"
+        jhiTranslate="payrollApp.soldeAbsence.home.createOrEditLabel"
+      >
+        Create or edit a Solde Absence
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.annee" for="field_annee">Annee</label>
+          <input type="number" class="form-control" name="annee" id="field_annee" data-cy="annee" formControlName="annee" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.nbDaysRight" for="field_nbDaysRight">Nb Days Right</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nbDaysRight"
+            id="field_nbDaysRight"
+            data-cy="nbDaysRight"
+            formControlName="nbDaysRight"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.nbDaysConsumed" for="field_nbDaysConsumed"
+            >Nb Days Consumed</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="nbDaysConsumed"
+            id="field_nbDaysConsumed"
+            data-cy="nbDaysConsumed"
+            formControlName="nbDaysConsumed"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.nbDaysUnavailble" for="field_nbDaysUnavailble"
+            >Nb Days Unavailble</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="nbDaysUnavailble"
+            id="field_nbDaysUnavailble"
+            data-cy="nbDaysUnavailble"
+            formControlName="nbDaysUnavailble"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.nbDaysAvailble" for="field_nbDaysAvailble"
+            >Nb Days Availble</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="nbDaysAvailble"
+            id="field_nbDaysAvailble"
+            data-cy="nbDaysAvailble"
+            formControlName="nbDaysAvailble"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.nbDaysLeft" for="field_nbDaysLeft">Nb Days Left</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nbDaysLeft"
+            id="field_nbDaysLeft"
+            data-cy="nbDaysLeft"
+            formControlName="nbDaysLeft"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.modifiedDate" for="field_modifiedDate"
+            >Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_modifiedDate"
+              data-cy="modifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="modifiedDate"
+              formControlName="modifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.employe" for="field_employe">Employe</label>
+          <select class="form-control" id="field_employe" data-cy="employe" name="employe" formControlName="employe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="employeOption.id === editForm.get('employe')!.value?.id ? editForm.get('employe')!.value : employeOption"
+              *ngFor="let employeOption of employesSharedCollection; trackBy: trackEmployeById"
+            >
+              {{ employeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsence.natureAbsence" for="field_natureAbsence"
+            >Nature Absence</label
+          >
+          <select
+            class="form-control"
+            id="field_natureAbsence"
+            data-cy="natureAbsence"
+            name="natureAbsence"
+            formControlName="natureAbsence"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                natureAbsenceOption.id === editForm.get('natureAbsence')!.value?.id
+                  ? editForm.get('natureAbsence')!.value
+                  : natureAbsenceOption
+              "
+              *ngFor="let natureAbsenceOption of natureAbsencesSharedCollection; trackBy: trackNatureAbsenceById"
+            >
+              {{ natureAbsenceOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

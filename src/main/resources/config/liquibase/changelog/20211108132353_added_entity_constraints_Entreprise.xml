@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity Entreprise.
+    -->
+    <changeSet id="20211108132353-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="groupe_id"
+                                 baseTableName="rh_entreprise"
+                                 constraintName="fk_rh_entreprise__groupe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_groupe"/>
+
+        <addForeignKeyConstraint baseColumnNames="pays_id"
+                                 baseTableName="rh_entreprise"
+                                 constraintName="fk_rh_entreprise__pays_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_pays"/>
+
+        <addForeignKeyConstraint baseColumnNames="mere_id"
+                                 baseTableName="rh_entreprise"
+                                 constraintName="fk_rh_entreprise__mere_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_entreprise"/>
+
+        <addForeignKeyConstraint baseColumnNames="devise_id"
+                                 baseTableName="rh_entreprise"
+                                 constraintName="fk_rh_entreprise__devise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_devise"/>
+    </changeSet>
+</databaseChangeLog>

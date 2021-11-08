@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="soldeAbsence">
+      <h2 data-cy="soldeAbsenceDetailsHeading"><span jhiTranslate="payrollApp.soldeAbsence.detail.title">Solde Absence</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.annee">Annee</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.annee }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.nbDaysRight">Nb Days Right</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.nbDaysRight }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.nbDaysConsumed">Nb Days Consumed</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.nbDaysConsumed }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.nbDaysUnavailble">Nb Days Unavailble</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.nbDaysUnavailble }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.nbDaysAvailble">Nb Days Availble</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.nbDaysAvailble }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.nbDaysLeft">Nb Days Left</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.nbDaysLeft }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.util">Util</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.op">Op</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ soldeAbsence.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.employe">Employe</span></dt>
+        <dd>
+          <div *ngIf="soldeAbsence.employe">
+            <a [routerLink]="['/employe', soldeAbsence.employe?.id, 'view']">{{ soldeAbsence.employe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.soldeAbsence.natureAbsence">Nature Absence</span></dt>
+        <dd>
+          <div *ngIf="soldeAbsence.natureAbsence">
+            <a [routerLink]="['/nature-absence', soldeAbsence.natureAbsence?.id, 'view']">{{ soldeAbsence.natureAbsence?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/solde-absence', soldeAbsence.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

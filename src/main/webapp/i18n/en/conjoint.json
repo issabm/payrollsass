@@ -1,0 +1,37 @@
+{
+  "payrollApp": {
+    "conjoint": {
+      "home": {
+        "title": "Conjoints",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Conjoint",
+        "createOrEditLabel": "Create or edit a Conjoint",
+        "notFound": "No Conjoints found"
+      },
+      "created": "A new Conjoint is created with identifier {{ param }}",
+      "updated": "A Conjoint is updated with identifier {{ param }}",
+      "deleted": "A Conjoint is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Conjoint {{ id }}?"
+      },
+      "detail": {
+        "title": "Conjoint"
+      },
+      "id": "ID",
+      "matricule": "Matricule",
+      "nomAr": "Nom Ar",
+      "prenomAr": "Prenom Ar",
+      "nomEn": "Nom En",
+      "prenomEn": "Prenom En",
+      "dateNaiss": "Date Naiss",
+      "doesWork": "Does Work",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "sexe": "Sexe",
+      "nationalite": "Nationalite"
+    }
+  }
+}

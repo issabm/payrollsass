@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="carriere">
+      <h2 data-cy="carriereDetailsHeading"><span jhiTranslate="payrollApp.carriere.detail.title">Carriere</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ carriere.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.dateDebut">Date Debut</span></dt>
+        <dd>
+          <span>{{ carriere.dateDebut | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.dateFin">Date Fin</span></dt>
+        <dd>
+          <span>{{ carriere.dateFin | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.dateEmploi">Date Emploi</span></dt>
+        <dd>
+          <span>{{ carriere.dateEmploi | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.dateEchlon">Date Echlon</span></dt>
+        <dd>
+          <span>{{ carriere.dateEchlon | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.dateCategorie">Date Categorie</span></dt>
+        <dd>
+          <span>{{ carriere.dateCategorie | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ carriere.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.util">Util</span></dt>
+        <dd>
+          <span>{{ carriere.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ carriere.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.op">Op</span></dt>
+        <dd>
+          <span>{{ carriere.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ carriere.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ carriere.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ carriere.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.echlon">Echlon</span></dt>
+        <dd>
+          <div *ngIf="carriere.echlon">
+            <a [routerLink]="['/echlon', carriere.echlon?.id, 'view']">{{ carriere.echlon?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.category">Category</span></dt>
+        <dd>
+          <div *ngIf="carriere.category">
+            <a [routerLink]="['/category', carriere.category?.id, 'view']">{{ carriere.category?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.emploi">Emploi</span></dt>
+        <dd>
+          <div *ngIf="carriere.emploi">
+            <a [routerLink]="['/emploi', carriere.emploi?.id, 'view']">{{ carriere.emploi?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.carriere.affectation">Affectation</span></dt>
+        <dd>
+          <div *ngIf="carriere.affectation">
+            <a [routerLink]="['/affectation', carriere.affectation?.id, 'view']">{{ carriere.affectation?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/carriere', carriere.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

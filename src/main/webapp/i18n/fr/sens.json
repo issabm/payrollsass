@@ -1,0 +1,33 @@
+{
+  "payrollApp": {
+    "sens": {
+      "home": {
+        "title": "Sens",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Sens",
+        "createOrEditLabel": "Créer ou éditer un Sens",
+        "notFound": "Aucun Sens trouvé"
+      },
+      "created": "Un nouveau Sens a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Sens avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Sens avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Sens {{ id }} ?"
+      },
+      "detail": {
+        "title": "Sens"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date"
+    }
+  }
+}

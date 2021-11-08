@@ -1,0 +1,33 @@
+{
+  "payrollApp": {
+    "modeInput": {
+      "home": {
+        "title": "Mode Inputs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Mode Input",
+        "createOrEditLabel": "Create or edit a Mode Input",
+        "notFound": "No Mode Inputs found"
+      },
+      "created": "A new Mode Input is created with identifier {{ param }}",
+      "updated": "A Mode Input is updated with identifier {{ param }}",
+      "deleted": "A Mode Input is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Mode Input {{ id }}?"
+      },
+      "detail": {
+        "title": "Mode Input"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date"
+    }
+  }
+}

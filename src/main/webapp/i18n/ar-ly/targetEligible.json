@@ -1,0 +1,35 @@
+{
+  "payrollApp": {
+    "targetEligible": {
+      "home": {
+        "title": "Target Eligibles",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Target Eligible",
+        "createOrEditLabel": "Create or edit a Target Eligible",
+        "notFound": "No Target Eligibles found"
+      },
+      "created": "A new Target Eligible is created with identifier {{ param }}",
+      "updated": "A Target Eligible is updated with identifier {{ param }}",
+      "deleted": "A Target Eligible is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Target Eligible {{ id }}?"
+      },
+      "detail": {
+        "title": "Target Eligible"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libEn": "Lib En",
+      "libAr": "Lib Ar",
+      "libFr": "Lib Fr",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "createdBy": "Created By",
+      "op": "Op",
+      "util": "Util",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date"
+    }
+  }
+}

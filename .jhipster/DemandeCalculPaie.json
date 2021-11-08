@@ -1,0 +1,100 @@
+{
+  "name": "DemandeCalculPaie",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lib",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "mois",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dateCalcul",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateValid",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "datePayroll",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "totalNet",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalNetDevise",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "tauxChange",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "calculBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "effectBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateSituation",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "pr_dmd_calc",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132417"
+}

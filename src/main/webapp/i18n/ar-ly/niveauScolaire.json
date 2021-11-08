@@ -1,0 +1,35 @@
+{
+  "payrollApp": {
+    "niveauScolaire": {
+      "home": {
+        "title": "Niveau Scolaires",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Niveau Scolaire",
+        "createOrEditLabel": "Create or edit a Niveau Scolaire",
+        "notFound": "No Niveau Scolaires found"
+      },
+      "created": "A new Niveau Scolaire is created with identifier {{ param }}",
+      "updated": "A Niveau Scolaire is updated with identifier {{ param }}",
+      "deleted": "A Niveau Scolaire is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Niveau Scolaire {{ id }}?"
+      },
+      "detail": {
+        "title": "Niveau Scolaire"
+      },
+      "id": "ID",
+      "orderLevel": "Order Level",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "pays": "Pays"
+    }
+  }
+}

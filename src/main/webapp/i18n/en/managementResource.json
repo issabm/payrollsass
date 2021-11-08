@@ -1,0 +1,36 @@
+{
+  "payrollApp": {
+    "managementResource": {
+      "home": {
+        "title": "Management Resources",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Management Resource",
+        "createOrEditLabel": "Create or edit a Management Resource",
+        "notFound": "No Management Resources found"
+      },
+      "created": "A new Management Resource is created with identifier {{ param }}",
+      "updated": "A Management Resource is updated with identifier {{ param }}",
+      "deleted": "A Management Resource is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Management Resource {{ id }}?"
+      },
+      "detail": {
+        "title": "Management Resource"
+      },
+      "id": "ID",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "createdBy": "Created By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "situation": "Situation",
+      "employe": "Employe",
+      "entreprise": "Entreprise",
+      "groupe": "Groupe",
+      "affiliation": "Affiliation"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="enfant">
+      <h2 data-cy="enfantDetailsHeading"><span jhiTranslate="payrollApp.enfant.detail.title">Enfant</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ enfant.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.nomAr">Nom Ar</span></dt>
+        <dd>
+          <span>{{ enfant.nomAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.prenomAr">Prenom Ar</span></dt>
+        <dd>
+          <span>{{ enfant.prenomAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.nomEn">Nom En</span></dt>
+        <dd>
+          <span>{{ enfant.nomEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.prenomEn">Prenom En</span></dt>
+        <dd>
+          <span>{{ enfant.prenomEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.dateNaiss">Date Naiss</span></dt>
+        <dd>
+          <span>{{ enfant.dateNaiss | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.util">Util</span></dt>
+        <dd>
+          <span>{{ enfant.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ enfant.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ enfant.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.op">Op</span></dt>
+        <dd>
+          <span>{{ enfant.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ enfant.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.typeHandicap">Type Handicap</span></dt>
+        <dd>
+          <div *ngIf="enfant.typeHandicap">
+            <a [routerLink]="['/type-handicap', enfant.typeHandicap?.id, 'view']">{{ enfant.typeHandicap?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.sexe">Sexe</span></dt>
+        <dd>
+          <div *ngIf="enfant.sexe">
+            <a [routerLink]="['/sexe', enfant.sexe?.id, 'view']">{{ enfant.sexe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.nivScolaire">Niv Scolaire</span></dt>
+        <dd>
+          <div *ngIf="enfant.nivScolaire">
+            <a [routerLink]="['/niveau-scolaire', enfant.nivScolaire?.id, 'view']">{{ enfant.nivScolaire?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.enfant.famille">Famille</span></dt>
+        <dd>
+          <div *ngIf="enfant.famille">
+            <a [routerLink]="['/famille', enfant.famille?.id, 'view']">{{ enfant.famille?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/enfant', enfant.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

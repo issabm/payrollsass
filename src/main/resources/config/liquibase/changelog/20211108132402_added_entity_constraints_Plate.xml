@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity Plate.
+    -->
+    <changeSet id="20211108132402-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="pays_id"
+                                 baseTableName="grp_rebrique"
+                                 constraintName="fk_grp_rebrique__pays_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_pays"/>
+
+        <addForeignKeyConstraint baseColumnNames="nature_config_id"
+                                 baseTableName="grp_rebrique"
+                                 constraintName="fk_grp_rebrique__nature_config_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cfg_nature"/>
+
+        <addForeignKeyConstraint baseColumnNames="affilication_id"
+                                 baseTableName="grp_rebrique"
+                                 constraintName="fk_grp_rebrique__affilication_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_affiliation"/>
+
+        <addForeignKeyConstraint baseColumnNames="entreprise_id"
+                                 baseTableName="grp_rebrique"
+                                 constraintName="fk_grp_rebrique__entreprise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_entreprise"/>
+
+        <addForeignKeyConstraint baseColumnNames="groupe_id"
+                                 baseTableName="grp_rebrique"
+                                 constraintName="fk_grp_rebrique__groupe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_groupe"/>
+
+        <addForeignKeyConstraint baseColumnNames="mode_calcul_id"
+                                 baseTableName="grp_rebrique"
+                                 constraintName="fk_grp_rebrique__mode_calcul_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_mod_cal"/>
+    </changeSet>
+</databaseChangeLog>

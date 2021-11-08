@@ -1,0 +1,97 @@
+{
+  "name": "Contrat",
+  "fields": [
+    {
+      "fieldName": "ref",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "matricule",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employe",
+      "otherEntityRelationshipName": "contrat",
+      "relationshipName": "employe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sousTypeContrat",
+      "otherEntityRelationshipName": "contrat",
+      "relationshipName": "sousType"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "groupe",
+      "otherEntityRelationshipName": "contrat",
+      "relationshipName": "groupe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "entreprise",
+      "otherEntityRelationshipName": "contrat",
+      "relationshipName": "entreprise"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliation",
+      "otherEntityRelationshipName": "contrat",
+      "relationshipName": "affiliation"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "devise",
+      "otherEntityRelationshipName": "contrat",
+      "relationshipName": "devise"
+    }
+  ],
+  "entityTableName": "rh_contrat",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132357"
+}

@@ -1,0 +1,49 @@
+{
+  "payrollApp": {
+    "rebrique": {
+      "home": {
+        "title": "Rebriques",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Rebrique",
+        "createOrEditLabel": "Create or edit a Rebrique",
+        "notFound": "No Rebriques found"
+      },
+      "created": "A new Rebrique is created with identifier {{ param }}",
+      "updated": "A Rebrique is updated with identifier {{ param }}",
+      "deleted": "A Rebrique is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Rebrique {{ id }}?"
+      },
+      "detail": {
+        "title": "Rebrique"
+      },
+      "id": "ID",
+      "priorite": "Priorite",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libFr": "Lib Fr",
+      "libEn": "Lib En",
+      "inTax": "In Tax",
+      "minValue": "Min Value",
+      "maxValue": "Max Value",
+      "dateSituation": "Date Situation",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "createdBy": "Created By",
+      "util": "Util",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "pays": "Pays",
+      "natureConfig": "Nature Config",
+      "affilication": "Affilication",
+      "entreprise": "Entreprise",
+      "groupe": "Groupe",
+      "modeInput": "Mode Input",
+      "sens": "Sens",
+      "concerne": "Concerne",
+      "frequence": "Frequence"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="plateInfo">
+      <h2 data-cy="plateInfoDetailsHeading"><span jhiTranslate="payrollApp.plateInfo.detail.title">Plate Info</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ plateInfo.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.code">Code</span></dt>
+        <dd>
+          <span>{{ plateInfo.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.lib">Lib</span></dt>
+        <dd>
+          <span>{{ plateInfo.lib }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.valTaken">Val Taken</span></dt>
+        <dd>
+          <span>{{ plateInfo.valTaken }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.dateSituation">Date Situation</span></dt>
+        <dd>
+          <span>{{ plateInfo.dateSituation | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ plateInfo.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ plateInfo.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ plateInfo.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.op">Op</span></dt>
+        <dd>
+          <span>{{ plateInfo.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.util">Util</span></dt>
+        <dd>
+          <span>{{ plateInfo.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ plateInfo.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ plateInfo.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ plateInfo.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.plate">Plate</span></dt>
+        <dd>
+          <div *ngIf="plateInfo.plate">
+            <a [routerLink]="['/plate', plateInfo.plate?.id, 'view']">{{ plateInfo.plate?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.plateInfo.rebrique">Rebrique</span></dt>
+        <dd>
+          <div *ngIf="plateInfo.rebrique">
+            <a [routerLink]="['/rebrique', plateInfo.rebrique?.id, 'view']">{{ plateInfo.rebrique?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/plate-info', plateInfo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

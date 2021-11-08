@@ -1,0 +1,152 @@
+<div>
+  <h2 id="page-heading" data-cy="EchlonHeading">
+    <span jhiTranslate="payrollApp.echlon.home.title">Echlons</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.echlon.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-echlon"
+        [routerLink]="['/echlon/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.echlon.home.createLabel"> Create a new Echlon </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="echlons?.length === 0">
+    <span jhiTranslate="payrollApp.echlon.home.notFound">No echlons found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="echlons && echlons.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code"><span jhiTranslate="payrollApp.echlon.code">Code</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="libAr"><span jhiTranslate="payrollApp.echlon.libAr">Lib Ar</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="libEn"><span jhiTranslate="payrollApp.echlon.libEn">Lib En</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="util"><span jhiTranslate="payrollApp.echlon.util">Util</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.echlon.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.echlon.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.echlon.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.echlon.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.echlon.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.echlon.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pays.id"><span jhiTranslate="payrollApp.echlon.pays">Pays</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="natureConfig.id">
+            <span jhiTranslate="payrollApp.echlon.natureConfig">Nature Config</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affilication.id">
+            <span jhiTranslate="payrollApp.echlon.affilication">Affilication</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="entreprise.id">
+            <span jhiTranslate="payrollApp.echlon.entreprise">Entreprise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="groupe.id">
+            <span jhiTranslate="payrollApp.echlon.groupe">Groupe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let echlon of echlons; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/echlon', echlon.id, 'view']">{{ echlon.id }}</a>
+          </td>
+          <td>{{ echlon.code }}</td>
+          <td>{{ echlon.libAr }}</td>
+          <td>{{ echlon.libEn }}</td>
+          <td>{{ echlon.util }}</td>
+          <td>{{ echlon.dateop | formatMediumDatetime }}</td>
+          <td>{{ echlon.modifiedBy }}</td>
+          <td>{{ echlon.op }}</td>
+          <td>{{ echlon.isDeleted }}</td>
+          <td>{{ echlon.createdDate | formatMediumDatetime }}</td>
+          <td>{{ echlon.modifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="echlon.pays">
+              <a [routerLink]="['/pays', echlon.pays?.id, 'view']">{{ echlon.pays?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="echlon.natureConfig">
+              <a [routerLink]="['/nature-config', echlon.natureConfig?.id, 'view']">{{ echlon.natureConfig?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="echlon.affilication">
+              <a [routerLink]="['/affiliation', echlon.affilication?.id, 'view']">{{ echlon.affilication?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="echlon.entreprise">
+              <a [routerLink]="['/entreprise', echlon.entreprise?.id, 'view']">{{ echlon.entreprise?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="echlon.groupe">
+              <a [routerLink]="['/groupe', echlon.groupe?.id, 'view']">{{ echlon.groupe?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/echlon', echlon.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/echlon', echlon.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(echlon)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="echlons && echlons.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

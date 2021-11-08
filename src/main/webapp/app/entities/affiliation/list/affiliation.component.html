@@ -1,0 +1,160 @@
+<div>
+  <h2 id="page-heading" data-cy="AffiliationHeading">
+    <span jhiTranslate="payrollApp.affiliation.home.title">Affiliations</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.affiliation.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-affiliation"
+        [routerLink]="['/affiliation/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.affiliation.home.createLabel"> Create a new Affiliation </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="affiliations?.length === 0">
+    <span jhiTranslate="payrollApp.affiliation.home.notFound">No affiliations found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="affiliations && affiliations.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code"><span jhiTranslate="payrollApp.affiliation.code">Code</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="libAr">
+            <span jhiTranslate="payrollApp.affiliation.libAr">Lib Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libEn">
+            <span jhiTranslate="payrollApp.affiliation.libEn">Lib En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tel"><span jhiTranslate="payrollApp.affiliation.tel">Tel</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="email">
+            <span jhiTranslate="payrollApp.affiliation.email">Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fax"><span jhiTranslate="payrollApp.affiliation.fax">Fax</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="util"><span jhiTranslate="payrollApp.affiliation.util">Util</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.affiliation.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.affiliation.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.affiliation.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.affiliation.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="entreprise.id">
+            <span jhiTranslate="payrollApp.affiliation.entreprise">Entreprise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="direction.id">
+            <span jhiTranslate="payrollApp.affiliation.direction">Direction</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pays.id">
+            <span jhiTranslate="payrollApp.affiliation.pays">Pays</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="devise.id">
+            <span jhiTranslate="payrollApp.affiliation.devise">Devise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let affiliation of affiliations; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/affiliation', affiliation.id, 'view']">{{ affiliation.id }}</a>
+          </td>
+          <td>{{ affiliation.code }}</td>
+          <td>{{ affiliation.libAr }}</td>
+          <td>{{ affiliation.libEn }}</td>
+          <td>{{ affiliation.tel }}</td>
+          <td>{{ affiliation.email }}</td>
+          <td>{{ affiliation.fax }}</td>
+          <td>{{ affiliation.util }}</td>
+          <td>{{ affiliation.dateop | formatMediumDatetime }}</td>
+          <td>{{ affiliation.modifiedBy }}</td>
+          <td>{{ affiliation.op }}</td>
+          <td>{{ affiliation.isDeleted }}</td>
+          <td>
+            <div *ngIf="affiliation.entreprise">
+              <a [routerLink]="['/entreprise', affiliation.entreprise?.id, 'view']">{{ affiliation.entreprise?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="affiliation.direction">
+              <a [routerLink]="['/affiliation', affiliation.direction?.id, 'view']">{{ affiliation.direction?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="affiliation.pays">
+              <a [routerLink]="['/pays', affiliation.pays?.id, 'view']">{{ affiliation.pays?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="affiliation.devise">
+              <a [routerLink]="['/devise', affiliation.devise?.id, 'view']">{{ affiliation.devise?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/affiliation', affiliation.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/affiliation', affiliation.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(affiliation)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="affiliations && affiliations.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+{
+  "payrollApp": {
+    "typeHandicap": {
+      "home": {
+        "title": "TypeHandicaps",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Type Handicap",
+        "createOrEditLabel": "Créer ou éditer un Type Handicap",
+        "notFound": "Aucun Type Handicap trouvé"
+      },
+      "created": "Un nouveau Type Handicap a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Type Handicap avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Type Handicap avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Type Handicap {{ id }} ?"
+      },
+      "detail": {
+        "title": "Type Handicap"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date"
+    }
+  }
+}

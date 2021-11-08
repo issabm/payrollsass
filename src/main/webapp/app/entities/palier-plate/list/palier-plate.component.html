@@ -1,0 +1,180 @@
+<div>
+  <h2 id="page-heading" data-cy="PalierPlateHeading">
+    <span jhiTranslate="payrollApp.palierPlate.home.title">Palier Plates</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.palierPlate.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-palier-plate"
+        [routerLink]="['/palier-plate/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.palierPlate.home.createLabel"> Create a new Palier Plate </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="palierPlates?.length === 0">
+    <span jhiTranslate="payrollApp.palierPlate.home.notFound">No palierPlates found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="palierPlates && palierPlates.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code"><span jhiTranslate="payrollApp.palierPlate.code">Code</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="libEn">
+            <span jhiTranslate="payrollApp.palierPlate.libEn">Lib En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libAr">
+            <span jhiTranslate="payrollApp.palierPlate.libAr">Lib Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="annee">
+            <span jhiTranslate="payrollApp.palierPlate.annee">Annee</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="effectiValue">
+            <span jhiTranslate="payrollApp.palierPlate.effectiValue">Effecti Value</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="util"><span jhiTranslate="payrollApp.palierPlate.util">Util</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.palierPlate.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateModif">
+            <span jhiTranslate="payrollApp.palierPlate.dateModif">Date Modif</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.palierPlate.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.palierPlate.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.palierPlate.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pays.id">
+            <span jhiTranslate="payrollApp.palierPlate.pays">Pays</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affilication.id">
+            <span jhiTranslate="payrollApp.palierPlate.affilication">Affilication</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="entreprise.id">
+            <span jhiTranslate="payrollApp.palierPlate.entreprise">Entreprise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="groupe.id">
+            <span jhiTranslate="payrollApp.palierPlate.groupe">Groupe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="plateTarget.id">
+            <span jhiTranslate="payrollApp.palierPlate.plateTarget">Plate Target</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="platBaseCalcul.id">
+            <span jhiTranslate="payrollApp.palierPlate.platBaseCalcul">Plat Base Calcul</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let palierPlate of palierPlates; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/palier-plate', palierPlate.id, 'view']">{{ palierPlate.id }}</a>
+          </td>
+          <td>{{ palierPlate.code }}</td>
+          <td>{{ palierPlate.libEn }}</td>
+          <td>{{ palierPlate.libAr }}</td>
+          <td>{{ palierPlate.annee }}</td>
+          <td>{{ palierPlate.effectiValue }}</td>
+          <td>{{ palierPlate.util }}</td>
+          <td>{{ palierPlate.dateop | formatMediumDatetime }}</td>
+          <td>{{ palierPlate.dateModif | formatMediumDatetime }}</td>
+          <td>{{ palierPlate.modifiedBy }}</td>
+          <td>{{ palierPlate.op }}</td>
+          <td>{{ palierPlate.isDeleted }}</td>
+          <td>
+            <div *ngIf="palierPlate.pays">
+              <a [routerLink]="['/pays', palierPlate.pays?.id, 'view']">{{ palierPlate.pays?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="palierPlate.affilication">
+              <a [routerLink]="['/affiliation', palierPlate.affilication?.id, 'view']">{{ palierPlate.affilication?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="palierPlate.entreprise">
+              <a [routerLink]="['/entreprise', palierPlate.entreprise?.id, 'view']">{{ palierPlate.entreprise?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="palierPlate.groupe">
+              <a [routerLink]="['/groupe', palierPlate.groupe?.id, 'view']">{{ palierPlate.groupe?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="palierPlate.plateTarget">
+              <a [routerLink]="['/plate', palierPlate.plateTarget?.id, 'view']">{{ palierPlate.plateTarget?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="palierPlate.platBaseCalcul">
+              <a [routerLink]="['/plate', palierPlate.platBaseCalcul?.id, 'view']">{{ palierPlate.platBaseCalcul?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/palier-plate', palierPlate.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/palier-plate', palierPlate.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(palierPlate)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="palierPlates && palierPlates.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

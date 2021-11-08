@@ -1,0 +1,178 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-famille-heading" data-cy="FamilleCreateUpdateHeading" jhiTranslate="payrollApp.famille.home.createOrEditLabel">
+        Create or edit a Famille
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.famille.dateSituation" for="field_dateSituation">Date Situation</label>
+          <div class="input-group">
+            <input
+              id="field_dateSituation"
+              data-cy="dateSituation"
+              type="text"
+              class="form-control"
+              name="dateSituation"
+              ngbDatepicker
+              #dateSituationDp="ngbDatepicker"
+              formControlName="dateSituation"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateSituationDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.famille.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.famille.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.famille.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.famille.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.famille.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.famille.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.famille.modifiedDate" for="field_modifiedDate">Modified Date</label>
+          <div class="d-flex">
+            <input
+              id="field_modifiedDate"
+              data-cy="modifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="modifiedDate"
+              formControlName="modifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.famille.employe" for="field_employe">Employe</label>
+          <select class="form-control" id="field_employe" data-cy="employe" name="employe" formControlName="employe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="employeOption.id === editForm.get('employe')!.value?.id ? editForm.get('employe')!.value : employeOption"
+              *ngFor="let employeOption of employesSharedCollection; trackBy: trackEmployeById"
+            >
+              {{ employeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.famille.situationFamiliale" for="field_situationFamiliale"
+            >Situation Familiale</label
+          >
+          <select
+            class="form-control"
+            id="field_situationFamiliale"
+            data-cy="situationFamiliale"
+            name="situationFamiliale"
+            formControlName="situationFamiliale"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                situationFamilialeOption.id === editForm.get('situationFamiliale')!.value?.id
+                  ? editForm.get('situationFamiliale')!.value
+                  : situationFamilialeOption
+              "
+              *ngFor="let situationFamilialeOption of situationFamilialesSharedCollection; trackBy: trackSituationFamilialeById"
+            >
+              {{ situationFamilialeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.famille.conjoint" for="field_conjoint">Conjoint</label>
+          <select class="form-control" id="field_conjoint" data-cy="conjoint" name="conjoint" formControlName="conjoint">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="conjointOption.id === editForm.get('conjoint')!.value?.id ? editForm.get('conjoint')!.value : conjointOption"
+              *ngFor="let conjointOption of conjointsSharedCollection; trackBy: trackConjointById"
+            >
+              {{ conjointOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,134 @@
+<div>
+  <h2 id="page-heading" data-cy="SituationFamilialeHeading">
+    <span jhiTranslate="payrollApp.situationFamiliale.home.title">Situation Familiales</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.situationFamiliale.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-situation-familiale"
+        [routerLink]="['/situation-familiale/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.situationFamiliale.home.createLabel"> Create a new Situation Familiale </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="situationFamiliales?.length === 0">
+    <span jhiTranslate="payrollApp.situationFamiliale.home.notFound">No situationFamiliales found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="situationFamiliales && situationFamiliales.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code">
+            <span jhiTranslate="payrollApp.situationFamiliale.code">Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libAr">
+            <span jhiTranslate="payrollApp.situationFamiliale.libAr">Lib Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libEn">
+            <span jhiTranslate="payrollApp.situationFamiliale.libEn">Lib En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="util">
+            <span jhiTranslate="payrollApp.situationFamiliale.util">Util</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.situationFamiliale.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.situationFamiliale.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op">
+            <span jhiTranslate="payrollApp.situationFamiliale.op">Op</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.situationFamiliale.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.situationFamiliale.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.situationFamiliale.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let situationFamiliale of situationFamiliales; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/situation-familiale', situationFamiliale.id, 'view']">{{ situationFamiliale.id }}</a>
+          </td>
+          <td>{{ situationFamiliale.code }}</td>
+          <td>{{ situationFamiliale.libAr }}</td>
+          <td>{{ situationFamiliale.libEn }}</td>
+          <td>{{ situationFamiliale.util }}</td>
+          <td>{{ situationFamiliale.dateop | formatMediumDatetime }}</td>
+          <td>{{ situationFamiliale.modifiedBy }}</td>
+          <td>{{ situationFamiliale.op }}</td>
+          <td>{{ situationFamiliale.isDeleted }}</td>
+          <td>{{ situationFamiliale.createdDate | formatMediumDatetime }}</td>
+          <td>{{ situationFamiliale.modifiedDate | formatMediumDatetime }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/situation-familiale', situationFamiliale.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/situation-familiale', situationFamiliale.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(situationFamiliale)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="situationFamiliales && situationFamiliales.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

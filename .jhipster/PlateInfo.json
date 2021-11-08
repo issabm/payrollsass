@@ -1,0 +1,77 @@
+{
+  "name": "PlateInfo",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lib",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valTaken",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dateSituation",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "plate",
+      "otherEntityRelationshipName": "plateInfo",
+      "relationshipName": "plate"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "rebrique",
+      "otherEntityRelationshipName": "plateInfo",
+      "relationshipName": "rebrique"
+    }
+  ],
+  "entityTableName": "pr_grp_rep_info",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132418"
+}

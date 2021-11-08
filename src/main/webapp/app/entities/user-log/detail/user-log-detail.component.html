@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userLog">
+      <h2 data-cy="userLogDetailsHeading"><span jhiTranslate="payrollApp.userLog.detail.title">User Log</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userLog.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.userLog.op">Op</span></dt>
+        <dd>
+          <span>{{ userLog.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.userLog.util">Util</span></dt>
+        <dd>
+          <span>{{ userLog.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.userLog.dateOp">Date Op</span></dt>
+        <dd>
+          <span>{{ userLog.dateOp | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-log', userLog.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

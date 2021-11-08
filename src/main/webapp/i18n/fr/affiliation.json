@@ -1,0 +1,38 @@
+{
+  "payrollApp": {
+    "affiliation": {
+      "home": {
+        "title": "Affiliations",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Affiliation",
+        "createOrEditLabel": "Créer ou éditer un Affiliation",
+        "notFound": "Aucun Affiliation trouvé"
+      },
+      "created": "Un nouveau Affiliation a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Affiliation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Affiliation avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Affiliation {{ id }} ?"
+      },
+      "detail": {
+        "title": "Affiliation"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "tel": "Tel",
+      "email": "Email",
+      "fax": "Fax",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "entreprise": "Entreprise",
+      "direction": "Direction",
+      "pays": "Pays",
+      "devise": "Devise"
+    }
+  }
+}

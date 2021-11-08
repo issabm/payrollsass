@@ -1,0 +1,226 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-affectation-heading"
+        data-cy="AffectationCreateUpdateHeading"
+        jhiTranslate="payrollApp.affectation.home.createOrEditLabel"
+      >
+        Create or edit a Affectation
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.matricule" for="field_matricule">Matricule</label>
+          <input type="text" class="form-control" name="matricule" id="field_matricule" data-cy="matricule" formControlName="matricule" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.dateDebut" for="field_dateDebut">Date Debut</label>
+          <div class="input-group">
+            <input
+              id="field_dateDebut"
+              data-cy="dateDebut"
+              type="text"
+              class="form-control"
+              name="dateDebut"
+              ngbDatepicker
+              #dateDebutDp="ngbDatepicker"
+              formControlName="dateDebut"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateDebutDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.dateFin" for="field_dateFin">Date Fin</label>
+          <div class="input-group">
+            <input
+              id="field_dateFin"
+              data-cy="dateFin"
+              type="text"
+              class="form-control"
+              name="dateFin"
+              ngbDatepicker
+              #dateFinDp="ngbDatepicker"
+              formControlName="dateFin"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateFinDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.modifiedDate" for="field_modifiedDate"
+            >Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_modifiedDate"
+              data-cy="modifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="modifiedDate"
+              formControlName="modifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.contrat" for="field_contrat">Contrat</label>
+          <select class="form-control" id="field_contrat" data-cy="contrat" name="contrat" formControlName="contrat">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="contratOption.id === editForm.get('contrat')!.value?.id ? editForm.get('contrat')!.value : contratOption"
+              *ngFor="let contratOption of contratsSharedCollection; trackBy: trackContratById"
+            >
+              {{ contratOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.groupe" for="field_groupe">Groupe</label>
+          <select class="form-control" id="field_groupe" data-cy="groupe" name="groupe" formControlName="groupe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="groupeOption.id === editForm.get('groupe')!.value?.id ? editForm.get('groupe')!.value : groupeOption"
+              *ngFor="let groupeOption of groupesSharedCollection; trackBy: trackGroupeById"
+            >
+              {{ groupeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.entreprise" for="field_entreprise">Entreprise</label>
+          <select class="form-control" id="field_entreprise" data-cy="entreprise" name="entreprise" formControlName="entreprise">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                entrepriseOption.id === editForm.get('entreprise')!.value?.id ? editForm.get('entreprise')!.value : entrepriseOption
+              "
+              *ngFor="let entrepriseOption of entreprisesSharedCollection; trackBy: trackEntrepriseById"
+            >
+              {{ entrepriseOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.affiliation" for="field_affiliation">Affiliation</label>
+          <select class="form-control" id="field_affiliation" data-cy="affiliation" name="affiliation" formControlName="affiliation">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                affiliationOption.id === editForm.get('affiliation')!.value?.id ? editForm.get('affiliation')!.value : affiliationOption
+              "
+              *ngFor="let affiliationOption of affiliationsSharedCollection; trackBy: trackAffiliationById"
+            >
+              {{ affiliationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.affectation.situation" for="field_situation">Situation</label>
+          <select class="form-control" id="field_situation" data-cy="situation" name="situation" formControlName="situation">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="situationOption.id === editForm.get('situation')!.value?.id ? editForm.get('situation')!.value : situationOption"
+              *ngFor="let situationOption of situationsSharedCollection; trackBy: trackSituationById"
+            >
+              {{ situationOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

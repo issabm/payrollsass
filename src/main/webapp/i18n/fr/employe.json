@@ -1,0 +1,51 @@
+{
+  "payrollApp": {
+    "employe": {
+      "home": {
+        "title": "Employes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Employe",
+        "createOrEditLabel": "Créer ou éditer un Employe",
+        "notFound": "Aucun Employe trouvé"
+      },
+      "created": "Un nouveau Employe a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Employe avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Employe avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Employe {{ id }} ?"
+      },
+      "detail": {
+        "title": "Employe"
+      },
+      "id": "ID",
+      "matricule": "Matricule",
+      "nomAr": "Nom Ar",
+      "nomJfAr": "Nom Jf Ar",
+      "prenomAr": "Prenom Ar",
+      "nomEn": "Nom En",
+      "nomJfEn": "Nom Jf En",
+      "prenomEn": "Prenom En",
+      "nomPereAr": "Nom Pere Ar",
+      "nomPereEn": "Nom Pere En",
+      "nomMereAr": "Nom Mere Ar",
+      "nomMereEn": "Nom Mere En",
+      "nomGpAr": "Nom Gp Ar",
+      "nomGpEn": "Nom Gp En",
+      "dateNaiss": "Date Naiss",
+      "rib": "Rib",
+      "banque": "Banque",
+      "dateRib": "Date Rib",
+      "dateBanque": "Date Banque",
+      "img": "Img",
+      "util": "Util",
+      "dateop": "Dateop",
+      "dateModif": "Date Modif",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "situation": "Situation",
+      "nationalite": "Nationalite",
+      "typeHandicap": "Type Handicap"
+    }
+  }
+}

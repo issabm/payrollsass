@@ -1,0 +1,129 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-contact-heading" data-cy="ContactCreateUpdateHeading" jhiTranslate="payrollApp.contact.home.createOrEditLabel">
+        Create or edit a Contact
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.nomAr" for="field_nomAr">Nom Ar</label>
+          <input type="text" class="form-control" name="nomAr" id="field_nomAr" data-cy="nomAr" formControlName="nomAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.prenomAr" for="field_prenomAr">Prenom Ar</label>
+          <input type="text" class="form-control" name="prenomAr" id="field_prenomAr" data-cy="prenomAr" formControlName="prenomAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.nomEn" for="field_nomEn">Nom En</label>
+          <input type="text" class="form-control" name="nomEn" id="field_nomEn" data-cy="nomEn" formControlName="nomEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.prenomEn" for="field_prenomEn">Prenom En</label>
+          <input type="text" class="form-control" name="prenomEn" id="field_prenomEn" data-cy="prenomEn" formControlName="prenomEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.tel" for="field_tel">Tel</label>
+          <input type="text" class="form-control" name="tel" id="field_tel" data-cy="tel" formControlName="tel" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.phone" for="field_phone">Phone</label>
+          <input type="text" class="form-control" name="phone" id="field_phone" data-cy="phone" formControlName="phone" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.adresse" for="field_adresse">Adresse</label>
+          <input type="text" class="form-control" name="adresse" id="field_adresse" data-cy="adresse" formControlName="adresse" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.contact.employe" for="field_employe">Employe</label>
+          <select class="form-control" id="field_employe" data-cy="employe" name="employe" formControlName="employe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="employeOption.id === editForm.get('employe')!.value?.id ? editForm.get('employe')!.value : employeOption"
+              *ngFor="let employeOption of employesSharedCollection; trackBy: trackEmployeById"
+            >
+              {{ employeOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

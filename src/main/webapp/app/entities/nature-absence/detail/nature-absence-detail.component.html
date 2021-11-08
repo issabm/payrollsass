@@ -1,0 +1,106 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="natureAbsence">
+      <h2 data-cy="natureAbsenceDetailsHeading"><span jhiTranslate="payrollApp.natureAbsence.detail.title">Nature Absence</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ natureAbsence.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.code">Code</span></dt>
+        <dd>
+          <span>{{ natureAbsence.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ natureAbsence.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ natureAbsence.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.util">Util</span></dt>
+        <dd>
+          <span>{{ natureAbsence.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ natureAbsence.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.nbDays">Nb Days</span></dt>
+        <dd>
+          <span>{{ natureAbsence.nbDays }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.valuePaied">Value Paied</span></dt>
+        <dd>
+          <span>{{ natureAbsence.valuePaied }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ natureAbsence.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.op">Op</span></dt>
+        <dd>
+          <span>{{ natureAbsence.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ natureAbsence.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ natureAbsence.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ natureAbsence.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.natureConfig">Nature Config</span></dt>
+        <dd>
+          <div *ngIf="natureAbsence.natureConfig">
+            <a [routerLink]="['/nature-config', natureAbsence.natureConfig?.id, 'view']">{{ natureAbsence.natureConfig?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.affilication">Affilication</span></dt>
+        <dd>
+          <div *ngIf="natureAbsence.affilication">
+            <a [routerLink]="['/affiliation', natureAbsence.affilication?.id, 'view']">{{ natureAbsence.affilication?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.entreprise">Entreprise</span></dt>
+        <dd>
+          <div *ngIf="natureAbsence.entreprise">
+            <a [routerLink]="['/entreprise', natureAbsence.entreprise?.id, 'view']">{{ natureAbsence.entreprise?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.groupe">Groupe</span></dt>
+        <dd>
+          <div *ngIf="natureAbsence.groupe">
+            <a [routerLink]="['/groupe', natureAbsence.groupe?.id, 'view']">{{ natureAbsence.groupe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureAbsence.sexe">Sexe</span></dt>
+        <dd>
+          <div *ngIf="natureAbsence.sexe">
+            <a [routerLink]="['/sexe', natureAbsence.sexe?.id, 'view']">{{ natureAbsence.sexe?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/nature-absence', natureAbsence.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

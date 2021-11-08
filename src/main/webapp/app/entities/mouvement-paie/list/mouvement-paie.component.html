@@ -1,0 +1,208 @@
+<div>
+  <h2 id="page-heading" data-cy="MouvementPaieHeading">
+    <span jhiTranslate="payrollApp.mouvementPaie.home.title">Mouvement Paies</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.mouvementPaie.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-mouvement-paie"
+        [routerLink]="['/mouvement-paie/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.mouvementPaie.home.createLabel"> Create a new Mouvement Paie </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="mouvementPaies?.length === 0">
+    <span jhiTranslate="payrollApp.mouvementPaie.home.notFound">No mouvementPaies found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="mouvementPaies && mouvementPaies.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code">
+            <span jhiTranslate="payrollApp.mouvementPaie.code">Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lib"><span jhiTranslate="payrollApp.mouvementPaie.lib">Lib</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="annee">
+            <span jhiTranslate="payrollApp.mouvementPaie.annee">Annee</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="mois">
+            <span jhiTranslate="payrollApp.mouvementPaie.mois">Mois</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateCalcul">
+            <span jhiTranslate="payrollApp.mouvementPaie.dateCalcul">Date Calcul</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateValid">
+            <span jhiTranslate="payrollApp.mouvementPaie.dateValid">Date Valid</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="datePayroll">
+            <span jhiTranslate="payrollApp.mouvementPaie.datePayroll">Date Payroll</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="totalNet">
+            <span jhiTranslate="payrollApp.mouvementPaie.totalNet">Total Net</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="totalNetDevise">
+            <span jhiTranslate="payrollApp.mouvementPaie.totalNetDevise">Total Net Devise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tauxChange">
+            <span jhiTranslate="payrollApp.mouvementPaie.tauxChange">Taux Change</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="calculBy">
+            <span jhiTranslate="payrollApp.mouvementPaie.calculBy">Calcul By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="effectBy">
+            <span jhiTranslate="payrollApp.mouvementPaie.effectBy">Effect By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateSituation">
+            <span jhiTranslate="payrollApp.mouvementPaie.dateSituation">Date Situation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.mouvementPaie.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.mouvementPaie.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <span jhiTranslate="payrollApp.mouvementPaie.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.mouvementPaie.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="util">
+            <span jhiTranslate="payrollApp.mouvementPaie.util">Util</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.mouvementPaie.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.mouvementPaie.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.mouvementPaie.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="situation.id">
+            <span jhiTranslate="payrollApp.mouvementPaie.situation">Situation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="employe.id">
+            <span jhiTranslate="payrollApp.mouvementPaie.employe">Employe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="natureMvtPaie.id">
+            <span jhiTranslate="payrollApp.mouvementPaie.natureMvtPaie">Nature Mvt Paie</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="demandeCalculPaie.id">
+            <span jhiTranslate="payrollApp.mouvementPaie.demandeCalculPaie">Demande Calcul Paie</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mouvementPaie of mouvementPaies; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/mouvement-paie', mouvementPaie.id, 'view']">{{ mouvementPaie.id }}</a>
+          </td>
+          <td>{{ mouvementPaie.code }}</td>
+          <td>{{ mouvementPaie.lib }}</td>
+          <td>{{ mouvementPaie.annee }}</td>
+          <td>{{ mouvementPaie.mois }}</td>
+          <td>{{ mouvementPaie.dateCalcul | formatMediumDate }}</td>
+          <td>{{ mouvementPaie.dateValid | formatMediumDate }}</td>
+          <td>{{ mouvementPaie.datePayroll | formatMediumDate }}</td>
+          <td>{{ mouvementPaie.totalNet }}</td>
+          <td>{{ mouvementPaie.totalNetDevise }}</td>
+          <td>{{ mouvementPaie.tauxChange }}</td>
+          <td>{{ mouvementPaie.calculBy }}</td>
+          <td>{{ mouvementPaie.effectBy }}</td>
+          <td>{{ mouvementPaie.dateSituation | formatMediumDate }}</td>
+          <td>{{ mouvementPaie.dateop | formatMediumDatetime }}</td>
+          <td>{{ mouvementPaie.modifiedBy }}</td>
+          <td>{{ mouvementPaie.createdBy }}</td>
+          <td>{{ mouvementPaie.op }}</td>
+          <td>{{ mouvementPaie.util }}</td>
+          <td>{{ mouvementPaie.isDeleted }}</td>
+          <td>{{ mouvementPaie.createdDate | formatMediumDatetime }}</td>
+          <td>{{ mouvementPaie.modifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="mouvementPaie.situation">
+              <a [routerLink]="['/situation', mouvementPaie.situation?.id, 'view']">{{ mouvementPaie.situation?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="mouvementPaie.employe">
+              <a [routerLink]="['/employe', mouvementPaie.employe?.id, 'view']">{{ mouvementPaie.employe?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="mouvementPaie.natureMvtPaie">
+              <a [routerLink]="['/nature-mvt-paie', mouvementPaie.natureMvtPaie?.id, 'view']">{{ mouvementPaie.natureMvtPaie?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="mouvementPaie.demandeCalculPaie">
+              <a [routerLink]="['/demande-calcul-paie', mouvementPaie.demandeCalculPaie?.id, 'view']">{{
+                mouvementPaie.demandeCalculPaie?.id
+              }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/mouvement-paie', mouvementPaie.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/mouvement-paie', mouvementPaie.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(mouvementPaie)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="mouvementPaies && mouvementPaies.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

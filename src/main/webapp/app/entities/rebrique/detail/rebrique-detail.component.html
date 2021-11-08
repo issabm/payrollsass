@@ -1,0 +1,150 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="rebrique">
+      <h2 data-cy="rebriqueDetailsHeading"><span jhiTranslate="payrollApp.rebrique.detail.title">Rebrique</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ rebrique.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.priorite">Priorite</span></dt>
+        <dd>
+          <span>{{ rebrique.priorite }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.code">Code</span></dt>
+        <dd>
+          <span>{{ rebrique.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ rebrique.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.libFr">Lib Fr</span></dt>
+        <dd>
+          <span>{{ rebrique.libFr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ rebrique.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.inTax">In Tax</span></dt>
+        <dd>
+          <span>{{ rebrique.inTax }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.minValue">Min Value</span></dt>
+        <dd>
+          <span>{{ rebrique.minValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.maxValue">Max Value</span></dt>
+        <dd>
+          <span>{{ rebrique.maxValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.dateSituation">Date Situation</span></dt>
+        <dd>
+          <span>{{ rebrique.dateSituation | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ rebrique.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ rebrique.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ rebrique.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.util">Util</span></dt>
+        <dd>
+          <span>{{ rebrique.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.op">Op</span></dt>
+        <dd>
+          <span>{{ rebrique.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ rebrique.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ rebrique.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ rebrique.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.pays">Pays</span></dt>
+        <dd>
+          <div *ngIf="rebrique.pays">
+            <a [routerLink]="['/pays', rebrique.pays?.id, 'view']">{{ rebrique.pays?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.natureConfig">Nature Config</span></dt>
+        <dd>
+          <div *ngIf="rebrique.natureConfig">
+            <a [routerLink]="['/nature-config', rebrique.natureConfig?.id, 'view']">{{ rebrique.natureConfig?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.affilication">Affilication</span></dt>
+        <dd>
+          <div *ngIf="rebrique.affilication">
+            <a [routerLink]="['/affiliation', rebrique.affilication?.id, 'view']">{{ rebrique.affilication?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.entreprise">Entreprise</span></dt>
+        <dd>
+          <div *ngIf="rebrique.entreprise">
+            <a [routerLink]="['/entreprise', rebrique.entreprise?.id, 'view']">{{ rebrique.entreprise?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.groupe">Groupe</span></dt>
+        <dd>
+          <div *ngIf="rebrique.groupe">
+            <a [routerLink]="['/groupe', rebrique.groupe?.id, 'view']">{{ rebrique.groupe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.modeInput">Mode Input</span></dt>
+        <dd>
+          <div *ngIf="rebrique.modeInput">
+            <a [routerLink]="['/mode-input', rebrique.modeInput?.id, 'view']">{{ rebrique.modeInput?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.sens">Sens</span></dt>
+        <dd>
+          <div *ngIf="rebrique.sens">
+            <a [routerLink]="['/sens', rebrique.sens?.id, 'view']">{{ rebrique.sens?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.concerne">Concerne</span></dt>
+        <dd>
+          <div *ngIf="rebrique.concerne">
+            <a [routerLink]="['/concerne', rebrique.concerne?.id, 'view']">{{ rebrique.concerne?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.rebrique.frequence">Frequence</span></dt>
+        <dd>
+          <div *ngIf="rebrique.frequence">
+            <a [routerLink]="['/frequence', rebrique.frequence?.id, 'view']">{{ rebrique.frequence?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/rebrique', rebrique.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

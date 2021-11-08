@@ -1,0 +1,89 @@
+{
+  "name": "Carriere",
+  "fields": [
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateEmploi",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateEchlon",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateCategorie",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "echlon",
+      "otherEntityRelationshipName": "carriere",
+      "relationshipName": "echlon"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "carriere",
+      "relationshipName": "category"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "emploi",
+      "otherEntityRelationshipName": "carriere",
+      "relationshipName": "emploi"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affectation",
+      "otherEntityRelationshipName": "carriere",
+      "relationshipName": "affectation"
+    }
+  ],
+  "entityTableName": "rh_carriere",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132356"
+}

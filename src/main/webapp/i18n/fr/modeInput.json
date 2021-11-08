@@ -1,0 +1,33 @@
+{
+  "payrollApp": {
+    "modeInput": {
+      "home": {
+        "title": "ModeInputs",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Mode Input",
+        "createOrEditLabel": "Créer ou éditer un Mode Input",
+        "notFound": "Aucun Mode Input trouvé"
+      },
+      "created": "Un nouveau Mode Input a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Mode Input avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Mode Input avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Mode Input {{ id }} ?"
+      },
+      "detail": {
+        "title": "Mode Input"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date"
+    }
+  }
+}
