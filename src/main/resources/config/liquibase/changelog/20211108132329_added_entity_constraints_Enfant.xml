@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity Enfant.
+    -->
+    <changeSet id="20211108132329-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="type_handicap_id"
+                                 baseTableName="rh_enfant"
+                                 constraintName="fk_rh_enfant__type_handicap_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_type_handicap"/>
+
+        <addForeignKeyConstraint baseColumnNames="sexe_id"
+                                 baseTableName="rh_enfant"
+                                 constraintName="fk_rh_enfant__sexe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_sexe"/>
+
+        <addForeignKeyConstraint baseColumnNames="niv_scolaire_id"
+                                 baseTableName="rh_enfant"
+                                 constraintName="fk_rh_enfant__niv_scolaire_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_niv_scol"/>
+
+        <addForeignKeyConstraint baseColumnNames="famille_id"
+                                 baseTableName="rh_enfant"
+                                 constraintName="fk_rh_enfant__famille_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_famille"/>
+    </changeSet>
+</databaseChangeLog>

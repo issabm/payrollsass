@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="natureEligibilite">
+      <h2 data-cy="natureEligibiliteDetailsHeading">
+        <span jhiTranslate="payrollApp.natureEligibilite.detail.title">Nature Eligibilite</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ natureEligibilite.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureEligibilite.code">Code</span></dt>
+        <dd>
+          <span>{{ natureEligibilite.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureEligibilite.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ natureEligibilite.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureEligibilite.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ natureEligibilite.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureEligibilite.libFr">Lib Fr</span></dt>
+        <dd>
+          <span>{{ natureEligibilite.libFr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureEligibilite.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ natureEligibilite.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureEligibilite.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ natureEligibilite.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureEligibilite.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ natureEligibilite.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureEligibilite.op">Op</span></dt>
+        <dd>
+          <span>{{ natureEligibilite.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureEligibilite.util">Util</span></dt>
+        <dd>
+          <span>{{ natureEligibilite.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureEligibilite.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ natureEligibilite.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureEligibilite.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ natureEligibilite.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureEligibilite.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ natureEligibilite.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/nature-eligibilite', natureEligibilite.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

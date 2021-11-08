@@ -1,0 +1,199 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-nature-mvt-paie-heading"
+        data-cy="NatureMvtPaieCreateUpdateHeading"
+        jhiTranslate="payrollApp.natureMvtPaie.home.createOrEditLabel"
+      >
+        Create or edit a Nature Mvt Paie
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.libEn" for="field_libEn">Lib En</label>
+          <input type="text" class="form-control" name="libEn" id="field_libEn" data-cy="libEn" formControlName="libEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.libAr" for="field_libAr">Lib Ar</label>
+          <input type="text" class="form-control" name="libAr" id="field_libAr" data-cy="libAr" formControlName="libAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.libFr" for="field_libFr">Lib Fr</label>
+          <input type="text" class="form-control" name="libFr" id="field_libFr" data-cy="libFr" formControlName="libFr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.createdBy" for="field_createdBy">Created By</label>
+          <input type="text" class="form-control" name="createdBy" id="field_createdBy" data-cy="createdBy" formControlName="createdBy" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.modifiedDate" for="field_modifiedDate"
+            >Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_modifiedDate"
+              data-cy="modifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="modifiedDate"
+              formControlName="modifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.natureConfig" for="field_natureConfig"
+            >Nature Config</label
+          >
+          <select class="form-control" id="field_natureConfig" data-cy="natureConfig" name="natureConfig" formControlName="natureConfig">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                natureConfigOption.id === editForm.get('natureConfig')!.value?.id ? editForm.get('natureConfig')!.value : natureConfigOption
+              "
+              *ngFor="let natureConfigOption of natureConfigsSharedCollection; trackBy: trackNatureConfigById"
+            >
+              {{ natureConfigOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.affilication" for="field_affilication"
+            >Affilication</label
+          >
+          <select class="form-control" id="field_affilication" data-cy="affilication" name="affilication" formControlName="affilication">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                affiliationOption.id === editForm.get('affilication')!.value?.id ? editForm.get('affilication')!.value : affiliationOption
+              "
+              *ngFor="let affiliationOption of affiliationsSharedCollection; trackBy: trackAffiliationById"
+            >
+              {{ affiliationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.entreprise" for="field_entreprise">Entreprise</label>
+          <select class="form-control" id="field_entreprise" data-cy="entreprise" name="entreprise" formControlName="entreprise">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                entrepriseOption.id === editForm.get('entreprise')!.value?.id ? editForm.get('entreprise')!.value : entrepriseOption
+              "
+              *ngFor="let entrepriseOption of entreprisesSharedCollection; trackBy: trackEntrepriseById"
+            >
+              {{ entrepriseOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.natureMvtPaie.groupe" for="field_groupe">Groupe</label>
+          <select class="form-control" id="field_groupe" data-cy="groupe" name="groupe" formControlName="groupe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="groupeOption.id === editForm.get('groupe')!.value?.id ? editForm.get('groupe')!.value : groupeOption"
+              *ngFor="let groupeOption of groupesSharedCollection; trackBy: trackGroupeById"
+            >
+              {{ groupeOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

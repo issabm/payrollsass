@@ -1,0 +1,142 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-palier-condition-heading"
+        data-cy="PalierConditionCreateUpdateHeading"
+        jhiTranslate="payrollApp.palierCondition.home.createOrEditLabel"
+      >
+        Create or edit a Palier Condition
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.palierCondition.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.palierCondition.libEn" for="field_libEn">Lib En</label>
+          <input type="text" class="form-control" name="libEn" id="field_libEn" data-cy="libEn" formControlName="libEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.palierCondition.libAr" for="field_libAr">Lib Ar</label>
+          <input type="text" class="form-control" name="libAr" id="field_libAr" data-cy="libAr" formControlName="libAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.palierCondition.annee" for="field_annee">Annee</label>
+          <input type="number" class="form-control" name="annee" id="field_annee" data-cy="annee" formControlName="annee" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.palierCondition.minVal" for="field_minVal">Min Val</label>
+          <input type="number" class="form-control" name="minVal" id="field_minVal" data-cy="minVal" formControlName="minVal" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.palierCondition.maxVal" for="field_maxVal">Max Val</label>
+          <input type="number" class="form-control" name="maxVal" id="field_maxVal" data-cy="maxVal" formControlName="maxVal" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.palierCondition.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.palierCondition.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.palierCondition.dateModif" for="field_dateModif">Date Modif</label>
+          <div class="d-flex">
+            <input
+              id="field_dateModif"
+              data-cy="dateModif"
+              type="datetime-local"
+              class="form-control"
+              name="dateModif"
+              formControlName="dateModif"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.palierCondition.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.palierCondition.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.palierCondition.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.palierCondition.palierPlate" for="field_palierPlate"
+            >Palier Plate</label
+          >
+          <select class="form-control" id="field_palierPlate" data-cy="palierPlate" name="palierPlate" formControlName="palierPlate">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                palierPlateOption.id === editForm.get('palierPlate')!.value?.id ? editForm.get('palierPlate')!.value : palierPlateOption
+              "
+              *ngFor="let palierPlateOption of palierPlatesSharedCollection; trackBy: trackPalierPlateById"
+            >
+              {{ palierPlateOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

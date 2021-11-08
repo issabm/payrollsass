@@ -1,0 +1,140 @@
+<div>
+  <h2 id="page-heading" data-cy="ContactHeading">
+    <span jhiTranslate="payrollApp.contact.home.title">Contacts</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.contact.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-contact"
+        [routerLink]="['/contact/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.contact.home.createLabel"> Create a new Contact </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="contacts?.length === 0">
+    <span jhiTranslate="payrollApp.contact.home.notFound">No contacts found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="contacts && contacts.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nomAr"><span jhiTranslate="payrollApp.contact.nomAr">Nom Ar</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="prenomAr">
+            <span jhiTranslate="payrollApp.contact.prenomAr">Prenom Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomEn"><span jhiTranslate="payrollApp.contact.nomEn">Nom En</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="prenomEn">
+            <span jhiTranslate="payrollApp.contact.prenomEn">Prenom En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="email"><span jhiTranslate="payrollApp.contact.email">Email</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="tel"><span jhiTranslate="payrollApp.contact.tel">Tel</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="phone"><span jhiTranslate="payrollApp.contact.phone">Phone</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="adresse">
+            <span jhiTranslate="payrollApp.contact.adresse">Adresse</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="util"><span jhiTranslate="payrollApp.contact.util">Util</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.contact.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.contact.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.contact.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.contact.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="employe.id">
+            <span jhiTranslate="payrollApp.contact.employe">Employe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/contact', contact.id, 'view']">{{ contact.id }}</a>
+          </td>
+          <td>{{ contact.nomAr }}</td>
+          <td>{{ contact.prenomAr }}</td>
+          <td>{{ contact.nomEn }}</td>
+          <td>{{ contact.prenomEn }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.tel }}</td>
+          <td>{{ contact.phone }}</td>
+          <td>{{ contact.adresse }}</td>
+          <td>{{ contact.util }}</td>
+          <td>{{ contact.dateop | formatMediumDatetime }}</td>
+          <td>{{ contact.modifiedBy }}</td>
+          <td>{{ contact.op }}</td>
+          <td>{{ contact.isDeleted }}</td>
+          <td>
+            <div *ngIf="contact.employe">
+              <a [routerLink]="['/employe', contact.employe?.id, 'view']">{{ contact.employe?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/contact', contact.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/contact', contact.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(contact)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="contacts && contacts.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

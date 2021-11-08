@@ -1,0 +1,277 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-employe-heading" data-cy="EmployeCreateUpdateHeading" jhiTranslate="payrollApp.employe.home.createOrEditLabel">
+        Create or edit a Employe
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.matricule" for="field_matricule">Matricule</label>
+          <input type="text" class="form-control" name="matricule" id="field_matricule" data-cy="matricule" formControlName="matricule" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.nomAr" for="field_nomAr">Nom Ar</label>
+          <input type="text" class="form-control" name="nomAr" id="field_nomAr" data-cy="nomAr" formControlName="nomAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.nomJfAr" for="field_nomJfAr">Nom Jf Ar</label>
+          <input type="text" class="form-control" name="nomJfAr" id="field_nomJfAr" data-cy="nomJfAr" formControlName="nomJfAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.prenomAr" for="field_prenomAr">Prenom Ar</label>
+          <input type="text" class="form-control" name="prenomAr" id="field_prenomAr" data-cy="prenomAr" formControlName="prenomAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.nomEn" for="field_nomEn">Nom En</label>
+          <input type="text" class="form-control" name="nomEn" id="field_nomEn" data-cy="nomEn" formControlName="nomEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.nomJfEn" for="field_nomJfEn">Nom Jf En</label>
+          <input type="text" class="form-control" name="nomJfEn" id="field_nomJfEn" data-cy="nomJfEn" formControlName="nomJfEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.prenomEn" for="field_prenomEn">Prenom En</label>
+          <input type="text" class="form-control" name="prenomEn" id="field_prenomEn" data-cy="prenomEn" formControlName="prenomEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.nomPereAr" for="field_nomPereAr">Nom Pere Ar</label>
+          <input type="text" class="form-control" name="nomPereAr" id="field_nomPereAr" data-cy="nomPereAr" formControlName="nomPereAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.nomPereEn" for="field_nomPereEn">Nom Pere En</label>
+          <input type="text" class="form-control" name="nomPereEn" id="field_nomPereEn" data-cy="nomPereEn" formControlName="nomPereEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.nomMereAr" for="field_nomMereAr">Nom Mere Ar</label>
+          <input type="text" class="form-control" name="nomMereAr" id="field_nomMereAr" data-cy="nomMereAr" formControlName="nomMereAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.nomMereEn" for="field_nomMereEn">Nom Mere En</label>
+          <input type="text" class="form-control" name="nomMereEn" id="field_nomMereEn" data-cy="nomMereEn" formControlName="nomMereEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.nomGpAr" for="field_nomGpAr">Nom Gp Ar</label>
+          <input type="text" class="form-control" name="nomGpAr" id="field_nomGpAr" data-cy="nomGpAr" formControlName="nomGpAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.nomGpEn" for="field_nomGpEn">Nom Gp En</label>
+          <input type="text" class="form-control" name="nomGpEn" id="field_nomGpEn" data-cy="nomGpEn" formControlName="nomGpEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.dateNaiss" for="field_dateNaiss">Date Naiss</label>
+          <div class="input-group">
+            <input
+              id="field_dateNaiss"
+              data-cy="dateNaiss"
+              type="text"
+              class="form-control"
+              name="dateNaiss"
+              ngbDatepicker
+              #dateNaissDp="ngbDatepicker"
+              formControlName="dateNaiss"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateNaissDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.rib" for="field_rib">Rib</label>
+          <input type="text" class="form-control" name="rib" id="field_rib" data-cy="rib" formControlName="rib" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.banque" for="field_banque">Banque</label>
+          <input type="text" class="form-control" name="banque" id="field_banque" data-cy="banque" formControlName="banque" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.dateRib" for="field_dateRib">Date Rib</label>
+          <input type="text" class="form-control" name="dateRib" id="field_dateRib" data-cy="dateRib" formControlName="dateRib" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.dateBanque" for="field_dateBanque">Date Banque</label>
+          <input
+            type="text"
+            class="form-control"
+            name="dateBanque"
+            id="field_dateBanque"
+            data-cy="dateBanque"
+            formControlName="dateBanque"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.img" for="field_img">Img</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('imgContentType')!.value + ';base64,' + editForm.get('img')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('img')!.value"
+              alt="employe image"
+            />
+            <div *ngIf="editForm.get('img')!.value" class="form-text text-danger clearfix">
+              <span class="pull-left">{{ editForm.get('imgContentType')!.value }}, {{ byteSize(editForm.get('img')!.value) }}</span>
+              <button
+                type="button"
+                (click)="clearInputImage('img', 'imgContentType', 'file_img')"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_img"
+              data-cy="img"
+              (change)="setFileData($event, 'img', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="img" id="field_img" data-cy="img" formControlName="img" />
+          <input type="hidden" class="form-control" name="imgContentType" id="field_imgContentType" formControlName="imgContentType" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.dateModif" for="field_dateModif">Date Modif</label>
+          <div class="d-flex">
+            <input
+              id="field_dateModif"
+              data-cy="dateModif"
+              type="datetime-local"
+              class="form-control"
+              name="dateModif"
+              formControlName="dateModif"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.situation" for="field_situation">Situation</label>
+          <select class="form-control" id="field_situation" data-cy="situation" name="situation" formControlName="situation">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="situationOption.id === editForm.get('situation')!.value?.id ? editForm.get('situation')!.value : situationOption"
+              *ngFor="let situationOption of situationsSharedCollection; trackBy: trackSituationById"
+            >
+              {{ situationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.nationalite" for="field_nationalite">Nationalite</label>
+          <select class="form-control" id="field_nationalite" data-cy="nationalite" name="nationalite" formControlName="nationalite">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="paysOption.id === editForm.get('nationalite')!.value?.id ? editForm.get('nationalite')!.value : paysOption"
+              *ngFor="let paysOption of paysSharedCollection; trackBy: trackPaysById"
+            >
+              {{ paysOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.employe.typeHandicap" for="field_typeHandicap">Type Handicap</label>
+          <select class="form-control" id="field_typeHandicap" data-cy="typeHandicap" name="typeHandicap" formControlName="typeHandicap">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                typeHandicapOption.id === editForm.get('typeHandicap')!.value?.id ? editForm.get('typeHandicap')!.value : typeHandicapOption
+              "
+              *ngFor="let typeHandicapOption of typeHandicapsSharedCollection; trackBy: trackTypeHandicapById"
+            >
+              {{ typeHandicapOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

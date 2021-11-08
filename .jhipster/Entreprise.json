@@ -1,0 +1,105 @@
+{
+  "name": "Entreprise",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "matFiscal",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "registreCommerce",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomCommerceAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomCommerceEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "raisonSocialAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "raisonSocialEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "addresseAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "addresseEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codePostal",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fax",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "groupe",
+      "otherEntityRelationshipName": "entreprise",
+      "relationshipName": "groupe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pays",
+      "otherEntityRelationshipName": "entreprise",
+      "relationshipName": "pays"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "entreprise",
+      "otherEntityRelationshipName": "entreprise",
+      "relationshipName": "mere"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "devise",
+      "otherEntityRelationshipName": "entreprise",
+      "relationshipName": "devise"
+    }
+  ],
+  "entityTableName": "rh_entreprise",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132353"
+}

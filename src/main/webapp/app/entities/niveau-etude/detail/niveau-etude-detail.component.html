@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="niveauEtude">
+      <h2 data-cy="niveauEtudeDetailsHeading"><span jhiTranslate="payrollApp.niveauEtude.detail.title">Niveau Etude</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ niveauEtude.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauEtude.orderLevel">Order Level</span></dt>
+        <dd>
+          <span>{{ niveauEtude.orderLevel }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauEtude.code">Code</span></dt>
+        <dd>
+          <span>{{ niveauEtude.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauEtude.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ niveauEtude.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauEtude.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ niveauEtude.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauEtude.util">Util</span></dt>
+        <dd>
+          <span>{{ niveauEtude.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauEtude.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ niveauEtude.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauEtude.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ niveauEtude.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauEtude.op">Op</span></dt>
+        <dd>
+          <span>{{ niveauEtude.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauEtude.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ niveauEtude.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauEtude.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ niveauEtude.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauEtude.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ niveauEtude.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauEtude.pays">Pays</span></dt>
+        <dd>
+          <div *ngIf="niveauEtude.pays">
+            <a [routerLink]="['/pays', niveauEtude.pays?.id, 'view']">{{ niveauEtude.pays?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/niveau-etude', niveauEtude.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+{
+  "payrollApp": {
+    "plateInfo": {
+      "home": {
+        "title": "PlateInfos",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Plate Info",
+        "createOrEditLabel": "Créer ou éditer un Plate Info",
+        "notFound": "Aucun Plate Info trouvé"
+      },
+      "created": "Un nouveau Plate Info a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Plate Info avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Plate Info avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Plate Info {{ id }} ?"
+      },
+      "detail": {
+        "title": "Plate Info"
+      },
+      "id": "ID",
+      "code": "Code",
+      "lib": "Lib",
+      "valTaken": "Val Taken",
+      "dateSituation": "Date Situation",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "createdBy": "Created By",
+      "op": "Op",
+      "util": "Util",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "plate": "Plate",
+      "rebrique": "Rebrique"
+    }
+  }
+}

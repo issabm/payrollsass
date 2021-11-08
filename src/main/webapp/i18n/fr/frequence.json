@@ -1,0 +1,33 @@
+{
+  "payrollApp": {
+    "frequence": {
+      "home": {
+        "title": "Frequences",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Frequence",
+        "createOrEditLabel": "Créer ou éditer un Frequence",
+        "notFound": "Aucun Frequence trouvé"
+      },
+      "created": "Un nouveau Frequence a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Frequence avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Frequence avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Frequence {{ id }} ?"
+      },
+      "detail": {
+        "title": "Frequence"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date"
+    }
+  }
+}

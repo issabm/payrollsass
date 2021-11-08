@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="managementResource">
+      <h2 data-cy="managementResourceDetailsHeading">
+        <span jhiTranslate="payrollApp.managementResource.detail.title">Management Resource</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ managementResource.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.managementResource.util">Util</span></dt>
+        <dd>
+          <span>{{ managementResource.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.managementResource.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ managementResource.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.managementResource.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ managementResource.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.managementResource.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ managementResource.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.managementResource.op">Op</span></dt>
+        <dd>
+          <span>{{ managementResource.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.managementResource.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ managementResource.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.managementResource.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ managementResource.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.managementResource.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ managementResource.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.managementResource.situation">Situation</span></dt>
+        <dd>
+          <div *ngIf="managementResource.situation">
+            <a [routerLink]="['/situation', managementResource.situation?.id, 'view']">{{ managementResource.situation?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.managementResource.employe">Employe</span></dt>
+        <dd>
+          <div *ngIf="managementResource.employe">
+            <a [routerLink]="['/employe', managementResource.employe?.id, 'view']">{{ managementResource.employe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.managementResource.entreprise">Entreprise</span></dt>
+        <dd>
+          <div *ngIf="managementResource.entreprise">
+            <a [routerLink]="['/entreprise', managementResource.entreprise?.id, 'view']">{{ managementResource.entreprise?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.managementResource.groupe">Groupe</span></dt>
+        <dd>
+          <div *ngIf="managementResource.groupe">
+            <a [routerLink]="['/groupe', managementResource.groupe?.id, 'view']">{{ managementResource.groupe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.managementResource.affiliation">Affiliation</span></dt>
+        <dd>
+          <div *ngIf="managementResource.affiliation">
+            <a [routerLink]="['/affiliation', managementResource.affiliation?.id, 'view']">{{ managementResource.affiliation?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/management-resource', managementResource.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

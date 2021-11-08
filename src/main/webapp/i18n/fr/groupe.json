@@ -1,0 +1,38 @@
+{
+  "payrollApp": {
+    "groupe": {
+      "home": {
+        "title": "Groupes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Groupe",
+        "createOrEditLabel": "Créer ou éditer un Groupe",
+        "notFound": "Aucun Groupe trouvé"
+      },
+      "created": "Un nouveau Groupe a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Groupe avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Groupe avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Groupe {{ id }} ?"
+      },
+      "detail": {
+        "title": "Groupe"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "addresseAr": "Addresse Ar",
+      "addresseEn": "Addresse En",
+      "tel": "Tel",
+      "email": "Email",
+      "fax": "Fax",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "pays": "Pays",
+      "devise": "Devise"
+    }
+  }
+}

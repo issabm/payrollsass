@@ -1,0 +1,188 @@
+<div>
+  <h2 id="page-heading" data-cy="PayrollHeading">
+    <span jhiTranslate="payrollApp.payroll.home.title">Payrolls</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.payroll.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-payroll"
+        [routerLink]="['/payroll/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.payroll.home.createLabel"> Create a new Payroll </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="payrolls?.length === 0">
+    <span jhiTranslate="payrollApp.payroll.home.notFound">No payrolls found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="payrolls && payrolls.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code"><span jhiTranslate="payrollApp.payroll.code">Code</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="lib"><span jhiTranslate="payrollApp.payroll.lib">Lib</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="annee"><span jhiTranslate="payrollApp.payroll.annee">Annee</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="mois"><span jhiTranslate="payrollApp.payroll.mois">Mois</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateCalcul">
+            <span jhiTranslate="payrollApp.payroll.dateCalcul">Date Calcul</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateValid">
+            <span jhiTranslate="payrollApp.payroll.dateValid">Date Valid</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="datePayroll">
+            <span jhiTranslate="payrollApp.payroll.datePayroll">Date Payroll</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="totalNet">
+            <span jhiTranslate="payrollApp.payroll.totalNet">Total Net</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="totalNetDevise">
+            <span jhiTranslate="payrollApp.payroll.totalNetDevise">Total Net Devise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tauxChange">
+            <span jhiTranslate="payrollApp.payroll.tauxChange">Taux Change</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="calculBy">
+            <span jhiTranslate="payrollApp.payroll.calculBy">Calcul By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="effectBy">
+            <span jhiTranslate="payrollApp.payroll.effectBy">Effect By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateSituation">
+            <span jhiTranslate="payrollApp.payroll.dateSituation">Date Situation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.payroll.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.payroll.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <span jhiTranslate="payrollApp.payroll.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.payroll.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="util"><span jhiTranslate="payrollApp.payroll.util">Util</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.payroll.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.payroll.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.payroll.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="devise.id">
+            <span jhiTranslate="payrollApp.payroll.devise">Devise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="mvt.id"><span jhiTranslate="payrollApp.payroll.mvt">Mvt</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="situation.id">
+            <span jhiTranslate="payrollApp.payroll.situation">Situation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payroll of payrolls; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/payroll', payroll.id, 'view']">{{ payroll.id }}</a>
+          </td>
+          <td>{{ payroll.code }}</td>
+          <td>{{ payroll.lib }}</td>
+          <td>{{ payroll.annee }}</td>
+          <td>{{ payroll.mois }}</td>
+          <td>{{ payroll.dateCalcul | formatMediumDate }}</td>
+          <td>{{ payroll.dateValid | formatMediumDate }}</td>
+          <td>{{ payroll.datePayroll | formatMediumDate }}</td>
+          <td>{{ payroll.totalNet }}</td>
+          <td>{{ payroll.totalNetDevise }}</td>
+          <td>{{ payroll.tauxChange }}</td>
+          <td>{{ payroll.calculBy }}</td>
+          <td>{{ payroll.effectBy }}</td>
+          <td>{{ payroll.dateSituation | formatMediumDate }}</td>
+          <td>{{ payroll.dateop | formatMediumDatetime }}</td>
+          <td>{{ payroll.modifiedBy }}</td>
+          <td>{{ payroll.createdBy }}</td>
+          <td>{{ payroll.op }}</td>
+          <td>{{ payroll.util }}</td>
+          <td>{{ payroll.isDeleted }}</td>
+          <td>{{ payroll.createdDate | formatMediumDatetime }}</td>
+          <td>{{ payroll.modifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="payroll.devise">
+              <a [routerLink]="['/devise', payroll.devise?.id, 'view']">{{ payroll.devise?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="payroll.mvt">
+              <a [routerLink]="['/mouvement-paie', payroll.mvt?.id, 'view']">{{ payroll.mvt?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="payroll.situation">
+              <a [routerLink]="['/situation', payroll.situation?.id, 'view']">{{ payroll.situation?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/payroll', payroll.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/payroll', payroll.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(payroll)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="payrolls && payrolls.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

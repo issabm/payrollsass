@@ -1,0 +1,35 @@
+{
+  "payrollApp": {
+    "natureConfig": {
+      "home": {
+        "title": "Nature Configs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Nature Config",
+        "createOrEditLabel": "Create or edit a Nature Config",
+        "notFound": "No Nature Configs found"
+      },
+      "created": "A new Nature Config is created with identifier {{ param }}",
+      "updated": "A Nature Config is updated with identifier {{ param }}",
+      "deleted": "A Nature Config is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Nature Config {{ id }}?"
+      },
+      "detail": {
+        "title": "Nature Config"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libEn": "Lib En",
+      "libAr": "Lib Ar",
+      "libFr": "Lib Fr",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "createdBy": "Created By",
+      "op": "Op",
+      "util": "Util",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date"
+    }
+  }
+}

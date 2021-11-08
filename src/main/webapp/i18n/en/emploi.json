@@ -1,0 +1,38 @@
+{
+  "payrollApp": {
+    "emploi": {
+      "home": {
+        "title": "Emplois",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Emploi",
+        "createOrEditLabel": "Create or edit a Emploi",
+        "notFound": "No Emplois found"
+      },
+      "created": "A new Emploi is created with identifier {{ param }}",
+      "updated": "A Emploi is updated with identifier {{ param }}",
+      "deleted": "A Emploi is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Emploi {{ id }}?"
+      },
+      "detail": {
+        "title": "Emploi"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "pays": "Pays",
+      "natureConfig": "Nature Config",
+      "affilication": "Affilication",
+      "entreprise": "Entreprise",
+      "groupe": "Groupe"
+    }
+  }
+}

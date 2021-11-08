@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity PalierCondition.
+    -->
+    <changeSet id="20211108132327-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="palier_plate_id"
+                                 baseTableName="cfg_global"
+                                 constraintName="fk_cfg_global__palier_plate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cfg_global"/>
+    </changeSet>
+</databaseChangeLog>

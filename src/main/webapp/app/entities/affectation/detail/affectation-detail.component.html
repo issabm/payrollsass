@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="affectation">
+      <h2 data-cy="affectationDetailsHeading"><span jhiTranslate="payrollApp.affectation.detail.title">Affectation</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ affectation.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.matricule">Matricule</span></dt>
+        <dd>
+          <span>{{ affectation.matricule }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.dateDebut">Date Debut</span></dt>
+        <dd>
+          <span>{{ affectation.dateDebut | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.dateFin">Date Fin</span></dt>
+        <dd>
+          <span>{{ affectation.dateFin | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ affectation.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.util">Util</span></dt>
+        <dd>
+          <span>{{ affectation.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ affectation.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.op">Op</span></dt>
+        <dd>
+          <span>{{ affectation.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ affectation.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ affectation.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ affectation.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.contrat">Contrat</span></dt>
+        <dd>
+          <div *ngIf="affectation.contrat">
+            <a [routerLink]="['/contrat', affectation.contrat?.id, 'view']">{{ affectation.contrat?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.groupe">Groupe</span></dt>
+        <dd>
+          <div *ngIf="affectation.groupe">
+            <a [routerLink]="['/groupe', affectation.groupe?.id, 'view']">{{ affectation.groupe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.entreprise">Entreprise</span></dt>
+        <dd>
+          <div *ngIf="affectation.entreprise">
+            <a [routerLink]="['/entreprise', affectation.entreprise?.id, 'view']">{{ affectation.entreprise?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.affiliation">Affiliation</span></dt>
+        <dd>
+          <div *ngIf="affectation.affiliation">
+            <a [routerLink]="['/affiliation', affectation.affiliation?.id, 'view']">{{ affectation.affiliation?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.affectation.situation">Situation</span></dt>
+        <dd>
+          <div *ngIf="affectation.situation">
+            <a [routerLink]="['/situation', affectation.situation?.id, 'view']">{{ affectation.situation?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/affectation', affectation.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

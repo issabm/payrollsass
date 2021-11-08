@@ -1,0 +1,226 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="eligibilite">
+      <h2 data-cy="eligibiliteDetailsHeading"><span jhiTranslate="payrollApp.eligibilite.detail.title">Eligibilite</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ eligibilite.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.priorite">Priorite</span></dt>
+        <dd>
+          <span>{{ eligibilite.priorite }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.annee">Annee</span></dt>
+        <dd>
+          <span>{{ eligibilite.annee }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.mois">Mois</span></dt>
+        <dd>
+          <span>{{ eligibilite.mois }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.nbEnt">Nb Ent</span></dt>
+        <dd>
+          <span>{{ eligibilite.nbEnt }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.ageEnt">Age Ent</span></dt>
+        <dd>
+          <span>{{ eligibilite.ageEnt }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.matricule">Matricule</span></dt>
+        <dd>
+          <span>{{ eligibilite.matricule }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.code">Code</span></dt>
+        <dd>
+          <span>{{ eligibilite.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ eligibilite.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ eligibilite.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.libFr">Lib Fr</span></dt>
+        <dd>
+          <span>{{ eligibilite.libFr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.valPayroll">Val Payroll</span></dt>
+        <dd>
+          <span>{{ eligibilite.valPayroll }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.nbDaysLeave">Nb Days Leave</span></dt>
+        <dd>
+          <span>{{ eligibilite.nbDaysLeave }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.pourValPayroll">Pour Val Payroll</span></dt>
+        <dd>
+          <span>{{ eligibilite.pourValPayroll }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ eligibilite.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ eligibilite.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ eligibilite.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.op">Op</span></dt>
+        <dd>
+          <span>{{ eligibilite.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.util">Util</span></dt>
+        <dd>
+          <span>{{ eligibilite.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ eligibilite.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ eligibilite.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ eligibilite.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.pays">Pays</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.pays">
+            <a [routerLink]="['/pays', eligibilite.pays?.id, 'view']">{{ eligibilite.pays?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.natureConfig">Nature Config</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.natureConfig">
+            <a [routerLink]="['/nature-config', eligibilite.natureConfig?.id, 'view']">{{ eligibilite.natureConfig?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.echlon">Echlon</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.echlon">
+            <a [routerLink]="['/echlon', eligibilite.echlon?.id, 'view']">{{ eligibilite.echlon?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.category">Category</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.category">
+            <a [routerLink]="['/category', eligibilite.category?.id, 'view']">{{ eligibilite.category?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.emploi">Emploi</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.emploi">
+            <a [routerLink]="['/emploi', eligibilite.emploi?.id, 'view']">{{ eligibilite.emploi?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.typeHandicap">Type Handicap</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.typeHandicap">
+            <a [routerLink]="['/type-handicap', eligibilite.typeHandicap?.id, 'view']">{{ eligibilite.typeHandicap?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.nationalite">Nationalite</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.nationalite">
+            <a [routerLink]="['/pays', eligibilite.nationalite?.id, 'view']">{{ eligibilite.nationalite?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.sexe">Sexe</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.sexe">
+            <a [routerLink]="['/sexe', eligibilite.sexe?.id, 'view']">{{ eligibilite.sexe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.affilication">Affilication</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.affilication">
+            <a [routerLink]="['/affiliation', eligibilite.affilication?.id, 'view']">{{ eligibilite.affilication?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.entreprise">Entreprise</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.entreprise">
+            <a [routerLink]="['/entreprise', eligibilite.entreprise?.id, 'view']">{{ eligibilite.entreprise?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.groupe">Groupe</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.groupe">
+            <a [routerLink]="['/groupe', eligibilite.groupe?.id, 'view']">{{ eligibilite.groupe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.typeContrat">Type Contrat</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.typeContrat">
+            <a [routerLink]="['/type-contrat', eligibilite.typeContrat?.id, 'view']">{{ eligibilite.typeContrat?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.sousTypeContrat">Sous Type Contrat</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.sousTypeContrat">
+            <a [routerLink]="['/sous-type-contrat', eligibilite.sousTypeContrat?.id, 'view']">{{ eligibilite.sousTypeContrat?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.niveauEtude">Niveau Etude</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.niveauEtude">
+            <a [routerLink]="['/niveau-etude', eligibilite.niveauEtude?.id, 'view']">{{ eligibilite.niveauEtude?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.natureEligible">Nature Eligible</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.natureEligible">
+            <a [routerLink]="['/nature-eligibilite', eligibilite.natureEligible?.id, 'view']">{{ eligibilite.natureEligible?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.rebrique">Rebrique</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.rebrique">
+            <a [routerLink]="['/rebrique', eligibilite.rebrique?.id, 'view']">{{ eligibilite.rebrique?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.natureAbsence">Nature Absence</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.natureAbsence">
+            <a [routerLink]="['/nature-absence', eligibilite.natureAbsence?.id, 'view']">{{ eligibilite.natureAbsence?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.plate">Plate</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.plate">
+            <a [routerLink]="['/plate', eligibilite.plate?.id, 'view']">{{ eligibilite.plate?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.eligibilite.targetEnt">Target Ent</span></dt>
+        <dd>
+          <div *ngIf="eligibilite.targetEnt">
+            <a [routerLink]="['/target-eligible', eligibilite.targetEnt?.id, 'view']">{{ eligibilite.targetEnt?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/eligibilite', eligibilite.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

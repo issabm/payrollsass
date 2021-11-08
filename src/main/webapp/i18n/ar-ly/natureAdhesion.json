@@ -1,0 +1,33 @@
+{
+  "payrollApp": {
+    "natureAdhesion": {
+      "home": {
+        "title": "Nature Adhesions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Nature Adhesion",
+        "createOrEditLabel": "Create or edit a Nature Adhesion",
+        "notFound": "No Nature Adhesions found"
+      },
+      "created": "A new Nature Adhesion is created with identifier {{ param }}",
+      "updated": "A Nature Adhesion is updated with identifier {{ param }}",
+      "deleted": "A Nature Adhesion is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Nature Adhesion {{ id }}?"
+      },
+      "detail": {
+        "title": "Nature Adhesion"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date"
+    }
+  }
+}

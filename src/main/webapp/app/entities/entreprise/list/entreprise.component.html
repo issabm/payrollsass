@@ -1,0 +1,182 @@
+<div>
+  <h2 id="page-heading" data-cy="EntrepriseHeading">
+    <span jhiTranslate="payrollApp.entreprise.home.title">Entreprises</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.entreprise.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-entreprise"
+        [routerLink]="['/entreprise/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.entreprise.home.createLabel"> Create a new Entreprise </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="entreprises?.length === 0">
+    <span jhiTranslate="payrollApp.entreprise.home.notFound">No entreprises found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="entreprises && entreprises.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code"><span jhiTranslate="payrollApp.entreprise.code">Code</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="matFiscal">
+            <span jhiTranslate="payrollApp.entreprise.matFiscal">Mat Fiscal</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="registreCommerce">
+            <span jhiTranslate="payrollApp.entreprise.registreCommerce">Registre Commerce</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomCommerceAr">
+            <span jhiTranslate="payrollApp.entreprise.nomCommerceAr">Nom Commerce Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomCommerceEn">
+            <span jhiTranslate="payrollApp.entreprise.nomCommerceEn">Nom Commerce En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="raisonSocialAr">
+            <span jhiTranslate="payrollApp.entreprise.raisonSocialAr">Raison Social Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="raisonSocialEn">
+            <span jhiTranslate="payrollApp.entreprise.raisonSocialEn">Raison Social En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="addresseAr">
+            <span jhiTranslate="payrollApp.entreprise.addresseAr">Addresse Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="addresseEn">
+            <span jhiTranslate="payrollApp.entreprise.addresseEn">Addresse En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="codePostal">
+            <span jhiTranslate="payrollApp.entreprise.codePostal">Code Postal</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tel"><span jhiTranslate="payrollApp.entreprise.tel">Tel</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="email">
+            <span jhiTranslate="payrollApp.entreprise.email">Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fax"><span jhiTranslate="payrollApp.entreprise.fax">Fax</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="util"><span jhiTranslate="payrollApp.entreprise.util">Util</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.entreprise.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.entreprise.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="groupe.id">
+            <span jhiTranslate="payrollApp.entreprise.groupe">Groupe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pays.id">
+            <span jhiTranslate="payrollApp.entreprise.pays">Pays</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="mere.id">
+            <span jhiTranslate="payrollApp.entreprise.mere">Mere</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="devise.id">
+            <span jhiTranslate="payrollApp.entreprise.devise">Devise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entreprise of entreprises; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/entreprise', entreprise.id, 'view']">{{ entreprise.id }}</a>
+          </td>
+          <td>{{ entreprise.code }}</td>
+          <td>{{ entreprise.matFiscal }}</td>
+          <td>{{ entreprise.registreCommerce }}</td>
+          <td>{{ entreprise.nomCommerceAr }}</td>
+          <td>{{ entreprise.nomCommerceEn }}</td>
+          <td>{{ entreprise.raisonSocialAr }}</td>
+          <td>{{ entreprise.raisonSocialEn }}</td>
+          <td>{{ entreprise.addresseAr }}</td>
+          <td>{{ entreprise.addresseEn }}</td>
+          <td>{{ entreprise.codePostal }}</td>
+          <td>{{ entreprise.tel }}</td>
+          <td>{{ entreprise.email }}</td>
+          <td>{{ entreprise.fax }}</td>
+          <td>{{ entreprise.util }}</td>
+          <td>{{ entreprise.dateop | formatMediumDatetime }}</td>
+          <td>{{ entreprise.modifiedBy }}</td>
+          <td>
+            <div *ngIf="entreprise.groupe">
+              <a [routerLink]="['/groupe', entreprise.groupe?.id, 'view']">{{ entreprise.groupe?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="entreprise.pays">
+              <a [routerLink]="['/pays', entreprise.pays?.id, 'view']">{{ entreprise.pays?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="entreprise.mere">
+              <a [routerLink]="['/entreprise', entreprise.mere?.id, 'view']">{{ entreprise.mere?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="entreprise.devise">
+              <a [routerLink]="['/devise', entreprise.devise?.id, 'view']">{{ entreprise.devise?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/entreprise', entreprise.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/entreprise', entreprise.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(entreprise)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="entreprises && entreprises.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="typeIdentite">
+      <h2 data-cy="typeIdentiteDetailsHeading"><span jhiTranslate="payrollApp.typeIdentite.detail.title">Type Identite</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ typeIdentite.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeIdentite.code">Code</span></dt>
+        <dd>
+          <span>{{ typeIdentite.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeIdentite.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ typeIdentite.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeIdentite.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ typeIdentite.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeIdentite.util">Util</span></dt>
+        <dd>
+          <span>{{ typeIdentite.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeIdentite.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ typeIdentite.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeIdentite.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ typeIdentite.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeIdentite.op">Op</span></dt>
+        <dd>
+          <span>{{ typeIdentite.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeIdentite.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ typeIdentite.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeIdentite.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ typeIdentite.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeIdentite.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ typeIdentite.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeIdentite.pays">Pays</span></dt>
+        <dd>
+          <div *ngIf="typeIdentite.pays">
+            <a [routerLink]="['/pays', typeIdentite.pays?.id, 'view']">{{ typeIdentite.pays?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/type-identite', typeIdentite.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

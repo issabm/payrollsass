@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="natureConfig">
+      <h2 data-cy="natureConfigDetailsHeading"><span jhiTranslate="payrollApp.natureConfig.detail.title">Nature Config</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ natureConfig.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureConfig.code">Code</span></dt>
+        <dd>
+          <span>{{ natureConfig.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureConfig.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ natureConfig.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureConfig.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ natureConfig.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureConfig.libFr">Lib Fr</span></dt>
+        <dd>
+          <span>{{ natureConfig.libFr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureConfig.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ natureConfig.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureConfig.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ natureConfig.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureConfig.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ natureConfig.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureConfig.op">Op</span></dt>
+        <dd>
+          <span>{{ natureConfig.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureConfig.util">Util</span></dt>
+        <dd>
+          <span>{{ natureConfig.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureConfig.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ natureConfig.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureConfig.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ natureConfig.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.natureConfig.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ natureConfig.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/nature-config', natureConfig.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

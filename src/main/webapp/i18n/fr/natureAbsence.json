@@ -1,0 +1,40 @@
+{
+  "payrollApp": {
+    "natureAbsence": {
+      "home": {
+        "title": "NatureAbsences",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Nature Absence",
+        "createOrEditLabel": "Créer ou éditer un Nature Absence",
+        "notFound": "Aucun Nature Absence trouvé"
+      },
+      "created": "Un nouveau Nature Absence a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Nature Absence avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Nature Absence avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Nature Absence {{ id }} ?"
+      },
+      "detail": {
+        "title": "Nature Absence"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "nbDays": "Nb Days",
+      "valuePaied": "Value Paied",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "natureConfig": "Nature Config",
+      "affilication": "Affilication",
+      "entreprise": "Entreprise",
+      "groupe": "Groupe",
+      "sexe": "Sexe"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "name": "Identite",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateIssued",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "placeIssed",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateVld",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employe",
+      "otherEntityRelationshipName": "identite",
+      "relationshipName": "employe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeIdentite",
+      "otherEntityRelationshipName": "identite",
+      "relationshipName": "typeIdentite"
+    }
+  ],
+  "entityTableName": "rh_identite",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132342"
+}

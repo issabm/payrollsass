@@ -1,0 +1,38 @@
+{
+  "payrollApp": {
+    "soldeAbsence": {
+      "home": {
+        "title": "Solde Absences",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Solde Absence",
+        "createOrEditLabel": "Create or edit a Solde Absence",
+        "notFound": "No Solde Absences found"
+      },
+      "created": "A new Solde Absence is created with identifier {{ param }}",
+      "updated": "A Solde Absence is updated with identifier {{ param }}",
+      "deleted": "A Solde Absence is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Solde Absence {{ id }}?"
+      },
+      "detail": {
+        "title": "Solde Absence"
+      },
+      "id": "ID",
+      "annee": "Annee",
+      "nbDaysRight": "Nb Days Right",
+      "nbDaysConsumed": "Nb Days Consumed",
+      "nbDaysUnavailble": "Nb Days Unavailble",
+      "nbDaysAvailble": "Nb Days Availble",
+      "nbDaysLeft": "Nb Days Left",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "employe": "Employe",
+      "natureAbsence": "Nature Absence"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "payrollApp": {
+    "payroll": {
+      "home": {
+        "title": "Payrolls",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Payroll",
+        "createOrEditLabel": "Create or edit a Payroll",
+        "notFound": "No Payrolls found"
+      },
+      "created": "A new Payroll is created with identifier {{ param }}",
+      "updated": "A Payroll is updated with identifier {{ param }}",
+      "deleted": "A Payroll is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Payroll {{ id }}?"
+      },
+      "detail": {
+        "title": "Payroll"
+      },
+      "id": "ID",
+      "code": "Code",
+      "lib": "Lib",
+      "annee": "Annee",
+      "mois": "Mois",
+      "dateCalcul": "Date Calcul",
+      "dateValid": "Date Valid",
+      "datePayroll": "Date Payroll",
+      "totalNet": "Total Net",
+      "totalNetDevise": "Total Net Devise",
+      "tauxChange": "Taux Change",
+      "calculBy": "Calcul By",
+      "effectBy": "Effect By",
+      "dateSituation": "Date Situation",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "createdBy": "Created By",
+      "op": "Op",
+      "util": "Util",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "devise": "Devise",
+      "mvt": "Mvt",
+      "situation": "Situation"
+    }
+  }
+}

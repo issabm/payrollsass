@@ -1,0 +1,274 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-demande-calcul-paie-heading"
+        data-cy="DemandeCalculPaieCreateUpdateHeading"
+        jhiTranslate="payrollApp.demandeCalculPaie.home.createOrEditLabel"
+      >
+        Create or edit a Demande Calcul Paie
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.lib" for="field_lib">Lib</label>
+          <input type="text" class="form-control" name="lib" id="field_lib" data-cy="lib" formControlName="lib" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.annee" for="field_annee">Annee</label>
+          <input type="number" class="form-control" name="annee" id="field_annee" data-cy="annee" formControlName="annee" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.mois" for="field_mois">Mois</label>
+          <input type="number" class="form-control" name="mois" id="field_mois" data-cy="mois" formControlName="mois" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.dateCalcul" for="field_dateCalcul"
+            >Date Calcul</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateCalcul"
+              data-cy="dateCalcul"
+              type="text"
+              class="form-control"
+              name="dateCalcul"
+              ngbDatepicker
+              #dateCalculDp="ngbDatepicker"
+              formControlName="dateCalcul"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateCalculDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.dateValid" for="field_dateValid">Date Valid</label>
+          <div class="input-group">
+            <input
+              id="field_dateValid"
+              data-cy="dateValid"
+              type="text"
+              class="form-control"
+              name="dateValid"
+              ngbDatepicker
+              #dateValidDp="ngbDatepicker"
+              formControlName="dateValid"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateValidDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.datePayroll" for="field_datePayroll"
+            >Date Payroll</label
+          >
+          <div class="input-group">
+            <input
+              id="field_datePayroll"
+              data-cy="datePayroll"
+              type="text"
+              class="form-control"
+              name="datePayroll"
+              ngbDatepicker
+              #datePayrollDp="ngbDatepicker"
+              formControlName="datePayroll"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="datePayrollDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.totalNet" for="field_totalNet">Total Net</label>
+          <input type="number" class="form-control" name="totalNet" id="field_totalNet" data-cy="totalNet" formControlName="totalNet" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.totalNetDevise" for="field_totalNetDevise"
+            >Total Net Devise</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalNetDevise"
+            id="field_totalNetDevise"
+            data-cy="totalNetDevise"
+            formControlName="totalNetDevise"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.tauxChange" for="field_tauxChange"
+            >Taux Change</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="tauxChange"
+            id="field_tauxChange"
+            data-cy="tauxChange"
+            formControlName="tauxChange"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.calculBy" for="field_calculBy">Calcul By</label>
+          <input type="text" class="form-control" name="calculBy" id="field_calculBy" data-cy="calculBy" formControlName="calculBy" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.effectBy" for="field_effectBy">Effect By</label>
+          <input type="text" class="form-control" name="effectBy" id="field_effectBy" data-cy="effectBy" formControlName="effectBy" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.dateSituation" for="field_dateSituation"
+            >Date Situation</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateSituation"
+              data-cy="dateSituation"
+              type="text"
+              class="form-control"
+              name="dateSituation"
+              ngbDatepicker
+              #dateSituationDp="ngbDatepicker"
+              formControlName="dateSituation"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateSituationDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.modifiedBy" for="field_modifiedBy"
+            >Modified By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.createdBy" for="field_createdBy">Created By</label>
+          <input type="text" class="form-control" name="createdBy" id="field_createdBy" data-cy="createdBy" formControlName="createdBy" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.demandeCalculPaie.modifiedDate" for="field_modifiedDate"
+            >Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_modifiedDate"
+              data-cy="modifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="modifiedDate"
+              formControlName="modifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

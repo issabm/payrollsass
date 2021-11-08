@@ -1,0 +1,36 @@
+{
+  "payrollApp": {
+    "palierCondition": {
+      "home": {
+        "title": "PalierConditions",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Palier Condition",
+        "createOrEditLabel": "Créer ou éditer un Palier Condition",
+        "notFound": "Aucun Palier Condition trouvé"
+      },
+      "created": "Un nouveau Palier Condition a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Palier Condition avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Palier Condition avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Palier Condition {{ id }} ?"
+      },
+      "detail": {
+        "title": "Palier Condition"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libEn": "Lib En",
+      "libAr": "Lib Ar",
+      "annee": "Annee",
+      "minVal": "Min Val",
+      "maxVal": "Max Val",
+      "util": "Util",
+      "dateop": "Dateop",
+      "dateModif": "Date Modif",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "palierPlate": "Palier Plate"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "name": "EligibiliteExclude",
+  "fields": [
+    {
+      "fieldName": "anneeBegin",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "moisBegin",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "anneeEnd",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "moisEnd",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "matricule",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libFr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "valPayroll",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "nbDaysLeave",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pourValPayroll",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "pr_eligible_exclude",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132415"
+}

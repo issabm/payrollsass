@@ -1,0 +1,26 @@
+{
+  "payrollApp": {
+    "userLog": {
+      "home": {
+        "title": "UserLogs",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau User Log",
+        "createOrEditLabel": "Créer ou éditer un User Log",
+        "notFound": "Aucun User Log trouvé"
+      },
+      "created": "Un nouveau User Log a été créé avec l'identifiant {{ param }}",
+      "updated": "Le User Log avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le User Log avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le User Log {{ id }} ?"
+      },
+      "detail": {
+        "title": "User Log"
+      },
+      "id": "ID",
+      "op": "Op",
+      "util": "Util",
+      "dateOp": "Date Op"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="conjoint">
+      <h2 data-cy="conjointDetailsHeading"><span jhiTranslate="payrollApp.conjoint.detail.title">Conjoint</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ conjoint.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.matricule">Matricule</span></dt>
+        <dd>
+          <span>{{ conjoint.matricule }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.nomAr">Nom Ar</span></dt>
+        <dd>
+          <span>{{ conjoint.nomAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.prenomAr">Prenom Ar</span></dt>
+        <dd>
+          <span>{{ conjoint.prenomAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.nomEn">Nom En</span></dt>
+        <dd>
+          <span>{{ conjoint.nomEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.prenomEn">Prenom En</span></dt>
+        <dd>
+          <span>{{ conjoint.prenomEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.dateNaiss">Date Naiss</span></dt>
+        <dd>
+          <span>{{ conjoint.dateNaiss | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.doesWork">Does Work</span></dt>
+        <dd>
+          <span>{{ conjoint.doesWork }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.util">Util</span></dt>
+        <dd>
+          <span>{{ conjoint.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ conjoint.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ conjoint.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.op">Op</span></dt>
+        <dd>
+          <span>{{ conjoint.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ conjoint.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.sexe">Sexe</span></dt>
+        <dd>
+          <div *ngIf="conjoint.sexe">
+            <a [routerLink]="['/sexe', conjoint.sexe?.id, 'view']">{{ conjoint.sexe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.conjoint.nationalite">Nationalite</span></dt>
+        <dd>
+          <div *ngIf="conjoint.nationalite">
+            <a [routerLink]="['/pays', conjoint.nationalite?.id, 'view']">{{ conjoint.nationalite?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/conjoint', conjoint.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

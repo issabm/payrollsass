@@ -1,0 +1,146 @@
+<div>
+  <h2 id="page-heading" data-cy="EnfantHeading">
+    <span jhiTranslate="payrollApp.enfant.home.title">Enfants</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.enfant.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-enfant"
+        [routerLink]="['/enfant/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.enfant.home.createLabel"> Create a new Enfant </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="enfants?.length === 0">
+    <span jhiTranslate="payrollApp.enfant.home.notFound">No enfants found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="enfants && enfants.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nomAr"><span jhiTranslate="payrollApp.enfant.nomAr">Nom Ar</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="prenomAr">
+            <span jhiTranslate="payrollApp.enfant.prenomAr">Prenom Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomEn"><span jhiTranslate="payrollApp.enfant.nomEn">Nom En</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="prenomEn">
+            <span jhiTranslate="payrollApp.enfant.prenomEn">Prenom En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateNaiss">
+            <span jhiTranslate="payrollApp.enfant.dateNaiss">Date Naiss</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="util"><span jhiTranslate="payrollApp.enfant.util">Util</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.enfant.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.enfant.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.enfant.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.enfant.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="typeHandicap.id">
+            <span jhiTranslate="payrollApp.enfant.typeHandicap">Type Handicap</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sexe.id"><span jhiTranslate="payrollApp.enfant.sexe">Sexe</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nivScolaire.id">
+            <span jhiTranslate="payrollApp.enfant.nivScolaire">Niv Scolaire</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="famille.id">
+            <span jhiTranslate="payrollApp.enfant.famille">Famille</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let enfant of enfants; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/enfant', enfant.id, 'view']">{{ enfant.id }}</a>
+          </td>
+          <td>{{ enfant.nomAr }}</td>
+          <td>{{ enfant.prenomAr }}</td>
+          <td>{{ enfant.nomEn }}</td>
+          <td>{{ enfant.prenomEn }}</td>
+          <td>{{ enfant.dateNaiss | formatMediumDate }}</td>
+          <td>{{ enfant.util }}</td>
+          <td>{{ enfant.dateop | formatMediumDatetime }}</td>
+          <td>{{ enfant.modifiedBy }}</td>
+          <td>{{ enfant.op }}</td>
+          <td>{{ enfant.isDeleted }}</td>
+          <td>
+            <div *ngIf="enfant.typeHandicap">
+              <a [routerLink]="['/type-handicap', enfant.typeHandicap?.id, 'view']">{{ enfant.typeHandicap?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="enfant.sexe">
+              <a [routerLink]="['/sexe', enfant.sexe?.id, 'view']">{{ enfant.sexe?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="enfant.nivScolaire">
+              <a [routerLink]="['/niveau-scolaire', enfant.nivScolaire?.id, 'view']">{{ enfant.nivScolaire?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="enfant.famille">
+              <a [routerLink]="['/famille', enfant.famille?.id, 'view']">{{ enfant.famille?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/enfant', enfant.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/enfant', enfant.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(enfant)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="enfants && enfants.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

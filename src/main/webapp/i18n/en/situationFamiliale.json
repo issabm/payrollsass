@@ -1,0 +1,33 @@
+{
+  "payrollApp": {
+    "situationFamiliale": {
+      "home": {
+        "title": "Situation Familiales",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Situation Familiale",
+        "createOrEditLabel": "Create or edit a Situation Familiale",
+        "notFound": "No Situation Familiales found"
+      },
+      "created": "A new Situation Familiale is created with identifier {{ param }}",
+      "updated": "A Situation Familiale is updated with identifier {{ param }}",
+      "deleted": "A Situation Familiale is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Situation Familiale {{ id }}?"
+      },
+      "detail": {
+        "title": "Situation Familiale"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date"
+    }
+  }
+}

@@ -1,0 +1,153 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-conjoint-heading" data-cy="ConjointCreateUpdateHeading" jhiTranslate="payrollApp.conjoint.home.createOrEditLabel">
+        Create or edit a Conjoint
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.matricule" for="field_matricule">Matricule</label>
+          <input type="text" class="form-control" name="matricule" id="field_matricule" data-cy="matricule" formControlName="matricule" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.nomAr" for="field_nomAr">Nom Ar</label>
+          <input type="text" class="form-control" name="nomAr" id="field_nomAr" data-cy="nomAr" formControlName="nomAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.prenomAr" for="field_prenomAr">Prenom Ar</label>
+          <input type="text" class="form-control" name="prenomAr" id="field_prenomAr" data-cy="prenomAr" formControlName="prenomAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.nomEn" for="field_nomEn">Nom En</label>
+          <input type="text" class="form-control" name="nomEn" id="field_nomEn" data-cy="nomEn" formControlName="nomEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.prenomEn" for="field_prenomEn">Prenom En</label>
+          <input type="text" class="form-control" name="prenomEn" id="field_prenomEn" data-cy="prenomEn" formControlName="prenomEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.dateNaiss" for="field_dateNaiss">Date Naiss</label>
+          <div class="input-group">
+            <input
+              id="field_dateNaiss"
+              data-cy="dateNaiss"
+              type="text"
+              class="form-control"
+              name="dateNaiss"
+              ngbDatepicker
+              #dateNaissDp="ngbDatepicker"
+              formControlName="dateNaiss"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateNaissDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.doesWork" for="field_doesWork">Does Work</label>
+          <input type="checkbox" class="form-check" name="doesWork" id="field_doesWork" data-cy="doesWork" formControlName="doesWork" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.sexe" for="field_sexe">Sexe</label>
+          <select class="form-control" id="field_sexe" data-cy="sexe" name="sexe" formControlName="sexe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="sexeOption.id === editForm.get('sexe')!.value?.id ? editForm.get('sexe')!.value : sexeOption"
+              *ngFor="let sexeOption of sexesSharedCollection; trackBy: trackSexeById"
+            >
+              {{ sexeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.conjoint.nationalite" for="field_nationalite">Nationalite</label>
+          <select class="form-control" id="field_nationalite" data-cy="nationalite" name="nationalite" formControlName="nationalite">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="paysOption.id === editForm.get('nationalite')!.value?.id ? editForm.get('nationalite')!.value : paysOption"
+              *ngFor="let paysOption of paysSharedCollection; trackBy: trackPaysById"
+            >
+              {{ paysOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

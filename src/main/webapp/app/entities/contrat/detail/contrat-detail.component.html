@@ -1,0 +1,108 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="contrat">
+      <h2 data-cy="contratDetailsHeading"><span jhiTranslate="payrollApp.contrat.detail.title">Contrat</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ contrat.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.ref">Ref</span></dt>
+        <dd>
+          <span>{{ contrat.ref }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.matricule">Matricule</span></dt>
+        <dd>
+          <span>{{ contrat.matricule }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.dateDebut">Date Debut</span></dt>
+        <dd>
+          <span>{{ contrat.dateDebut | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.dateFin">Date Fin</span></dt>
+        <dd>
+          <span>{{ contrat.dateFin | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.util">Util</span></dt>
+        <dd>
+          <span>{{ contrat.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ contrat.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ contrat.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.op">Op</span></dt>
+        <dd>
+          <span>{{ contrat.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ contrat.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ contrat.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ contrat.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.employe">Employe</span></dt>
+        <dd>
+          <div *ngIf="contrat.employe">
+            <a [routerLink]="['/employe', contrat.employe?.id, 'view']">{{ contrat.employe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.sousType">Sous Type</span></dt>
+        <dd>
+          <div *ngIf="contrat.sousType">
+            <a [routerLink]="['/sous-type-contrat', contrat.sousType?.id, 'view']">{{ contrat.sousType?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.groupe">Groupe</span></dt>
+        <dd>
+          <div *ngIf="contrat.groupe">
+            <a [routerLink]="['/groupe', contrat.groupe?.id, 'view']">{{ contrat.groupe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.entreprise">Entreprise</span></dt>
+        <dd>
+          <div *ngIf="contrat.entreprise">
+            <a [routerLink]="['/entreprise', contrat.entreprise?.id, 'view']">{{ contrat.entreprise?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.affiliation">Affiliation</span></dt>
+        <dd>
+          <div *ngIf="contrat.affiliation">
+            <a [routerLink]="['/affiliation', contrat.affiliation?.id, 'view']">{{ contrat.affiliation?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.contrat.devise">Devise</span></dt>
+        <dd>
+          <div *ngIf="contrat.devise">
+            <a [routerLink]="['/devise', contrat.devise?.id, 'view']">{{ contrat.devise?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/contrat', contrat.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

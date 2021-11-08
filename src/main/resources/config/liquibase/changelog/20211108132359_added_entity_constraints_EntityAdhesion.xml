@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity EntityAdhesion.
+    -->
+    <changeSet id="20211108132359-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="nature_adhesion_id"
+                                 baseTableName="ref_adhesion"
+                                 constraintName="fk_ref_adhesion__nature_adhesion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_nature_adhesion"/>
+
+        <addForeignKeyConstraint baseColumnNames="pays_id"
+                                 baseTableName="ref_adhesion"
+                                 constraintName="fk_ref_adhesion__pays_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_pays"/>
+    </changeSet>
+</databaseChangeLog>

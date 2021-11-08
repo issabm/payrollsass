@@ -1,0 +1,36 @@
+{
+  "payrollApp": {
+    "entityAdhesion": {
+      "home": {
+        "title": "EntityAdhesions",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Entity Adhesion",
+        "createOrEditLabel": "Créer ou éditer un Entity Adhesion",
+        "notFound": "Aucun Entity Adhesion trouvé"
+      },
+      "created": "Un nouveau Entity Adhesion a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Entity Adhesion avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Entity Adhesion avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Entity Adhesion {{ id }} ?"
+      },
+      "detail": {
+        "title": "Entity Adhesion"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libEn": "Lib En",
+      "libAr": "Lib Ar",
+      "libFr": "Lib Fr",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "natureAdhesion": "Nature Adhesion",
+      "pays": "Pays"
+    }
+  }
+}

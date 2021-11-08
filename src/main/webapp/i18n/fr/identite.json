@@ -1,0 +1,36 @@
+{
+  "payrollApp": {
+    "identite": {
+      "home": {
+        "title": "Identites",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Identite",
+        "createOrEditLabel": "Créer ou éditer un Identite",
+        "notFound": "Aucun Identite trouvé"
+      },
+      "created": "Un nouveau Identite a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Identite avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Identite avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Identite {{ id }} ?"
+      },
+      "detail": {
+        "title": "Identite"
+      },
+      "id": "ID",
+      "code": "Code",
+      "dateIssued": "Date Issued",
+      "placeIssed": "Place Issed",
+      "dateVld": "Date Vld",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "employe": "Employe",
+      "typeIdentite": "Type Identite"
+    }
+  }
+}

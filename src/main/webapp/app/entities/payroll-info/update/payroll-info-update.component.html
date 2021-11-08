@@ -1,0 +1,265 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-payroll-info-heading"
+        data-cy="PayrollInfoCreateUpdateHeading"
+        jhiTranslate="payrollApp.payrollInfo.home.createOrEditLabel"
+      >
+        Create or edit a Payroll Info
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.libAr" for="field_libAr">Lib Ar</label>
+          <input type="text" class="form-control" name="libAr" id="field_libAr" data-cy="libAr" formControlName="libAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.libFr" for="field_libFr">Lib Fr</label>
+          <input type="text" class="form-control" name="libFr" id="field_libFr" data-cy="libFr" formControlName="libFr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.libEr" for="field_libEr">Lib Er</label>
+          <input type="text" class="form-control" name="libEr" id="field_libEr" data-cy="libEr" formControlName="libEr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.valueRebrique" for="field_valueRebrique"
+            >Value Rebrique</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="valueRebrique"
+            id="field_valueRebrique"
+            data-cy="valueRebrique"
+            formControlName="valueRebrique"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.valueRebDevise" for="field_valueRebDevise"
+            >Value Reb Devise</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="valueRebDevise"
+            id="field_valueRebDevise"
+            data-cy="valueRebDevise"
+            formControlName="valueRebDevise"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.tauxChange" for="field_tauxChange">Taux Change</label>
+          <input
+            type="number"
+            class="form-control"
+            name="tauxChange"
+            id="field_tauxChange"
+            data-cy="tauxChange"
+            formControlName="tauxChange"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.dateCalcul" for="field_dateCalcul">Date Calcul</label>
+          <div class="input-group">
+            <input
+              id="field_dateCalcul"
+              data-cy="dateCalcul"
+              type="text"
+              class="form-control"
+              name="dateCalcul"
+              ngbDatepicker
+              #dateCalculDp="ngbDatepicker"
+              formControlName="dateCalcul"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateCalculDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.dateEffect" for="field_dateEffect">Date Effect</label>
+          <div class="input-group">
+            <input
+              id="field_dateEffect"
+              data-cy="dateEffect"
+              type="text"
+              class="form-control"
+              name="dateEffect"
+              ngbDatepicker
+              #dateEffectDp="ngbDatepicker"
+              formControlName="dateEffect"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateEffectDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.calculBy" for="field_calculBy">Calcul By</label>
+          <input type="text" class="form-control" name="calculBy" id="field_calculBy" data-cy="calculBy" formControlName="calculBy" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.effectBy" for="field_effectBy">Effect By</label>
+          <input type="text" class="form-control" name="effectBy" id="field_effectBy" data-cy="effectBy" formControlName="effectBy" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.dateSituation" for="field_dateSituation"
+            >Date Situation</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateSituation"
+              data-cy="dateSituation"
+              type="text"
+              class="form-control"
+              name="dateSituation"
+              ngbDatepicker
+              #dateSituationDp="ngbDatepicker"
+              formControlName="dateSituation"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateSituationDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.createdBy" for="field_createdBy">Created By</label>
+          <input type="text" class="form-control" name="createdBy" id="field_createdBy" data-cy="createdBy" formControlName="createdBy" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.modifiedDate" for="field_modifiedDate"
+            >Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_modifiedDate"
+              data-cy="modifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="modifiedDate"
+              formControlName="modifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.payrollInfo.payroll" for="field_payroll">Payroll</label>
+          <select class="form-control" id="field_payroll" data-cy="payroll" name="payroll" formControlName="payroll">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="payrollOption.id === editForm.get('payroll')!.value?.id ? editForm.get('payroll')!.value : payrollOption"
+              *ngFor="let payrollOption of payrollsSharedCollection; trackBy: trackPayrollById"
+            >
+              {{ payrollOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

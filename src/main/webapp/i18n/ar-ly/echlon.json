@@ -1,0 +1,38 @@
+{
+  "payrollApp": {
+    "echlon": {
+      "home": {
+        "title": "Echlons",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Echlon",
+        "createOrEditLabel": "Create or edit a Echlon",
+        "notFound": "No Echlons found"
+      },
+      "created": "A new Echlon is created with identifier {{ param }}",
+      "updated": "A Echlon is updated with identifier {{ param }}",
+      "deleted": "A Echlon is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Echlon {{ id }}?"
+      },
+      "detail": {
+        "title": "Echlon"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "pays": "Pays",
+      "natureConfig": "Nature Config",
+      "affilication": "Affilication",
+      "entreprise": "Entreprise",
+      "groupe": "Groupe"
+    }
+  }
+}

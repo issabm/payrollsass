@@ -1,0 +1,224 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-plate-heading" data-cy="PlateCreateUpdateHeading" jhiTranslate="payrollApp.plate.home.createOrEditLabel">
+        Create or edit a Plate
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.priorite" for="field_priorite">Priorite</label>
+          <input type="number" class="form-control" name="priorite" id="field_priorite" data-cy="priorite" formControlName="priorite" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.valueCalcul" for="field_valueCalcul">Value Calcul</label>
+          <input
+            type="number"
+            class="form-control"
+            name="valueCalcul"
+            id="field_valueCalcul"
+            data-cy="valueCalcul"
+            formControlName="valueCalcul"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.libAr" for="field_libAr">Lib Ar</label>
+          <input type="text" class="form-control" name="libAr" id="field_libAr" data-cy="libAr" formControlName="libAr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.libEn" for="field_libEn">Lib En</label>
+          <input type="text" class="form-control" name="libEn" id="field_libEn" data-cy="libEn" formControlName="libEn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.modifiedDate" for="field_modifiedDate">Modified Date</label>
+          <div class="d-flex">
+            <input
+              id="field_modifiedDate"
+              data-cy="modifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="modifiedDate"
+              formControlName="modifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.pays" for="field_pays">Pays</label>
+          <select class="form-control" id="field_pays" data-cy="pays" name="pays" formControlName="pays">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="paysOption.id === editForm.get('pays')!.value?.id ? editForm.get('pays')!.value : paysOption"
+              *ngFor="let paysOption of paysSharedCollection; trackBy: trackPaysById"
+            >
+              {{ paysOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.natureConfig" for="field_natureConfig">Nature Config</label>
+          <select class="form-control" id="field_natureConfig" data-cy="natureConfig" name="natureConfig" formControlName="natureConfig">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                natureConfigOption.id === editForm.get('natureConfig')!.value?.id ? editForm.get('natureConfig')!.value : natureConfigOption
+              "
+              *ngFor="let natureConfigOption of natureConfigsSharedCollection; trackBy: trackNatureConfigById"
+            >
+              {{ natureConfigOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.affilication" for="field_affilication">Affilication</label>
+          <select class="form-control" id="field_affilication" data-cy="affilication" name="affilication" formControlName="affilication">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                affiliationOption.id === editForm.get('affilication')!.value?.id ? editForm.get('affilication')!.value : affiliationOption
+              "
+              *ngFor="let affiliationOption of affiliationsSharedCollection; trackBy: trackAffiliationById"
+            >
+              {{ affiliationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.entreprise" for="field_entreprise">Entreprise</label>
+          <select class="form-control" id="field_entreprise" data-cy="entreprise" name="entreprise" formControlName="entreprise">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                entrepriseOption.id === editForm.get('entreprise')!.value?.id ? editForm.get('entreprise')!.value : entrepriseOption
+              "
+              *ngFor="let entrepriseOption of entreprisesSharedCollection; trackBy: trackEntrepriseById"
+            >
+              {{ entrepriseOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.groupe" for="field_groupe">Groupe</label>
+          <select class="form-control" id="field_groupe" data-cy="groupe" name="groupe" formControlName="groupe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="groupeOption.id === editForm.get('groupe')!.value?.id ? editForm.get('groupe')!.value : groupeOption"
+              *ngFor="let groupeOption of groupesSharedCollection; trackBy: trackGroupeById"
+            >
+              {{ groupeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.plate.modeCalcul" for="field_modeCalcul">Mode Calcul</label>
+          <select class="form-control" id="field_modeCalcul" data-cy="modeCalcul" name="modeCalcul" formControlName="modeCalcul">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                modeCalculOption.id === editForm.get('modeCalcul')!.value?.id ? editForm.get('modeCalcul')!.value : modeCalculOption
+              "
+              *ngFor="let modeCalculOption of modeCalculsSharedCollection; trackBy: trackModeCalculById"
+            >
+              {{ modeCalculOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

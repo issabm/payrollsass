@@ -1,0 +1,69 @@
+{
+  "name": "SoldeAbsencePaie",
+  "fields": [
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "mois",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbDays",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "payroll",
+      "otherEntityRelationshipName": "soldeAbsencePaie",
+      "relationshipName": "payroll"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "natureAbsence",
+      "otherEntityRelationshipName": "soldeAbsencePaie",
+      "relationshipName": "natureAbsence"
+    }
+  ],
+  "entityTableName": "pr_solde_abs",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132405"
+}

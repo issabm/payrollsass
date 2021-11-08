@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="typeContrat">
+      <h2 data-cy="typeContratDetailsHeading"><span jhiTranslate="payrollApp.typeContrat.detail.title">Type Contrat</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ typeContrat.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeContrat.code">Code</span></dt>
+        <dd>
+          <span>{{ typeContrat.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeContrat.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ typeContrat.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeContrat.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ typeContrat.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeContrat.util">Util</span></dt>
+        <dd>
+          <span>{{ typeContrat.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeContrat.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ typeContrat.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeContrat.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ typeContrat.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeContrat.op">Op</span></dt>
+        <dd>
+          <span>{{ typeContrat.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeContrat.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ typeContrat.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeContrat.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ typeContrat.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeContrat.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ typeContrat.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.typeContrat.pays">Pays</span></dt>
+        <dd>
+          <div *ngIf="typeContrat.pays">
+            <a [routerLink]="['/pays', typeContrat.pays?.id, 'view']">{{ typeContrat.pays?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/type-contrat', typeContrat.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

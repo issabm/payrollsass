@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="concerne">
+      <h2 data-cy="concerneDetailsHeading"><span jhiTranslate="payrollApp.concerne.detail.title">Concerne</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ concerne.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.concerne.code">Code</span></dt>
+        <dd>
+          <span>{{ concerne.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.concerne.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ concerne.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.concerne.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ concerne.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.concerne.util">Util</span></dt>
+        <dd>
+          <span>{{ concerne.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.concerne.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ concerne.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.concerne.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ concerne.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.concerne.op">Op</span></dt>
+        <dd>
+          <span>{{ concerne.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.concerne.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ concerne.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.concerne.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ concerne.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.concerne.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ concerne.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/concerne', concerne.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

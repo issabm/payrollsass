@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity Carriere.
+    -->
+    <changeSet id="20211108132356-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="echlon_id"
+                                 baseTableName="rh_carriere"
+                                 constraintName="fk_rh_carriere__echlon_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_echlon"/>
+
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="rh_carriere"
+                                 constraintName="fk_rh_carriere__category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_category"/>
+
+        <addForeignKeyConstraint baseColumnNames="emploi_id"
+                                 baseTableName="rh_carriere"
+                                 constraintName="fk_rh_carriere__emploi_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_emploi"/>
+
+        <addForeignKeyConstraint baseColumnNames="affectation_id"
+                                 baseTableName="rh_carriere"
+                                 constraintName="fk_rh_carriere__affectation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_affect"/>
+    </changeSet>
+</databaseChangeLog>

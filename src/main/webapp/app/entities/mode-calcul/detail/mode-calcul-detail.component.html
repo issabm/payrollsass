@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="modeCalcul">
+      <h2 data-cy="modeCalculDetailsHeading"><span jhiTranslate="payrollApp.modeCalcul.detail.title">Mode Calcul</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ modeCalcul.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.modeCalcul.code">Code</span></dt>
+        <dd>
+          <span>{{ modeCalcul.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.modeCalcul.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ modeCalcul.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.modeCalcul.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ modeCalcul.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.modeCalcul.util">Util</span></dt>
+        <dd>
+          <span>{{ modeCalcul.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.modeCalcul.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ modeCalcul.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.modeCalcul.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ modeCalcul.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.modeCalcul.op">Op</span></dt>
+        <dd>
+          <span>{{ modeCalcul.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.modeCalcul.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ modeCalcul.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.modeCalcul.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ modeCalcul.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.modeCalcul.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ modeCalcul.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/mode-calcul', modeCalcul.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

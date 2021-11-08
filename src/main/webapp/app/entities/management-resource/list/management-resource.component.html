@@ -1,0 +1,166 @@
+<div>
+  <h2 id="page-heading" data-cy="ManagementResourceHeading">
+    <span jhiTranslate="payrollApp.managementResource.home.title">Management Resources</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.managementResource.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-management-resource"
+        [routerLink]="['/management-resource/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.managementResource.home.createLabel"> Create a new Management Resource </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="managementResources?.length === 0">
+    <span jhiTranslate="payrollApp.managementResource.home.notFound">No managementResources found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="managementResources && managementResources.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="util">
+            <span jhiTranslate="payrollApp.managementResource.util">Util</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.managementResource.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.managementResource.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <span jhiTranslate="payrollApp.managementResource.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op">
+            <span jhiTranslate="payrollApp.managementResource.op">Op</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.managementResource.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.managementResource.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.managementResource.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="situation.id">
+            <span jhiTranslate="payrollApp.managementResource.situation">Situation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="employe.id">
+            <span jhiTranslate="payrollApp.managementResource.employe">Employe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="entreprise.id">
+            <span jhiTranslate="payrollApp.managementResource.entreprise">Entreprise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="groupe.id">
+            <span jhiTranslate="payrollApp.managementResource.groupe">Groupe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affiliation.id">
+            <span jhiTranslate="payrollApp.managementResource.affiliation">Affiliation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let managementResource of managementResources; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/management-resource', managementResource.id, 'view']">{{ managementResource.id }}</a>
+          </td>
+          <td>{{ managementResource.util }}</td>
+          <td>{{ managementResource.dateop | formatMediumDatetime }}</td>
+          <td>{{ managementResource.modifiedBy }}</td>
+          <td>{{ managementResource.createdBy }}</td>
+          <td>{{ managementResource.op }}</td>
+          <td>{{ managementResource.isDeleted }}</td>
+          <td>{{ managementResource.createdDate | formatMediumDatetime }}</td>
+          <td>{{ managementResource.modifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="managementResource.situation">
+              <a [routerLink]="['/situation', managementResource.situation?.id, 'view']">{{ managementResource.situation?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="managementResource.employe">
+              <a [routerLink]="['/employe', managementResource.employe?.id, 'view']">{{ managementResource.employe?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="managementResource.entreprise">
+              <a [routerLink]="['/entreprise', managementResource.entreprise?.id, 'view']">{{ managementResource.entreprise?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="managementResource.groupe">
+              <a [routerLink]="['/groupe', managementResource.groupe?.id, 'view']">{{ managementResource.groupe?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="managementResource.affiliation">
+              <a [routerLink]="['/affiliation', managementResource.affiliation?.id, 'view']">{{ managementResource.affiliation?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/management-resource', managementResource.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/management-resource', managementResource.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(managementResource)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="managementResources && managementResources.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+{
+  "name": "ManagementResourceFun",
+  "fields": [
+    {
+      "fieldName": "libEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "profile",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "enableAdd",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "enableCnst",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "enableDel",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "enableEd",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "managementResource",
+      "otherEntityRelationshipName": "managementResourceFun",
+      "relationshipName": "ressourceManage"
+    }
+  ],
+  "entityTableName": "rh_manage_rule",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132409"
+}

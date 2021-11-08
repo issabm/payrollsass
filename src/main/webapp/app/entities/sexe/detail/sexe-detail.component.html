@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sexe">
+      <h2 data-cy="sexeDetailsHeading"><span jhiTranslate="payrollApp.sexe.detail.title">Sexe</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ sexe.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sexe.code">Code</span></dt>
+        <dd>
+          <span>{{ sexe.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sexe.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ sexe.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sexe.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ sexe.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sexe.util">Util</span></dt>
+        <dd>
+          <span>{{ sexe.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sexe.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ sexe.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sexe.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ sexe.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sexe.op">Op</span></dt>
+        <dd>
+          <span>{{ sexe.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sexe.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ sexe.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sexe.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ sexe.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.sexe.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ sexe.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sexe', sexe.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

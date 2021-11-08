@@ -1,0 +1,44 @@
+{
+  "payrollApp": {
+    "payrollInfo": {
+      "home": {
+        "title": "PayrollInfos",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Payroll Info",
+        "createOrEditLabel": "Créer ou éditer un Payroll Info",
+        "notFound": "Aucun Payroll Info trouvé"
+      },
+      "created": "Un nouveau Payroll Info a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Payroll Info avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Payroll Info avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Payroll Info {{ id }} ?"
+      },
+      "detail": {
+        "title": "Payroll Info"
+      },
+      "id": "ID",
+      "util": "Util",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libFr": "Lib Fr",
+      "libEr": "Lib Er",
+      "valueRebrique": "Value Rebrique",
+      "valueRebDevise": "Value Reb Devise",
+      "tauxChange": "Taux Change",
+      "dateCalcul": "Date Calcul",
+      "dateEffect": "Date Effect",
+      "calculBy": "Calcul By",
+      "effectBy": "Effect By",
+      "dateSituation": "Date Situation",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "createdBy": "Created By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "payroll": "Payroll"
+    }
+  }
+}

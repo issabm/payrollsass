@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity TargetEligible.
+    -->
+    <changeSet id="20211108132413-1" author="jhipster">
+        <createTable tableName="ref_target_eligible">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="lib_en" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="lib_ar" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="lib_fr" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="dateop" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="modified_by" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_by" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="op" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="util" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_deleted" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="modified_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="ref_target_eligible" columnName="dateop" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="ref_target_eligible" columnName="created_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="ref_target_eligible" columnName="modified_date" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20211108132413-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/ref_target_eligible.csv"
+                  separator=";"
+                  tableName="ref_target_eligible"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="code" type="string"/>
+            <column name="lib_en" type="string"/>
+            <column name="lib_ar" type="string"/>
+            <column name="lib_fr" type="string"/>
+            <column name="dateop" type="date"/>
+            <column name="modified_by" type="string"/>
+            <column name="created_by" type="string"/>
+            <column name="op" type="string"/>
+            <column name="util" type="string"/>
+            <column name="is_deleted" type="boolean"/>
+            <column name="created_date" type="date"/>
+            <column name="modified_date" type="date"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

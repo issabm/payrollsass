@@ -1,0 +1,180 @@
+<div>
+  <h2 id="page-heading" data-cy="NatureAbsenceHeading">
+    <span jhiTranslate="payrollApp.natureAbsence.home.title">Nature Absences</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.natureAbsence.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-nature-absence"
+        [routerLink]="['/nature-absence/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.natureAbsence.home.createLabel"> Create a new Nature Absence </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="natureAbsences?.length === 0">
+    <span jhiTranslate="payrollApp.natureAbsence.home.notFound">No natureAbsences found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="natureAbsences && natureAbsences.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code">
+            <span jhiTranslate="payrollApp.natureAbsence.code">Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libAr">
+            <span jhiTranslate="payrollApp.natureAbsence.libAr">Lib Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libEn">
+            <span jhiTranslate="payrollApp.natureAbsence.libEn">Lib En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="util">
+            <span jhiTranslate="payrollApp.natureAbsence.util">Util</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.natureAbsence.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nbDays">
+            <span jhiTranslate="payrollApp.natureAbsence.nbDays">Nb Days</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="valuePaied">
+            <span jhiTranslate="payrollApp.natureAbsence.valuePaied">Value Paied</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.natureAbsence.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.natureAbsence.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.natureAbsence.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.natureAbsence.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.natureAbsence.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="natureConfig.id">
+            <span jhiTranslate="payrollApp.natureAbsence.natureConfig">Nature Config</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affilication.id">
+            <span jhiTranslate="payrollApp.natureAbsence.affilication">Affilication</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="entreprise.id">
+            <span jhiTranslate="payrollApp.natureAbsence.entreprise">Entreprise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="groupe.id">
+            <span jhiTranslate="payrollApp.natureAbsence.groupe">Groupe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sexe.id">
+            <span jhiTranslate="payrollApp.natureAbsence.sexe">Sexe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let natureAbsence of natureAbsences; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/nature-absence', natureAbsence.id, 'view']">{{ natureAbsence.id }}</a>
+          </td>
+          <td>{{ natureAbsence.code }}</td>
+          <td>{{ natureAbsence.libAr }}</td>
+          <td>{{ natureAbsence.libEn }}</td>
+          <td>{{ natureAbsence.util }}</td>
+          <td>{{ natureAbsence.dateop | formatMediumDatetime }}</td>
+          <td>{{ natureAbsence.nbDays }}</td>
+          <td>{{ natureAbsence.valuePaied }}</td>
+          <td>{{ natureAbsence.modifiedBy }}</td>
+          <td>{{ natureAbsence.op }}</td>
+          <td>{{ natureAbsence.isDeleted }}</td>
+          <td>{{ natureAbsence.createdDate | formatMediumDatetime }}</td>
+          <td>{{ natureAbsence.modifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="natureAbsence.natureConfig">
+              <a [routerLink]="['/nature-config', natureAbsence.natureConfig?.id, 'view']">{{ natureAbsence.natureConfig?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="natureAbsence.affilication">
+              <a [routerLink]="['/affiliation', natureAbsence.affilication?.id, 'view']">{{ natureAbsence.affilication?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="natureAbsence.entreprise">
+              <a [routerLink]="['/entreprise', natureAbsence.entreprise?.id, 'view']">{{ natureAbsence.entreprise?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="natureAbsence.groupe">
+              <a [routerLink]="['/groupe', natureAbsence.groupe?.id, 'view']">{{ natureAbsence.groupe?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="natureAbsence.sexe">
+              <a [routerLink]="['/sexe', natureAbsence.sexe?.id, 'view']">{{ natureAbsence.sexe?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/nature-absence', natureAbsence.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/nature-absence', natureAbsence.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(natureAbsence)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="natureAbsences && natureAbsences.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,176 @@
+<div>
+  <h2 id="page-heading" data-cy="DemandeCalculPaieHeading">
+    <span jhiTranslate="payrollApp.demandeCalculPaie.home.title">Demande Calcul Paies</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.demandeCalculPaie.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-demande-calcul-paie"
+        [routerLink]="['/demande-calcul-paie/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.demandeCalculPaie.home.createLabel"> Create a new Demande Calcul Paie </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="demandeCalculPaies?.length === 0">
+    <span jhiTranslate="payrollApp.demandeCalculPaie.home.notFound">No demandeCalculPaies found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="demandeCalculPaies && demandeCalculPaies.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.code">Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lib">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.lib">Lib</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="annee">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.annee">Annee</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="mois">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.mois">Mois</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateCalcul">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.dateCalcul">Date Calcul</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateValid">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.dateValid">Date Valid</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="datePayroll">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.datePayroll">Date Payroll</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="totalNet">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.totalNet">Total Net</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="totalNetDevise">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.totalNetDevise">Total Net Devise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tauxChange">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.tauxChange">Taux Change</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="calculBy">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.calculBy">Calcul By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="effectBy">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.effectBy">Effect By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateSituation">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.dateSituation">Date Situation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.demandeCalculPaie.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="util">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.util">Util</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.demandeCalculPaie.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let demandeCalculPaie of demandeCalculPaies; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/demande-calcul-paie', demandeCalculPaie.id, 'view']">{{ demandeCalculPaie.id }}</a>
+          </td>
+          <td>{{ demandeCalculPaie.code }}</td>
+          <td>{{ demandeCalculPaie.lib }}</td>
+          <td>{{ demandeCalculPaie.annee }}</td>
+          <td>{{ demandeCalculPaie.mois }}</td>
+          <td>{{ demandeCalculPaie.dateCalcul | formatMediumDate }}</td>
+          <td>{{ demandeCalculPaie.dateValid | formatMediumDate }}</td>
+          <td>{{ demandeCalculPaie.datePayroll | formatMediumDate }}</td>
+          <td>{{ demandeCalculPaie.totalNet }}</td>
+          <td>{{ demandeCalculPaie.totalNetDevise }}</td>
+          <td>{{ demandeCalculPaie.tauxChange }}</td>
+          <td>{{ demandeCalculPaie.calculBy }}</td>
+          <td>{{ demandeCalculPaie.effectBy }}</td>
+          <td>{{ demandeCalculPaie.dateSituation | formatMediumDate }}</td>
+          <td>{{ demandeCalculPaie.dateop | formatMediumDatetime }}</td>
+          <td>{{ demandeCalculPaie.modifiedBy }}</td>
+          <td>{{ demandeCalculPaie.createdBy }}</td>
+          <td>{{ demandeCalculPaie.op }}</td>
+          <td>{{ demandeCalculPaie.util }}</td>
+          <td>{{ demandeCalculPaie.isDeleted }}</td>
+          <td>{{ demandeCalculPaie.createdDate | formatMediumDatetime }}</td>
+          <td>{{ demandeCalculPaie.modifiedDate | formatMediumDatetime }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/demande-calcul-paie', demandeCalculPaie.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/demande-calcul-paie', demandeCalculPaie.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(demandeCalculPaie)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="demandeCalculPaies && demandeCalculPaies.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

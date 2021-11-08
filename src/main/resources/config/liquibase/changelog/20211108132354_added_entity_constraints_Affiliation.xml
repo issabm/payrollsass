@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity Affiliation.
+    -->
+    <changeSet id="20211108132354-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="entreprise_id"
+                                 baseTableName="rh_affiliation"
+                                 constraintName="fk_rh_affiliation__entreprise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_entreprise"/>
+
+        <addForeignKeyConstraint baseColumnNames="direction_id"
+                                 baseTableName="rh_affiliation"
+                                 constraintName="fk_rh_affiliation__direction_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_affiliation"/>
+
+        <addForeignKeyConstraint baseColumnNames="pays_id"
+                                 baseTableName="rh_affiliation"
+                                 constraintName="fk_rh_affiliation__pays_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_pays"/>
+
+        <addForeignKeyConstraint baseColumnNames="devise_id"
+                                 baseTableName="rh_affiliation"
+                                 constraintName="fk_rh_affiliation__devise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_devise"/>
+    </changeSet>
+</databaseChangeLog>

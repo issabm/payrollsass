@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity Payroll.
+    -->
+    <changeSet id="20211108132410-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="devise_id"
+                                 baseTableName="pr_payroll"
+                                 constraintName="fk_pr_payroll__devise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_devise"/>
+
+        <addForeignKeyConstraint baseColumnNames="mvt_id"
+                                 baseTableName="pr_payroll"
+                                 constraintName="fk_pr_payroll__mvt_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pr_mvt_paie"/>
+
+        <addForeignKeyConstraint baseColumnNames="situation_id"
+                                 baseTableName="pr_payroll"
+                                 constraintName="fk_pr_payroll__situation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_situation"/>
+    </changeSet>
+</databaseChangeLog>

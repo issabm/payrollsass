@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="emploi">
+      <h2 data-cy="emploiDetailsHeading"><span jhiTranslate="payrollApp.emploi.detail.title">Emploi</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ emploi.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.code">Code</span></dt>
+        <dd>
+          <span>{{ emploi.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ emploi.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ emploi.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.util">Util</span></dt>
+        <dd>
+          <span>{{ emploi.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ emploi.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ emploi.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.op">Op</span></dt>
+        <dd>
+          <span>{{ emploi.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ emploi.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ emploi.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ emploi.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.pays">Pays</span></dt>
+        <dd>
+          <div *ngIf="emploi.pays">
+            <a [routerLink]="['/pays', emploi.pays?.id, 'view']">{{ emploi.pays?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.natureConfig">Nature Config</span></dt>
+        <dd>
+          <div *ngIf="emploi.natureConfig">
+            <a [routerLink]="['/nature-config', emploi.natureConfig?.id, 'view']">{{ emploi.natureConfig?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.affilication">Affilication</span></dt>
+        <dd>
+          <div *ngIf="emploi.affilication">
+            <a [routerLink]="['/affiliation', emploi.affilication?.id, 'view']">{{ emploi.affilication?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.entreprise">Entreprise</span></dt>
+        <dd>
+          <div *ngIf="emploi.entreprise">
+            <a [routerLink]="['/entreprise', emploi.entreprise?.id, 'view']">{{ emploi.entreprise?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.emploi.groupe">Groupe</span></dt>
+        <dd>
+          <div *ngIf="emploi.groupe">
+            <a [routerLink]="['/groupe', emploi.groupe?.id, 'view']">{{ emploi.groupe?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/emploi', emploi.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

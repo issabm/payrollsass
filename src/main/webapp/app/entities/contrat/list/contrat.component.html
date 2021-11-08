@@ -1,0 +1,180 @@
+<div>
+  <h2 id="page-heading" data-cy="ContratHeading">
+    <span jhiTranslate="payrollApp.contrat.home.title">Contrats</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.contrat.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-contrat"
+        [routerLink]="['/contrat/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.contrat.home.createLabel"> Create a new Contrat </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="contrats?.length === 0">
+    <span jhiTranslate="payrollApp.contrat.home.notFound">No contrats found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="contrats && contrats.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="ref"><span jhiTranslate="payrollApp.contrat.ref">Ref</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="matricule">
+            <span jhiTranslate="payrollApp.contrat.matricule">Matricule</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateDebut">
+            <span jhiTranslate="payrollApp.contrat.dateDebut">Date Debut</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateFin">
+            <span jhiTranslate="payrollApp.contrat.dateFin">Date Fin</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="util"><span jhiTranslate="payrollApp.contrat.util">Util</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.contrat.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.contrat.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.contrat.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.contrat.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.contrat.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.contrat.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="employe.id">
+            <span jhiTranslate="payrollApp.contrat.employe">Employe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sousType.id">
+            <span jhiTranslate="payrollApp.contrat.sousType">Sous Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="groupe.id">
+            <span jhiTranslate="payrollApp.contrat.groupe">Groupe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="entreprise.id">
+            <span jhiTranslate="payrollApp.contrat.entreprise">Entreprise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affiliation.id">
+            <span jhiTranslate="payrollApp.contrat.affiliation">Affiliation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="devise.id">
+            <span jhiTranslate="payrollApp.contrat.devise">Devise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contrat of contrats; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/contrat', contrat.id, 'view']">{{ contrat.id }}</a>
+          </td>
+          <td>{{ contrat.ref }}</td>
+          <td>{{ contrat.matricule }}</td>
+          <td>{{ contrat.dateDebut | formatMediumDate }}</td>
+          <td>{{ contrat.dateFin | formatMediumDate }}</td>
+          <td>{{ contrat.util }}</td>
+          <td>{{ contrat.dateop | formatMediumDatetime }}</td>
+          <td>{{ contrat.modifiedBy }}</td>
+          <td>{{ contrat.op }}</td>
+          <td>{{ contrat.isDeleted }}</td>
+          <td>{{ contrat.createdDate | formatMediumDatetime }}</td>
+          <td>{{ contrat.modifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="contrat.employe">
+              <a [routerLink]="['/employe', contrat.employe?.id, 'view']">{{ contrat.employe?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="contrat.sousType">
+              <a [routerLink]="['/sous-type-contrat', contrat.sousType?.id, 'view']">{{ contrat.sousType?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="contrat.groupe">
+              <a [routerLink]="['/groupe', contrat.groupe?.id, 'view']">{{ contrat.groupe?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="contrat.entreprise">
+              <a [routerLink]="['/entreprise', contrat.entreprise?.id, 'view']">{{ contrat.entreprise?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="contrat.affiliation">
+              <a [routerLink]="['/affiliation', contrat.affiliation?.id, 'view']">{{ contrat.affiliation?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="contrat.devise">
+              <a [routerLink]="['/devise', contrat.devise?.id, 'view']">{{ contrat.devise?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/contrat', contrat.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/contrat', contrat.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(contrat)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="contrats && contrats.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

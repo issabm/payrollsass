@@ -1,0 +1,139 @@
+{
+  "name": "Rebrique",
+  "fields": [
+    {
+      "fieldName": "priorite",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libFr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "inTax",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "minValue",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "maxValue",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dateSituation",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "util",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "op",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pays",
+      "otherEntityRelationshipName": "rebrique",
+      "relationshipName": "pays"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "natureConfig",
+      "otherEntityRelationshipName": "rebrique",
+      "relationshipName": "natureConfig"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliation",
+      "otherEntityRelationshipName": "rebrique",
+      "relationshipName": "affilication"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "entreprise",
+      "otherEntityRelationshipName": "rebrique",
+      "relationshipName": "entreprise"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "groupe",
+      "otherEntityRelationshipName": "rebrique",
+      "relationshipName": "groupe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "modeInput",
+      "otherEntityRelationshipName": "rebrique",
+      "relationshipName": "modeInput"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sens",
+      "otherEntityRelationshipName": "rebrique",
+      "relationshipName": "sens"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "concerne",
+      "otherEntityRelationshipName": "rebrique",
+      "relationshipName": "concerne"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "frequence",
+      "otherEntityRelationshipName": "rebrique",
+      "relationshipName": "frequence"
+    }
+  ],
+  "entityTableName": "pr_rebrique",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211108132404"
+}

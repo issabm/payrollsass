@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="niveauScolaire">
+      <h2 data-cy="niveauScolaireDetailsHeading"><span jhiTranslate="payrollApp.niveauScolaire.detail.title">Niveau Scolaire</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ niveauScolaire.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauScolaire.orderLevel">Order Level</span></dt>
+        <dd>
+          <span>{{ niveauScolaire.orderLevel }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauScolaire.code">Code</span></dt>
+        <dd>
+          <span>{{ niveauScolaire.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauScolaire.libAr">Lib Ar</span></dt>
+        <dd>
+          <span>{{ niveauScolaire.libAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauScolaire.libEn">Lib En</span></dt>
+        <dd>
+          <span>{{ niveauScolaire.libEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauScolaire.util">Util</span></dt>
+        <dd>
+          <span>{{ niveauScolaire.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauScolaire.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ niveauScolaire.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauScolaire.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ niveauScolaire.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauScolaire.op">Op</span></dt>
+        <dd>
+          <span>{{ niveauScolaire.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauScolaire.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ niveauScolaire.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauScolaire.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ niveauScolaire.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauScolaire.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ niveauScolaire.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.niveauScolaire.pays">Pays</span></dt>
+        <dd>
+          <div *ngIf="niveauScolaire.pays">
+            <a [routerLink]="['/pays', niveauScolaire.pays?.id, 'view']">{{ niveauScolaire.pays?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/niveau-scolaire', niveauScolaire.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

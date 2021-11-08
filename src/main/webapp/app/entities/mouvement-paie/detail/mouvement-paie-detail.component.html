@@ -1,0 +1,138 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="mouvementPaie">
+      <h2 data-cy="mouvementPaieDetailsHeading"><span jhiTranslate="payrollApp.mouvementPaie.detail.title">Mouvement Paie</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.code">Code</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.lib">Lib</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.lib }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.annee">Annee</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.annee }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.mois">Mois</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.mois }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.dateCalcul">Date Calcul</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.dateCalcul | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.dateValid">Date Valid</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.dateValid | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.datePayroll">Date Payroll</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.datePayroll | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.totalNet">Total Net</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.totalNet }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.totalNetDevise">Total Net Devise</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.totalNetDevise }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.tauxChange">Taux Change</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.tauxChange }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.calculBy">Calcul By</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.calculBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.effectBy">Effect By</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.effectBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.dateSituation">Date Situation</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.dateSituation | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.op">Op</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.util">Util</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.modifiedDate">Modified Date</span></dt>
+        <dd>
+          <span>{{ mouvementPaie.modifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.situation">Situation</span></dt>
+        <dd>
+          <div *ngIf="mouvementPaie.situation">
+            <a [routerLink]="['/situation', mouvementPaie.situation?.id, 'view']">{{ mouvementPaie.situation?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.employe">Employe</span></dt>
+        <dd>
+          <div *ngIf="mouvementPaie.employe">
+            <a [routerLink]="['/employe', mouvementPaie.employe?.id, 'view']">{{ mouvementPaie.employe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.natureMvtPaie">Nature Mvt Paie</span></dt>
+        <dd>
+          <div *ngIf="mouvementPaie.natureMvtPaie">
+            <a [routerLink]="['/nature-mvt-paie', mouvementPaie.natureMvtPaie?.id, 'view']">{{ mouvementPaie.natureMvtPaie?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.mouvementPaie.demandeCalculPaie">Demande Calcul Paie</span></dt>
+        <dd>
+          <div *ngIf="mouvementPaie.demandeCalculPaie">
+            <a [routerLink]="['/demande-calcul-paie', mouvementPaie.demandeCalculPaie?.id, 'view']">{{
+              mouvementPaie.demandeCalculPaie?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/mouvement-paie', mouvementPaie.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

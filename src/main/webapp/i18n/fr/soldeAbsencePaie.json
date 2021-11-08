@@ -1,0 +1,35 @@
+{
+  "payrollApp": {
+    "soldeAbsencePaie": {
+      "home": {
+        "title": "SoldeAbsencePaies",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Solde Absence Paie",
+        "createOrEditLabel": "Créer ou éditer un Solde Absence Paie",
+        "notFound": "Aucun Solde Absence Paie trouvé"
+      },
+      "created": "Un nouveau Solde Absence Paie a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Solde Absence Paie avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Solde Absence Paie avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Solde Absence Paie {{ id }} ?"
+      },
+      "detail": {
+        "title": "Solde Absence Paie"
+      },
+      "id": "ID",
+      "annee": "Annee",
+      "mois": "Mois",
+      "nbDays": "Nb Days",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "payroll": "Payroll",
+      "natureAbsence": "Nature Absence"
+    }
+  }
+}

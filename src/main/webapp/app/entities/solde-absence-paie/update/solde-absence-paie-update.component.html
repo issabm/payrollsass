@@ -1,0 +1,167 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-solde-absence-paie-heading"
+        data-cy="SoldeAbsencePaieCreateUpdateHeading"
+        jhiTranslate="payrollApp.soldeAbsencePaie.home.createOrEditLabel"
+      >
+        Create or edit a Solde Absence Paie
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsencePaie.annee" for="field_annee">Annee</label>
+          <input type="number" class="form-control" name="annee" id="field_annee" data-cy="annee" formControlName="annee" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsencePaie.mois" for="field_mois">Mois</label>
+          <input type="number" class="form-control" name="mois" id="field_mois" data-cy="mois" formControlName="mois" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsencePaie.nbDays" for="field_nbDays">Nb Days</label>
+          <input type="number" class="form-control" name="nbDays" id="field_nbDays" data-cy="nbDays" formControlName="nbDays" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsencePaie.util" for="field_util">Util</label>
+          <input type="text" class="form-control" name="util" id="field_util" data-cy="util" formControlName="util" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsencePaie.dateop" for="field_dateop">Dateop</label>
+          <div class="d-flex">
+            <input
+              id="field_dateop"
+              data-cy="dateop"
+              type="datetime-local"
+              class="form-control"
+              name="dateop"
+              formControlName="dateop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsencePaie.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsencePaie.op" for="field_op">Op</label>
+          <input type="text" class="form-control" name="op" id="field_op" data-cy="op" formControlName="op" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsencePaie.isDeleted" for="field_isDeleted">Is Deleted</label>
+          <input type="checkbox" class="form-check" name="isDeleted" id="field_isDeleted" data-cy="isDeleted" formControlName="isDeleted" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsencePaie.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsencePaie.modifiedDate" for="field_modifiedDate"
+            >Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_modifiedDate"
+              data-cy="modifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="modifiedDate"
+              formControlName="modifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsencePaie.payroll" for="field_payroll">Payroll</label>
+          <select class="form-control" id="field_payroll" data-cy="payroll" name="payroll" formControlName="payroll">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="payrollOption.id === editForm.get('payroll')!.value?.id ? editForm.get('payroll')!.value : payrollOption"
+              *ngFor="let payrollOption of payrollsSharedCollection; trackBy: trackPayrollById"
+            >
+              {{ payrollOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="payrollApp.soldeAbsencePaie.natureAbsence" for="field_natureAbsence"
+            >Nature Absence</label
+          >
+          <select
+            class="form-control"
+            id="field_natureAbsence"
+            data-cy="natureAbsence"
+            name="natureAbsence"
+            formControlName="natureAbsence"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                natureAbsenceOption.id === editForm.get('natureAbsence')!.value?.id
+                  ? editForm.get('natureAbsence')!.value
+                  : natureAbsenceOption
+              "
+              *ngFor="let natureAbsenceOption of natureAbsencesSharedCollection; trackBy: trackNatureAbsenceById"
+            >
+              {{ natureAbsenceOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

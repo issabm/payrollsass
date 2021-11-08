@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity Rebrique.
+    -->
+    <changeSet id="20211108132404-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="pays_id"
+                                 baseTableName="pr_rebrique"
+                                 constraintName="fk_pr_rebrique__pays_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_pays"/>
+
+        <addForeignKeyConstraint baseColumnNames="nature_config_id"
+                                 baseTableName="pr_rebrique"
+                                 constraintName="fk_pr_rebrique__nature_config_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cfg_nature"/>
+
+        <addForeignKeyConstraint baseColumnNames="affilication_id"
+                                 baseTableName="pr_rebrique"
+                                 constraintName="fk_pr_rebrique__affilication_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_affiliation"/>
+
+        <addForeignKeyConstraint baseColumnNames="entreprise_id"
+                                 baseTableName="pr_rebrique"
+                                 constraintName="fk_pr_rebrique__entreprise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_entreprise"/>
+
+        <addForeignKeyConstraint baseColumnNames="groupe_id"
+                                 baseTableName="pr_rebrique"
+                                 constraintName="fk_pr_rebrique__groupe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rh_groupe"/>
+
+        <addForeignKeyConstraint baseColumnNames="mode_input_id"
+                                 baseTableName="pr_rebrique"
+                                 constraintName="fk_pr_rebrique__mode_input_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_mode_input"/>
+
+        <addForeignKeyConstraint baseColumnNames="sens_id"
+                                 baseTableName="pr_rebrique"
+                                 constraintName="fk_pr_rebrique__sens_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_sens"/>
+
+        <addForeignKeyConstraint baseColumnNames="concerne_id"
+                                 baseTableName="pr_rebrique"
+                                 constraintName="fk_pr_rebrique__concerne_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_concern"/>
+
+        <addForeignKeyConstraint baseColumnNames="frequence_id"
+                                 baseTableName="pr_rebrique"
+                                 constraintName="fk_pr_rebrique__frequence_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_freq"/>
+    </changeSet>
+</databaseChangeLog>

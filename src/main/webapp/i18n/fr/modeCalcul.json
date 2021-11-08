@@ -1,0 +1,33 @@
+{
+  "payrollApp": {
+    "modeCalcul": {
+      "home": {
+        "title": "ModeCalculs",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Mode Calcul",
+        "createOrEditLabel": "Créer ou éditer un Mode Calcul",
+        "notFound": "Aucun Mode Calcul trouvé"
+      },
+      "created": "Un nouveau Mode Calcul a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Mode Calcul avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Mode Calcul avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Mode Calcul {{ id }} ?"
+      },
+      "detail": {
+        "title": "Mode Calcul"
+      },
+      "id": "ID",
+      "code": "Code",
+      "libAr": "Lib Ar",
+      "libEn": "Lib En",
+      "util": "Util",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "op": "Op",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date"
+    }
+  }
+}

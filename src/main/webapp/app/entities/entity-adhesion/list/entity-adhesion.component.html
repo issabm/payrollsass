@@ -1,0 +1,152 @@
+<div>
+  <h2 id="page-heading" data-cy="EntityAdhesionHeading">
+    <span jhiTranslate="payrollApp.entityAdhesion.home.title">Entity Adhesions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="payrollApp.entityAdhesion.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-entity-adhesion"
+        [routerLink]="['/entity-adhesion/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="payrollApp.entityAdhesion.home.createLabel"> Create a new Entity Adhesion </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="entityAdhesions?.length === 0">
+    <span jhiTranslate="payrollApp.entityAdhesion.home.notFound">No entityAdhesions found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="entityAdhesions && entityAdhesions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="code">
+            <span jhiTranslate="payrollApp.entityAdhesion.code">Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libEn">
+            <span jhiTranslate="payrollApp.entityAdhesion.libEn">Lib En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libAr">
+            <span jhiTranslate="payrollApp.entityAdhesion.libAr">Lib Ar</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="libFr">
+            <span jhiTranslate="payrollApp.entityAdhesion.libFr">Lib Fr</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="util">
+            <span jhiTranslate="payrollApp.entityAdhesion.util">Util</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateop">
+            <span jhiTranslate="payrollApp.entityAdhesion.dateop">Dateop</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <span jhiTranslate="payrollApp.entityAdhesion.modifiedBy">Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="op"><span jhiTranslate="payrollApp.entityAdhesion.op">Op</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="isDeleted">
+            <span jhiTranslate="payrollApp.entityAdhesion.isDeleted">Is Deleted</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <span jhiTranslate="payrollApp.entityAdhesion.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="modifiedDate">
+            <span jhiTranslate="payrollApp.entityAdhesion.modifiedDate">Modified Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="natureAdhesion.id">
+            <span jhiTranslate="payrollApp.entityAdhesion.natureAdhesion">Nature Adhesion</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pays.id">
+            <span jhiTranslate="payrollApp.entityAdhesion.pays">Pays</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entityAdhesion of entityAdhesions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/entity-adhesion', entityAdhesion.id, 'view']">{{ entityAdhesion.id }}</a>
+          </td>
+          <td>{{ entityAdhesion.code }}</td>
+          <td>{{ entityAdhesion.libEn }}</td>
+          <td>{{ entityAdhesion.libAr }}</td>
+          <td>{{ entityAdhesion.libFr }}</td>
+          <td>{{ entityAdhesion.util }}</td>
+          <td>{{ entityAdhesion.dateop | formatMediumDatetime }}</td>
+          <td>{{ entityAdhesion.modifiedBy }}</td>
+          <td>{{ entityAdhesion.op }}</td>
+          <td>{{ entityAdhesion.isDeleted }}</td>
+          <td>{{ entityAdhesion.createdDate | formatMediumDatetime }}</td>
+          <td>{{ entityAdhesion.modifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="entityAdhesion.natureAdhesion">
+              <a [routerLink]="['/nature-adhesion', entityAdhesion.natureAdhesion?.id, 'view']">{{ entityAdhesion.natureAdhesion?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="entityAdhesion.pays">
+              <a [routerLink]="['/pays', entityAdhesion.pays?.id, 'view']">{{ entityAdhesion.pays?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/entity-adhesion', entityAdhesion.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/entity-adhesion', entityAdhesion.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(entityAdhesion)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="entityAdhesions && entityAdhesions.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

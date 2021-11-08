@@ -1,0 +1,63 @@
+{
+  "payrollApp": {
+    "eligibilite": {
+      "home": {
+        "title": "Eligibilites",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Eligibilite",
+        "createOrEditLabel": "Create or edit a Eligibilite",
+        "notFound": "No Eligibilites found"
+      },
+      "created": "A new Eligibilite is created with identifier {{ param }}",
+      "updated": "A Eligibilite is updated with identifier {{ param }}",
+      "deleted": "A Eligibilite is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Eligibilite {{ id }}?"
+      },
+      "detail": {
+        "title": "Eligibilite"
+      },
+      "id": "ID",
+      "priorite": "Priorite",
+      "annee": "Annee",
+      "mois": "Mois",
+      "nbEnt": "Nb Ent",
+      "ageEnt": "Age Ent",
+      "matricule": "Matricule",
+      "code": "Code",
+      "libEn": "Lib En",
+      "libAr": "Lib Ar",
+      "libFr": "Lib Fr",
+      "valPayroll": "Val Payroll",
+      "nbDaysLeave": "Nb Days Leave",
+      "pourValPayroll": "Pour Val Payroll",
+      "dateop": "Dateop",
+      "modifiedBy": "Modified By",
+      "createdBy": "Created By",
+      "op": "Op",
+      "util": "Util",
+      "isDeleted": "Is Deleted",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "pays": "Pays",
+      "natureConfig": "Nature Config",
+      "echlon": "Echlon",
+      "category": "Category",
+      "emploi": "Emploi",
+      "typeHandicap": "Type Handicap",
+      "nationalite": "Nationalite",
+      "sexe": "Sexe",
+      "affilication": "Affilication",
+      "entreprise": "Entreprise",
+      "groupe": "Groupe",
+      "typeContrat": "Type Contrat",
+      "sousTypeContrat": "Sous Type Contrat",
+      "niveauEtude": "Niveau Etude",
+      "natureEligible": "Nature Eligible",
+      "rebrique": "Rebrique",
+      "natureAbsence": "Nature Absence",
+      "plate": "Plate",
+      "targetEnt": "Target Ent"
+    }
+  }
+}

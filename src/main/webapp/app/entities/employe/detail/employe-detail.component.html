@@ -1,0 +1,151 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="employe">
+      <h2 data-cy="employeDetailsHeading"><span jhiTranslate="payrollApp.employe.detail.title">Employe</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ employe.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.matricule">Matricule</span></dt>
+        <dd>
+          <span>{{ employe.matricule }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.nomAr">Nom Ar</span></dt>
+        <dd>
+          <span>{{ employe.nomAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.nomJfAr">Nom Jf Ar</span></dt>
+        <dd>
+          <span>{{ employe.nomJfAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.prenomAr">Prenom Ar</span></dt>
+        <dd>
+          <span>{{ employe.prenomAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.nomEn">Nom En</span></dt>
+        <dd>
+          <span>{{ employe.nomEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.nomJfEn">Nom Jf En</span></dt>
+        <dd>
+          <span>{{ employe.nomJfEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.prenomEn">Prenom En</span></dt>
+        <dd>
+          <span>{{ employe.prenomEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.nomPereAr">Nom Pere Ar</span></dt>
+        <dd>
+          <span>{{ employe.nomPereAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.nomPereEn">Nom Pere En</span></dt>
+        <dd>
+          <span>{{ employe.nomPereEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.nomMereAr">Nom Mere Ar</span></dt>
+        <dd>
+          <span>{{ employe.nomMereAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.nomMereEn">Nom Mere En</span></dt>
+        <dd>
+          <span>{{ employe.nomMereEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.nomGpAr">Nom Gp Ar</span></dt>
+        <dd>
+          <span>{{ employe.nomGpAr }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.nomGpEn">Nom Gp En</span></dt>
+        <dd>
+          <span>{{ employe.nomGpEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.dateNaiss">Date Naiss</span></dt>
+        <dd>
+          <span>{{ employe.dateNaiss | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.rib">Rib</span></dt>
+        <dd>
+          <span>{{ employe.rib }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.banque">Banque</span></dt>
+        <dd>
+          <span>{{ employe.banque }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.dateRib">Date Rib</span></dt>
+        <dd>
+          <span>{{ employe.dateRib }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.dateBanque">Date Banque</span></dt>
+        <dd>
+          <span>{{ employe.dateBanque }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.img">Img</span></dt>
+        <dd>
+          <div *ngIf="employe.img">
+            <a (click)="openFile(employe.img, employe.imgContentType)">
+              <img [src]="'data:' + employe.imgContentType + ';base64,' + employe.img" style="max-width: 100%" alt="employe image" />
+            </a>
+            {{ employe.imgContentType }}, {{ byteSize(employe.img) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.util">Util</span></dt>
+        <dd>
+          <span>{{ employe.util }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.dateop">Dateop</span></dt>
+        <dd>
+          <span>{{ employe.dateop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.dateModif">Date Modif</span></dt>
+        <dd>
+          <span>{{ employe.dateModif | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ employe.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.op">Op</span></dt>
+        <dd>
+          <span>{{ employe.op }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.isDeleted">Is Deleted</span></dt>
+        <dd>
+          <span>{{ employe.isDeleted }}</span>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.situation">Situation</span></dt>
+        <dd>
+          <div *ngIf="employe.situation">
+            <a [routerLink]="['/situation', employe.situation?.id, 'view']">{{ employe.situation?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.nationalite">Nationalite</span></dt>
+        <dd>
+          <div *ngIf="employe.nationalite">
+            <a [routerLink]="['/pays', employe.nationalite?.id, 'view']">{{ employe.nationalite?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="payrollApp.employe.typeHandicap">Type Handicap</span></dt>
+        <dd>
+          <div *ngIf="employe.typeHandicap">
+            <a [routerLink]="['/type-handicap', employe.typeHandicap?.id, 'view']">{{ employe.typeHandicap?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/employe', employe.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
